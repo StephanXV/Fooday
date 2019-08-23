@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" defaultHref="/tabs/home">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+    <ion-title>Lista Ristoranti</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let restaurant of restaurants">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <img src="../../../assets/images/1.jpg">
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            {{restaurant}}
+          </ion-col>
+          <ion-col>
+
+          </ion-col>
+          <ion-col>
+            20%
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            Attributi
+          </ion-col>
+          <ion-col>
+
+          </ion-col>
+          <ion-col>
+            Voto 9/10
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

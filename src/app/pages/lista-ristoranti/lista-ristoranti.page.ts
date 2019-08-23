@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaRistorantiPage implements OnInit {
 
+  restaurants = ['Da Maurizio', 'Shabu Shabu', 'Farina & Co', 'Peste & Corna', 'Sole e Luna', 'Lu Barrott'];
+
   constructor() { }
 
   ngOnInit() {

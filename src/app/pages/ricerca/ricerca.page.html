@@ -1,0 +1,19 @@
+
+<ion-content>
+  <div margin align="center">
+    <ion-input padding class="rounded" clear-input value="Ricerca per nome">
+      <ion-icon padding name="search"></ion-icon>
+    </ion-input>
+  </div>
+  <div margin align="center">
+    <ion-input padding class="rounded" clear-input value="Ricerca per luogo">
+      <ion-icon padding name="pin"></ion-icon>
+    </ion-input>
+  </div>
+  <ion-list>
+    <ion-item *ngFor="let research of recentResearches">
+
+      <ion-button class="rounded"><ion-icon slot="start" name="sync"></ion-icon>{{research}}</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

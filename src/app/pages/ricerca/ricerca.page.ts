@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RicercaPage implements OnInit {
 
+  recentResearches = ['napoli', 'arrosticini', 'bistrot', 'carlo cracco', 'cannavacciuolo'];
+
   constructor() { }
 
   ngOnInit() {
