@@ -13,7 +13,7 @@
         <ion-row>
           <ion-col size="12">
             <ion-segment scrollable (ionChange)="onCategoryClick($event)">
-              <ion-segment-button  *ngFor="let category of categories" value="{{category}}">
+              <ion-segment-button  *ngFor="let category of categories" value="{{category}}" [routerLink]="['lista-ristoranti']" routerDirection="forward">
                 <ion-label>{{category}}</ion-label>
               </ion-segment-button>
             </ion-segment>
@@ -26,8 +26,8 @@
   <ion-grid fixed>
     <ion-row>
       <ion-col size="12">
-        <ion-segment scrollable (ionChange)="onCityClick($event)">
-          <ion-segment-button  *ngFor="let city of cities" value="{{city}}">
+        <ion-segment scrollable (ionChange)="onCityClick($event)" >
+          <ion-segment-button  *ngFor="let city of cities" value="{{city}}" [routerLink]="['lista-ristoranti']" routerDirection="forward">
             <ion-label>{{city}}</ion-label>
           </ion-segment-button>
         </ion-segment>
@@ -39,7 +39,7 @@
   <ion-title>Nei Dintorni</ion-title>
 
   <ion-list>
-    <ion-item *ngFor="let restaurant of restaurants">
+    <ion-item *ngFor="let restaurant of restaurants" [routerLink]="['dettagli-ristorante']" routerDirection="forward" (click)="onRestaurantClick(restaurant)">
       <ion-grid>
         <ion-row>
           <ion-col>

@@ -5,21 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ListaRistorantiPage } from './lista-ristoranti.page';
+import { DettagliRistorantePage } from './dettagli-ristorante.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ListaRistorantiPage
-  },
-  {
-    path: 'dettagli-ristorante',
-    children: [
-      {
-        path: '',
-        loadChildren: '../dettagli-ristorante/dettagli-ristorante.module#DettagliRistorantePageModule'
-      }
-    ]
+    component: DettagliRistorantePage
   }
 ];
 
@@ -30,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ListaRistorantiPage]
+  declarations: [DettagliRistorantePage]
 })
-export class ListaRistorantiPageModule {}
+export class DettagliRistorantePageModule {}

@@ -15,6 +15,24 @@ import { HomePage } from './home.page';
       {
         path: '',
         component: HomePage
+      },
+      {
+        path: 'lista-ristoranti',
+        children: [
+          {
+            path: '',
+            loadChildren: '../lista-ristoranti/lista-ristoranti.module#ListaRistorantiPageModule'
+          }
+        ]
+      },
+      {
+        path: 'dettagli-ristorante',
+        children: [
+          {
+            path: '',
+            loadChildren: '../dettagli-ristorante/dettagli-ristorante.module#DettagliRistorantePageModule'
+          }
+        ]
       }
     ])
   ],

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,12 +16,17 @@ export class HomePage {
 
   onCategoryClick(category) {
     console.log(category);
-    this.router.navigateByUrl('/tabs/home/lista-ristoranti');
+    //this.router.navigateByUrl('tabs/home/lista-ristoranti');
   }
 
   onCityClick(city) {
     console.log(city);
-    this.router.navigateByUrl('/tabs/home/lista-ristoranti');
+    //this.router.navigateByUrl('tabs/home/lista-ristoranti');
+  }
+
+  onRestaurantClick(restaurant){
+    console.log(restaurant);
+    //this.router.navigateByUrl('tabs/home/dettagli-ristorante');
   }
 
 }

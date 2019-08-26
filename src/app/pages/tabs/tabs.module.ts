@@ -18,15 +18,6 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: '../home/home.module#HomePageModule'
-          },
-          {
-            path: 'lista-ristoranti',
-            children: [
-              {
-                path: '',
-                loadChildren: '../lista-ristoranti/lista-ristoranti.module#ListaRistorantiPageModule'
-              }
-            ]
           }
         ]
       },

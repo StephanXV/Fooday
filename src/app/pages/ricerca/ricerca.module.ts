@@ -11,6 +11,24 @@ const routes: Routes = [
   {
     path: '',
     component: RicercaPage
+  },
+  {
+    path: 'dettagli-ristorante',
+    children: [
+      {
+        path: '',
+        loadChildren: '../dettagli-ristorante/dettagli-ristorante.module#DettagliRistorantePageModule'
+      }
+    ]
+  },
+  {
+    path: 'lista-ristoranti',
+    children: [
+      {
+        path: '',
+        loadChildren: '../lista-ristoranti/lista-ristoranti.module#ListaRistorantiPageModule'
+      }
+    ]
   }
 ];
 

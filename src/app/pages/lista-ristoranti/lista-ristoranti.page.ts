@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NavController} from '@ionic/angular';
 
 @Component({
   selector: 'app-lista-ristoranti',
@@ -9,9 +10,12 @@ export class ListaRistorantiPage implements OnInit {
 
   restaurants = ['Da Maurizio', 'Shabu Shabu', 'Farina & Co', 'Peste & Corna', 'Sole e Luna', 'Lu Barrott'];
 
-  constructor() { }
+  constructor(private navController:NavController) { }
 
   ngOnInit() {
   }
 
+  onRestaurantClick(restaurant) {
+    console.log(restaurant);
+  }
 }

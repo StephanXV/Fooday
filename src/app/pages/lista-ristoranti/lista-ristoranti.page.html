@@ -9,7 +9,7 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let restaurant of restaurants">
+    <ion-item *ngFor="let restaurant of restaurants" (click)="onRestaurantClick(restaurant)" [routerLink]="['dettagli-ristorante']" routerDirection="forward">
       <ion-grid>
         <ion-row>
           <ion-col>

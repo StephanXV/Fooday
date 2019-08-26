@@ -1,17 +1,18 @@
 
 <ion-content>
-  <div margin align="center">
-    <ion-input padding class="rounded" clear-input value="Ricerca per nome">
+  <form (ngSubmit)="onSubmit()">
+    <ion-item>
       <ion-icon padding name="search"></ion-icon>
-    </ion-input>
-  </div>
-  <div margin align="center">
-    <ion-input padding class="rounded" clear-input value="Ricerca per luogo">
-      <ion-icon padding name="pin"></ion-icon>
-    </ion-input>
-  </div>
+      <ion-input placeholder="Ricerca per nome" [(ngModel)]="value"></ion-input>
+    </ion-item>
+  </form>
+
+  <ion-item>
+    <ion-icon padding name="pin"></ion-icon>
+    <ion-input placeholder="Ricerca per luogo" (ionInput)="onSubmit()"></ion-input>
+  </ion-item>
   <ion-list>
-    <ion-item *ngFor="let research of recentResearches">
+    <ion-item *ngFor="let research of recentResearches" [routerLink]="['dettagli-ristorante']" routerDirection="forward">
 
       <ion-button class="rounded"><ion-icon slot="start" name="sync"></ion-icon>{{research}}</ion-button>
     </ion-item>

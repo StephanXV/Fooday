@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {NavController} from '@ionic/angular';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-ricerca',
@@ -8,10 +10,17 @@ import { Component, OnInit } from '@angular/core';
 export class RicercaPage implements OnInit {
 
   recentResearches = ['napoli', 'arrosticini', 'bistrot', 'carlo cracco', 'cannavacciuolo'];
+  value;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+    console.log(this.value);
+    this.router.navigateByUrl('tabs/ricerca/lista-ristoranti');
+
   }
 
 }
