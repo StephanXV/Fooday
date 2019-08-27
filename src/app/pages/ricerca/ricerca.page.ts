@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {NavController} from '@ionic/angular';
 import {Router} from '@angular/router';
 
 @Component({
@@ -10,17 +9,21 @@ import {Router} from '@angular/router';
 export class RicercaPage implements OnInit {
 
   recentResearches = ['napoli', 'arrosticini', 'bistrot', 'carlo cracco', 'cannavacciuolo'];
-  value;
+  value1;
+  value2;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    console.log(this.value);
+  onSubmit1() {
+    console.log(this.value1);
     this.router.navigateByUrl('tabs/ricerca/lista-ristoranti');
-
   }
 
+  onSubmit2() {
+    console.log(this.value2);
+    this.router.navigateByUrl('tabs/ricerca/lista-ristoranti');
+  }
 }

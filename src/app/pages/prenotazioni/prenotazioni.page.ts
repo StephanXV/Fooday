@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrenotazioniPage implements OnInit {
 
+  reservations = ['Shabu Shabu', 'Lu Barrott', 'Lu Barrott', 'Da Maurizio'];
+
   constructor() { }
 
   ngOnInit() {

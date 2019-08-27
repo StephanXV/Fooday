@@ -1,9 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>prenotazioni</ion-title>
+    <ion-title>Prenotazioni</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <ion-card *ngFor="let reservation of reservations">
+      <ion-card-title>
+        <ion-label margin>
+          {{reservation}}
+        </ion-label>
+      </ion-card-title>
+      <ion-card-content>
+        <ion-label>
+          Data e Ora
+        </ion-label> <br>
+        <ion-label>
+          Importo e Punti
+        </ion-label>
+        <ion-button class="button2" [routerLink]="['recensione']" routerDirection="forward">
+          <ion-label>
+            Recensione
+          </ion-label>
+        </ion-button>
+      </ion-card-content>
+
+    </ion-card>
+  </ion-list>
 
 </ion-content>

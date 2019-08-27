@@ -1,20 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ricerca
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
-  <form (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit1()">
     <ion-item>
       <ion-icon padding name="search"></ion-icon>
-      <ion-input placeholder="Ricerca per nome" [(ngModel)]="value"></ion-input>
+      <ion-input placeholder="Ricerca per nome" [(ngModel)]="value1" name="value1"></ion-input>
     </ion-item>
   </form>
 
-  <ion-item>
-    <ion-icon padding name="pin"></ion-icon>
-    <ion-input placeholder="Ricerca per luogo" (ionInput)="onSubmit()"></ion-input>
-  </ion-item>
+  <form (ngSubmit)="onSubmit2()">
+    <ion-item>
+      <ion-icon padding name="pin"></ion-icon>
+      <ion-input placeholder="Ricerca per luogo" [(ngModel)]="value2" name="value2"></ion-input>
+    </ion-item>
+  </form>
+
   <ion-list>
     <ion-item *ngFor="let research of recentResearches" [routerLink]="['dettagli-ristorante']" routerDirection="forward">
-
-      <ion-button class="rounded"><ion-icon slot="start" name="sync"></ion-icon>{{research}}</ion-button>
+      <ion-icon slot="start" name="sync"></ion-icon>
+      <ion-label>{{research}}</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

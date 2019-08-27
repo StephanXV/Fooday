@@ -11,6 +11,15 @@ const routes: Routes = [
   {
     path: '',
     component: ProfiloPage
+  },
+  {
+    path: 'preferenze',
+    children: [
+      {
+        path: '',
+        loadChildren: '../preferenze/preferenze.module#PreferenzePageModule'
+      }
+    ]
   }
 ];
 

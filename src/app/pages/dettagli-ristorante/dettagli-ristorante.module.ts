@@ -11,6 +11,24 @@ const routes: Routes = [
   {
     path: '',
     component: DettagliRistorantePage
+  },
+  {
+    path: 'prenota',
+    children: [
+      {
+        path: '',
+        loadChildren: '../prenota/prenota.module#PrenotaPageModule'
+      }
+    ]
+  },
+  {
+    path: 'galleria',
+    children: [
+      {
+        path: '',
+        loadChildren: '../galleria/galleria.module#GalleriaPageModule'
+      }
+    ]
   }
 ];
 

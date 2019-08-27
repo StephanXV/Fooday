@@ -11,6 +11,24 @@ const routes: Routes = [
   {
     path: '',
     component: PreferitiPage
+  },
+  {
+    path: 'dettagli-ristorante',
+    children: [
+      {
+        path: '',
+        loadChildren: '../dettagli-ristorante/dettagli-ristorante.module#DettagliRistorantePageModule'
+      }
+    ]
+  },
+  {
+    path: 'prenota',
+    children: [
+      {
+        path: '',
+        loadChildren: '../prenota/prenota.module#PrenotaPageModule'
+      }
+    ]
   }
 ];
 

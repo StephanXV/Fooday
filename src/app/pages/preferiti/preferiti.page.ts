@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PreferitiPage implements OnInit {
 
+  favourites = ['Da Maurizio', 'Farina & Co', 'Peste & Corna', 'Lu Barrott'];
+
   constructor() { }
 
   ngOnInit() {
