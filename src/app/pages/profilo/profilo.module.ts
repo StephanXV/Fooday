@@ -20,6 +20,15 @@ const routes: Routes = [
         loadChildren: '../preferenze/preferenze.module#PreferenzePageModule'
       }
     ]
+  },
+  {
+    path: 'login',
+    children: [
+      {
+        path: '',
+        loadChildren: '../login/login.module#LoginPageModule'
+      }
+    ]
   }
 ];
 

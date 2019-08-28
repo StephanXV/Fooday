@@ -1,6 +1,6 @@
-<ion-content padding class="animated fadeIn login auth-page">
-  <div class="theme-bg"></div>
-  <div class="auth-content">
+<ion-content padding class="animated fadeIn">
+  <div></div>
+  <div>
 
     <!-- Logo -->
     <div padding-horizontal text-center class="animated fadeInDown">
@@ -8,13 +8,13 @@
     </div>
 
     <!-- Login form -->
-    <form [formGroup]="loginFormModel" class="list-form">
+    <form [formGroup]="loginFormModel" >
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
           <ion-icon name="contact" item-start></ion-icon>username</ion-label>
         <ion-input color="secondary" type="email" formControlName="username"></ion-input>
       </ion-item>
-      <p ion-text class="text08" *ngIf="loginFormModel.get('username').touched && loginFormModel.get('username').invalid">
+      <p ion-text *ngIf="loginFormModel.get('username').touched && loginFormModel.get('username').invalid">
         <ion-text color="danger">username richiesto</ion-text>
       </p>
       <ion-item no-padding class="animated fadeInUp">
@@ -22,13 +22,19 @@
           <ion-icon name="lock" item-start></ion-icon>password</ion-label>
         <ion-input color="secondary" type="password" formControlName="password"></ion-input>
       </ion-item>
-      <p ion-text class="text08" *ngIf="loginFormModel.get('password').touched && loginFormModel.get('password').invalid">
+      <p ion-text *ngIf="loginFormModel.get('password').touched && loginFormModel.get('password').invalid">
         <ion-text color="danger">password richiesta</ion-text>
       </p>
       <div margin-top="20px">
         <ion-button icon-left size="medium" expand="full" shape="round" color="primary" (click)="onLogin()" [disabled]="!loginFormModel.valid" tappable>
           <ion-icon name="log-in"></ion-icon>
-          login
+          Login
+        </ion-button>
+      </div>
+      <div margin-top="20px">
+        <ion-button icon-left size="medium" expand="full" shape="round" color="primary" [routerLink]="['registrazione']" routerDirection="forward">
+          <ion-icon name="person-add"></ion-icon>
+          Registrati
         </ion-button>
       </div>
     </form>
