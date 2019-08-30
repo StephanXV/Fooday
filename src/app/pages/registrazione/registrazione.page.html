@@ -1,9 +1,39 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Registrazione</ion-title>
+    <ion-title>Registrati</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form align-items-center margin="medium" [formGroup]="registerFormModule">
+
+    <ion-item lines="none" class="add-photo">
+      <ion-img  src="../../../assets/images/add-photo.png">
+
+      </ion-img>
+    </ion-item>
+    <ion-item class="animated fadeInUp">
+      <ion-input color="secondary" placeholder="nome" formControlName="nome"></ion-input>
+    </ion-item>
+
+    <ion-item class="animated fadeInUp">
+      <ion-input color="secondary" placeholder="cognome" formControlName="cognome"></ion-input>
+    </ion-item>
+
+    <ion-item class="animated fadeInUp">
+      <ion-input color="secondary" type="email" placeholder="email" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item class="animated fadeInUp">
+      <ion-input color="secondary" type="password" placeholder="password" formControlName="password"></ion-input>
+    </ion-item>
+
+    <ion-button margin-top="medium" size="medium" expand="full" shape="round" color="primary" (click)="onRegister()" [disabled]="!registerFormModule.valid" tappable>
+      <ion-icon left name="person-add"></ion-icon>
+      <ion-label>Registrati</ion-label>
+    </ion-button>
+
+  </form>
+
 
 </ion-content>

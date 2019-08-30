@@ -10,8 +10,6 @@ import {AlertController, NavController} from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   private loginFormModel: FormGroup;
-  private loginTitle: string;
-  private loginSubTitle: string;
 
   constructor(private formBuilder: FormBuilder,
               private alertController: AlertController,

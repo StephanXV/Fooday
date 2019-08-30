@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {NavController} from '@ionic/angular';
 
 @Component({
   selector: 'app-registrazione',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrazionePage implements OnInit {
 
-  constructor() { }
+  private registerFormModule: FormGroup;
+
+  constructor(private formBuilder: FormBuilder,
+              private navController: NavController) { }
 
   ngOnInit() {
+    this.registerFormModule = this.formBuilder.group( {
+      nome: ['', Validators.compose([Validators.required])],
+      cognome: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required])],
+      password: ['', Validators.compose([Validators.required])]
+    });
   }
 
+  onRegister() {
+    this.navController.navigateRoot('login');
+  }
 }
