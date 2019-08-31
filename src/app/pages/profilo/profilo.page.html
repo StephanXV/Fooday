@@ -5,9 +5,15 @@
 </ion-header>
 
 <ion-content>
-  <ion-button margin (click)="onLoginButtonClick()">
+  <ion-button float-left margin (click)="onLoginButtonClick()">
     <ion-label>
       Login
+    </ion-label>
+  </ion-button>
+
+  <ion-button float-end margin [routerLink]="['preferenze']" routerDirection="forward">
+    <ion-label>
+      Preferenze
     </ion-label>
   </ion-button>
 

@@ -7,7 +7,7 @@
 <ion-content>
   <ion-list>
     <ion-card *ngFor="let reservation of reservations">
-      <ion-card-title>
+      <ion-card-title margin-top>
         <ion-label margin>
           {{reservation}}
         </ion-label>
@@ -19,7 +19,7 @@
         <ion-label>
           Importo e Punti
         </ion-label>
-        <ion-button class="button2" [routerLink]="['recensione']" routerDirection="forward">
+        <ion-button float-end margin-bottom class="button2" [routerLink]="['recensione']" routerDirection="forward">
           <ion-label>
             Recensione
           </ion-label>
