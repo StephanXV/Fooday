@@ -28,8 +28,27 @@
       <ion-input color="secondary" type="password" placeholder="password" formControlName="password"></ion-input>
     </ion-item>
 
-    <ion-button margin-top="medium" size="medium" expand="full" shape="round" color="primary" (click)="onRegister()" [disabled]="!registerFormModule.valid" tappable>
-      <ion-icon left name="person-add"></ion-icon>
+    <ion-item class="animated fadeInUp">
+      <ion-input color="secondary" type="number" placeholder="telefono" formControlName="telefono"></ion-input>
+    </ion-item>
+
+    <ion-item class="animated fadeInUp">
+      <ion-datetime placeholder="data di nascita" formControlName="data"></ion-datetime>
+    </ion-item>
+
+    <ion-item class="animated fadeInUp">
+      <ion-select formControlName="sesso">
+        <ion-select-option>
+          M
+        </ion-select-option>
+        <ion-select-option>
+          F
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button class="button3" expand="full" shape="round" color="primary" (click)="onRegister()" [disabled]="!registerFormModule.valid" tappable>
+      <ion-icon name="person-add"></ion-icon>
       <ion-label>Registrati</ion-label>
     </ion-button>
 

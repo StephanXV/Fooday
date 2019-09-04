@@ -6,4 +6,39 @@
 
 <ion-content>
 
+  <form align-items-center margin="medium" [formGroup]="bookFormModule">
+
+    <ion-item margin-bottom class="animated fadeInUp">
+      <ion-select placeholder="numero di persone" formControlName="posti">
+        <ion-select-option *ngFor="let number of numbers">{{number}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item margin-bottom class="animated fadeInUp">
+      <ion-datetime placeholder="giorno" formControlName="data"></ion-datetime>
+    </ion-item>
+
+    <ion-item margin-bottom class="animated fadeInUp">
+      <ion-select placeholder="orario" formControlName="orario">
+        <ion-select-option *ngFor="let orario of orari">{{orario}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item margin-bottom class="animated fadeInUp">
+      <ion-input placeholder="nome e cognome" formControlName="nome">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-select placeholder="usa punti" formControlName="punti">
+        <ion-select-option>Si</ion-select-option>
+        <ion-select-option>No</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button class="button3" size="medium" expand="full" shape="round" color="primary" (click)="onBookSubmit()" [disabled]="!bookFormModule.valid" tappable>
+      <ion-label>Prenota</ion-label>
+    </ion-button>
+  </form>
+
 </ion-content>

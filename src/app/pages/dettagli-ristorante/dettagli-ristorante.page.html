@@ -1,9 +1,53 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Dettagli Ristorante</ion-title>
+    <ion-title>Nome Ristorante</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <!-- carousel -->
+  <ion-grid>
+    <ion-row justify-content-center align-items-center>
+      <ion-col>
+        <ion-button fill="clear" size="large" shape="round">
+          <ion-icon name="arrow-dropleft"></ion-icon>
+        </ion-button>
+      </ion-col>
+
+      <ion-col size="7">
+        <ion-img src="assets/images/1.jpg"></ion-img>
+      </ion-col>
+
+      <ion-col>
+        <ion-button fill="clear" size="large" shape="round">
+          <ion-icon name="arrow-dropright"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- view selector -->
+  <ion-segment value="info">
+    <ion-segment-button value="info">
+      <ion-label>
+        Info
+      </ion-label>
+      <ion-icon name="clock"></ion-icon>
+    </ion-segment-button>
+
+    <ion-segment-button value="menu">
+      <ion-label>
+        Menù
+      </ion-label>
+      <ion-icon name="restaurant"></ion-icon>
+    </ion-segment-button>
+
+    <ion-segment-button value="reviews">
+      <ion-label>
+        Recensioni
+      </ion-label>
+      <ion-icon name="thumbs-up"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
 
 </ion-content>

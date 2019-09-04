@@ -10,17 +10,16 @@
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
 
-ion-segment-button {
+.horizontalScroll {
   --indicator-color-checked: #FFFFFF;
   color: var(--ion-color-medium);
 }
 
 .add-photo {
-  align-items: center;
   padding-top: 18px;
-  margin: 40px 0px 20px 70px;
-  width: 200px;
-  height: 200px;
+  margin: 0 auto;
+  width: 180px;
+  height: 180px;
   border-style: solid;
   border-color: #86888f;
   border-radius: 10px;
@@ -61,3 +60,4 @@ ion-segment-button {
   left: 5%;
   right: 5%;
 }
+
