@@ -6,7 +6,7 @@
 
 <ion-content>
   <!-- carousel -->
-  <div margin>
+  <div margin-top margin-end margin-start>
     <ion-slides padding-bottom pager="true">
       <ion-slide padding-bottom>
         <ion-img src="assets/images/1.jpg"></ion-img>
@@ -44,13 +44,123 @@
 
   <div [ngSwitch]="view">
     <div *ngSwitchCase="'info'">
-      <ion-label>Informazioni</ion-label>
+      <ion-list>
+        <ion-item>
+          <ion-icon margin-end name="pin"></ion-icon>
+          <ion-label>Luogo - Indirizzo</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon margin-end name="restaurant"></ion-icon>
+          <ion-label>Categoria - Categoria - Categoria</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon margin-end name="logo-euro"></ion-icon>
+          <ion-label>Prezzo medio: 25€</ion-label>
+        </ion-item>
+
+        <ion-item margin-bottom>
+          <ion-icon margin-end name="clock"></ion-icon>
+          <ion-label>Orari: 12:00 - 23:00</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-img src="assets/images/maps.jpg"></ion-img>
+        </ion-item>
+      </ion-list>
     </div>
+
     <div *ngSwitchCase="'menu'">
-      <ion-label>Menù</ion-label>
+      <ion-list>
+        <ion-list-header>
+          <ion-title>Antipasti</ion-title>
+        </ion-list-header>
+        <ion-item *ngFor="let antipasto of antipasti">
+          <ion-label>{{antipasto}}</ion-label>
+          <ion-label text-end >5€</ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-list-header>
+          <ion-title>Primi</ion-title>
+        </ion-list-header>
+        <ion-item *ngFor="let primo of primi">
+          <ion-label>{{primo}}</ion-label>
+          <ion-label text-end>5€</ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-list-header>
+          <ion-title>Secondi</ion-title>
+        </ion-list-header>
+        <ion-item *ngFor="let secondo of secondi">
+          <ion-label>{{secondo}}</ion-label>
+          <ion-label text-end>5€</ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-list-header>
+          <ion-title>Frutta e Dolci</ion-title>
+        </ion-list-header>
+        <ion-item *ngFor="let dolce of dessert">
+          <ion-label>{{dolce}}</ion-label>
+          <ion-label text-end>5€</ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-list-header>
+          <ion-title>Bevande</ion-title>
+        </ion-list-header>
+        <ion-item *ngFor="let bevanda of bevande">
+          <ion-label>{{bevanda}}</ion-label>
+          <ion-label text-end>5€</ion-label>
+        </ion-item>
+      </ion-list>
     </div>
+
     <div *ngSwitchCase="'reviews'">
-      <ion-label>Recensioni</ion-label>
+      <ion-list>
+        <ion-list-header>
+          <ion-grid>
+            <ion-row justify-content-between>
+              <ion-col>
+                <ion-card text-center>
+                  <ion-card-title>Cucina</ion-card-title>
+                  <ion-card-content>9.1</ion-card-content>
+                </ion-card>
+              </ion-col>
+
+              <ion-col>
+                <ion-card text-center>
+                  <ion-card-title>Servizio</ion-card-title>
+                  <ion-card-content>8.4</ion-card-content>
+                </ion-card>
+              </ion-col>
+
+              <ion-col>
+                <ion-card text-center>
+                  <ion-card-title>Prezzo</ion-card-title>
+                  <ion-card-content>7.9</ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-list-header>
+        <ion-item *ngFor="let review of reviews">
+          <ion-grid>
+            <ion-row align-items-center>
+              <ion-col size="2">
+                <ion-icon name="person"></ion-icon>
+              </ion-col>
+              <ion-col>
+                <ion-title>Titolo recensione</ion-title>
+                <ion-text>{{review}}</ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
     </div>
   </div>
 
