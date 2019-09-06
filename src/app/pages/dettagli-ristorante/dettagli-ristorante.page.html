@@ -6,28 +6,20 @@
 
 <ion-content>
   <!-- carousel -->
-  <ion-grid>
-    <ion-row justify-content-center align-items-center>
-      <ion-col>
-        <ion-button fill="clear" size="large" shape="round">
-          <ion-icon name="arrow-dropleft"></ion-icon>
-        </ion-button>
-      </ion-col>
-
-      <ion-col size="7">
+  <div margin>
+    <ion-slides padding-bottom pager="true">
+      <ion-slide padding-bottom>
         <ion-img src="assets/images/1.jpg"></ion-img>
-      </ion-col>
+      </ion-slide>
+      <ion-slide padding-bottom>
+        <ion-img src="assets/images/2.jpeg"></ion-img>
+      </ion-slide>
+    </ion-slides>
+  </div>
 
-      <ion-col>
-        <ion-button fill="clear" size="large" shape="round">
-          <ion-icon name="arrow-dropright"></ion-icon>
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 
   <!-- view selector -->
-  <ion-segment value="info">
+  <ion-segment value="info" [(ngModel)]="view">
     <ion-segment-button value="info">
       <ion-label>
         Info
@@ -49,5 +41,17 @@
       <ion-icon name="thumbs-up"></ion-icon>
     </ion-segment-button>
   </ion-segment>
+
+  <div [ngSwitch]="view">
+    <div *ngSwitchCase="'info'">
+      <ion-label>Informazioni</ion-label>
+    </div>
+    <div *ngSwitchCase="'menu'">
+      <ion-label>Menù</ion-label>
+    </div>
+    <div *ngSwitchCase="'reviews'">
+      <ion-label>Recensioni</ion-label>
+    </div>
+  </div>
 
 </ion-content>

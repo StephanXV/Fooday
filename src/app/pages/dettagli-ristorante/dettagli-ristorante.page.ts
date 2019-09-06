@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dettagli-ristorante.page.scss'],
 })
 export class DettagliRistorantePage implements OnInit {
-
+  view: string;
   constructor() { }
 
   ngOnInit() {
+    this.view = 'info';
   }
-
 }
