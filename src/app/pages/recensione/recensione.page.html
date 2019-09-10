@@ -32,7 +32,7 @@
     </ion-item>
 
     <ion-item margin-bottom class="animated fadeInUp">
-      <ion-input class="review-item" color="secondary" placeholder="Descrivi la tua esperienza" formControlName="descrizione"></ion-input>
+      <ion-textarea style="height: 300px" class="review-item" placeholder="Descrivi la tua esperienza.." formControlName="descrizione"></ion-textarea>
     </ion-item>
 
     <ion-button class="button3" size="medium" expand="full" shape="round" color="primary" (click)="onReviewSubmit()" [disabled]="!reviewFormModule.valid" tappable>
