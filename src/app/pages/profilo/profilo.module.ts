@@ -20,6 +20,15 @@ const routes: Routes = [
         loadChildren: '../preferenze/preferenze.module#PreferenzePageModule'
       }
     ]
+  },
+  {
+    path: 'mod-profilo',
+    children: [
+      {
+        path: '',
+        loadChildren: '../mod-profilo/mod-profilo.module#ModProfiloPageModule'
+      }
+    ]
   }
 ];
 
