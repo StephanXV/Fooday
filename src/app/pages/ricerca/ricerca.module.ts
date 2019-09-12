@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { RicercaPage } from './ricerca.page';
+import {TranslateModule} from '@ngx-translate/core';
 
 const routes: Routes = [
   {
@@ -36,6 +37,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    TranslateModule.forChild(),
     IonicModule,
     RouterModule.forChild(routes)
   ],

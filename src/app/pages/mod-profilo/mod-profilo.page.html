@@ -4,7 +4,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Modifica Profilo</ion-title>
+    <ion-title>{{'TITOLO_MODIFICA_PROFILO' | translate}}</ion-title>
 
   </ion-toolbar>
 </ion-header>
@@ -49,7 +49,7 @@
       </ion-item>
 
       <ion-button class="button3" size="medium" expand="full" shape="round" color="primary" (click)="onProfileSubmit()" [disabled]="!profileFormModule.valid" tappable>
-        <ion-label>Conferma Modifiche</ion-label>
+        <ion-label>{{'BOTTONE_SALVA' | translate}}</ion-label>
       </ion-button>
     </form>
   </div>

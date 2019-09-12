@@ -5,14 +5,14 @@
 
       </ion-back-button>
     </ion-buttons>
-    <ion-title>Recensione</ion-title>
+    <ion-title>{{'TITOLO_RECENSIONE' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <form align-items-center margin="medium" [formGroup]="reviewFormModule">
 
-    <ion-item margin-bottom rgclass="animated fadeInUp">
+    <ion-item margin-bottom class="animated fadeInUp">
       <ion-icon color="primary" margin-end name="restaurant"></ion-icon>
       <ion-label>Cucina</ion-label>
       <ion-select formControlName="votoCucina">
@@ -41,7 +41,7 @@
     </ion-item>
 
     <ion-button class="button3" size="medium" expand="full" shape="round" color="primary" (click)="onReviewSubmit()" [disabled]="!reviewFormModule.valid" tappable>
-      <ion-label>Pubblica Recensione</ion-label>
+      <ion-label>{{'BOTTONE_RECENSIONE' | translate}}</ion-label>
     </ion-button>
 
   </form>

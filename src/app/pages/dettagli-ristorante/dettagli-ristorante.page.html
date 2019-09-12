@@ -2,10 +2,9 @@
   <ion-toolbar>
     <ion-buttons>
       <ion-back-button slot="start">
-
       </ion-back-button>
     </ion-buttons>
-    <ion-title>Nome Ristorante</ion-title>
+    <ion-title text-center>Nome Ristorante</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,10 +12,10 @@
   <!-- carousel -->
   <div margin-top margin-end margin-start>
     <ion-slides padding-bottom pager="true">
-      <ion-slide padding-bottom>
+      <ion-slide [routerLink]="['galleria']" routerDirection="forward" padding-bottom>
         <ion-img src="assets/images/1.jpg"></ion-img>
       </ion-slide>
-      <ion-slide padding-bottom>
+      <ion-slide [routerLink]="['galleria']" routerDirection="forward" padding-bottom>
         <ion-img src="assets/images/2.jpeg"></ion-img>
       </ion-slide>
     </ion-slides>
@@ -27,21 +26,21 @@
   <ion-segment value="info" [(ngModel)]="view">
     <ion-segment-button value="info">
       <ion-label>
-        Info
+        {{'DETTAGLI_INFO' | translate}}
       </ion-label>
       <ion-icon name="clock"></ion-icon>
     </ion-segment-button>
 
     <ion-segment-button value="menu">
       <ion-label>
-        Menù
+        {{'DETTAGLI_MENU' | translate}}
       </ion-label>
       <ion-icon name="restaurant"></ion-icon>
     </ion-segment-button>
 
     <ion-segment-button value="reviews">
       <ion-label>
-        Recensioni
+        {{'DETTAGLI_RECENSIONI' | translate}}
       </ion-label>
       <ion-icon name="thumbs-up"></ion-icon>
     </ion-segment-button>
@@ -79,7 +78,7 @@
     <div *ngSwitchCase="'menu'">
       <ion-list>
         <ion-list-header>
-          <ion-title>Antipasti</ion-title>
+          <ion-title>{{'LABEL_ANTIPASTI' | translate}}</ion-title>
         </ion-list-header>
         <ion-item *ngFor="let antipasto of antipasti">
           <ion-label>{{antipasto}}</ion-label>
@@ -88,7 +87,7 @@
       </ion-list>
       <ion-list>
         <ion-list-header>
-          <ion-title>Primi</ion-title>
+          <ion-title>{{'LABEL_PRIMI' | translate}}</ion-title>
         </ion-list-header>
         <ion-item *ngFor="let primo of primi">
           <ion-label>{{primo}}</ion-label>
@@ -97,7 +96,7 @@
       </ion-list>
       <ion-list>
         <ion-list-header>
-          <ion-title>Secondi</ion-title>
+          <ion-title>{{'LABEL_SECONDI' | translate}}</ion-title>
         </ion-list-header>
         <ion-item *ngFor="let secondo of secondi">
           <ion-label>{{secondo}}</ion-label>
@@ -106,7 +105,7 @@
       </ion-list>
       <ion-list>
         <ion-list-header>
-          <ion-title>Frutta e Dolci</ion-title>
+          <ion-title>{{'LABEL_DESSERT' | translate}}</ion-title>
         </ion-list-header>
         <ion-item *ngFor="let dolce of dessert">
           <ion-label>{{dolce}}</ion-label>
@@ -115,7 +114,7 @@
       </ion-list>
       <ion-list>
         <ion-list-header>
-          <ion-title>Bevande</ion-title>
+          <ion-title>{{'LABEL_BEVANDE' | translate}}</ion-title>
         </ion-list-header>
         <ion-item *ngFor="let bevanda of bevande">
           <ion-label>{{bevanda}}</ion-label>
@@ -131,21 +130,21 @@
             <ion-row justify-content-between>
               <ion-col>
                 <ion-card text-center>
-                  <ion-card-title>Cucina</ion-card-title>
+                  <ion-card-title>{{'LABEL_CUCINA' | translate}}</ion-card-title>
                   <ion-card-content>9.1</ion-card-content>
                 </ion-card>
               </ion-col>
 
               <ion-col>
                 <ion-card text-center>
-                  <ion-card-title>Servizio</ion-card-title>
+                  <ion-card-title>{{'LABEL_SERVIZIO' | translate}}</ion-card-title>
                   <ion-card-content>8.4</ion-card-content>
                 </ion-card>
               </ion-col>
 
               <ion-col>
                 <ion-card text-center>
-                  <ion-card-title>Prezzo</ion-card-title>
+                  <ion-card-title>{{'LABEL_PREZZO' | translate}}</ion-card-title>
                   <ion-card-content>7.9</ion-card-content>
                 </ion-card>
               </ion-col>
@@ -168,5 +167,8 @@
       </ion-list>
     </div>
   </div>
+  <ion-button class="button3" expand="full" shape="round" color="primary" [routerLink]="['prenota']" routerDirection="forward" tappable>
+    <ion-label>Registrati</ion-label>
+  </ion-button>
 
 </ion-content>

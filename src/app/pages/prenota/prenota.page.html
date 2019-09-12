@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Prenota</ion-title>
+    <ion-title>{{'TITOLO_PRENOTA' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -37,7 +37,7 @@
     </ion-item>
 
     <ion-button class="button3" size="medium" expand="full" shape="round" color="primary" (click)="onBookSubmit()" [disabled]="!bookFormModule.valid" tappable>
-      <ion-label>Prenota</ion-label>
+      <ion-label>{{'BOTTONE_PRENOTA' | translate}}</ion-label>
     </ion-button>
   </form>
 

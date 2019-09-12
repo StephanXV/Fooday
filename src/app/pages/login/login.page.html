@@ -30,13 +30,13 @@
       <div margin-top="20px">
         <ion-button icon-left size="medium" expand="full" shape="round" color="primary" (click)="onLogin()" [disabled]="!loginFormModel.valid" tappable>
           <ion-icon name="log-in"></ion-icon>
-          Login
+          {{'BOTTONE_LOGIN' | translate}}
         </ion-button>
       </div>
       <div margin-top="20px">
         <ion-button icon-left size="medium" expand="full" shape="round" color="primary" [routerLink]="['registrazione']" routerDirection="forward">
           <ion-icon name="person-add"></ion-icon>
-          Registrati
+          {{'BOTTONE_REGISTRATI' | translate}}
         </ion-button>
       </div>
     </form>

@@ -5,7 +5,7 @@
 
       </ion-back-button>
     </ion-buttons>
-    <ion-title>Registrati</ion-title>
+    <ion-title>{{'TITOLO_REGISTRATI' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -18,31 +18,31 @@
       </ion-img>
     </ion-item>
     <ion-item class="animated fadeInUp">
-      <ion-input color="secondary" placeholder="nome" formControlName="nome"></ion-input>
+      <ion-input color="secondary" placeholder="{{'PLACEHOLDER_NOME' | translate}}" formControlName="nome"></ion-input>
     </ion-item>
 
     <ion-item class="animated fadeInUp">
-      <ion-input color="secondary" placeholder="cognome" formControlName="cognome"></ion-input>
+      <ion-input color="secondary" placeholder="{{'PLACEHOLDER_COGNOME' | translate}}" formControlName="cognome"></ion-input>
     </ion-item>
 
     <ion-item class="animated fadeInUp">
-      <ion-input color="secondary" type="email" placeholder="email" formControlName="email"></ion-input>
+      <ion-input color="secondary" type="email" placeholder="{{'PLACEHOLDER_EMAIL' | translate}}" formControlName="email"></ion-input>
     </ion-item>
 
     <ion-item class="animated fadeInUp">
-      <ion-input color="secondary" type="password" placeholder="password" formControlName="password"></ion-input>
+      <ion-input color="secondary" type="password" placeholder="{{'PLACEHOLDER_PASSWORD' | translate}}" formControlName="password"></ion-input>
     </ion-item>
 
     <ion-item class="animated fadeInUp">
-      <ion-input color="secondary" type="number" placeholder="telefono" formControlName="telefono"></ion-input>
+      <ion-input color="secondary" type="number" placeholder="{{'PLACEHOLDER_TELEFONO' | translate}}" formControlName="telefono"></ion-input>
     </ion-item>
 
     <ion-item class="animated fadeInUp">
-      <ion-datetime placeholder="data di nascita" formControlName="data"></ion-datetime>
+      <ion-datetime placeholder="{{'PLACEHOLDER_DATA_NASCITA' | translate}}" formControlName="data"></ion-datetime>
     </ion-item>
 
     <ion-item class="animated fadeInUp">
-      <ion-select formControlName="sesso">
+      <ion-select placeholder="{{'PLACEHOLDER_SESSO' | translate}}" formControlName="sesso">
         <ion-select-option>
           M
         </ion-select-option>
@@ -54,7 +54,7 @@
 
     <ion-button class="button3" expand="full" shape="round" color="primary" (click)="onRegister()" [disabled]="!registerFormModule.valid" tappable>
       <ion-icon name="person-add"></ion-icon>
-      <ion-label>Registrati</ion-label>
+      <ion-label>{{'BOTTONE_REGISTRATI' | translate}}</ion-label>
     </ion-button>
 
   </form>

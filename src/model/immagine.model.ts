@@ -1,3 +1,3 @@
 export class Immagine {
-    data: string;
+    src: string;
 }
