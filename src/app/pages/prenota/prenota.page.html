@@ -9,28 +9,28 @@
   <form align-items-center margin="medium" [formGroup]="bookFormModule">
 
     <ion-item margin-bottom class="animated fadeInUp">
-      <ion-select placeholder="numero di persone" formControlName="posti">
+      <ion-select placeholder="{{'PLACEHOLDER_NUM_PERSONE' | translate}}" formControlName="posti">
         <ion-select-option *ngFor="let number of numbers">{{number}}</ion-select-option>
       </ion-select>
     </ion-item>
 
     <ion-item margin-bottom class="animated fadeInUp">
-      <ion-datetime placeholder="giorno" formControlName="data"></ion-datetime>
+      <ion-datetime placeholder="{{'PLACEHOLDER_GIORNO' | translate}}" formControlName="data"></ion-datetime>
     </ion-item>
 
     <ion-item margin-bottom class="animated fadeInUp">
-      <ion-select placeholder="orario" formControlName="orario">
+      <ion-select placeholder="{{'PLACEHOLDER_ORARIO' | translate}}" formControlName="orario">
         <ion-select-option *ngFor="let orario of orari">{{orario}}</ion-select-option>
       </ion-select>
     </ion-item>
 
     <ion-item margin-bottom class="animated fadeInUp">
-      <ion-input placeholder="nome e cognome" formControlName="nome">
+      <ion-input placeholder="{{'PLACEHOLDER_NOME_PRENOTAZIONE' | translate}}" formControlName="nome">
       </ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-select placeholder="usa punti" formControlName="punti">
+      <ion-select placeholder="{{'PLACEHOLDER_USA_PUNTI' | translate}}" formControlName="punti">
         <ion-select-option>Si</ion-select-option>
         <ion-select-option>No</ion-select-option>
       </ion-select>

@@ -43,5 +43,10 @@
   "LABEL_PREZZO": "Price",
   "BOTTONE_REGISTRATI": "Register",
   "TITOLO REGISTRATI": "Insert your data",
-  "TITOLO_GALLERIA": "Gallery"
+  "TITOLO_GALLERIA": "Gallery",
+  "PLACEHOLDER_NUM_PERSONE": "How many are you?",
+  "PLACEHOLDER_GIORNO": "What day?",
+  "PLACEHOLDER_ORARIO": "At what time?",
+  "PLACEHOLDER_NOME_PRENOTAZIONE": "Enter reservation name",
+  "PLACEHOLDER_USA_PUNTI": "Use promotional points?"
 }

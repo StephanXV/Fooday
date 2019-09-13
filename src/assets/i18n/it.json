@@ -43,5 +43,11 @@
   "LABEL_PREZZO": "Prezzo",
   "BOTTONE_REGISTRATI": "Registrati",
   "TITOLO REGISTRATI": "Inserisci i tuoi dati",
-  "TITOLO_GALLERIA": "Galleria"
+  "TITOLO_GALLERIA": "Galleria",
+  "TITOLO_PRENOTA": "Completa la prenotazione",
+  "PLACEHOLDER_NUM_PERSONE": "Quanti siete?",
+  "PLACEHOLDER_GIORNO": "Che giorno?",
+  "PLACEHOLDER_ORARIO": "A che orario?",
+  "PLACEHOLDER_NOME_PRENOTAZIONE": "A che nome?",
+  "PLACEHOLDER_USA_PUNTI": "Vuoi usare i tuoi punti?"
 }
