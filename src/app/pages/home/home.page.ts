@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import {Observable} from 'rxjs';
+import {Ristorante} from '../../model/ristorante.model';
+import {RistoranteService} from '../../services/ristorante.service';
 
 @Component({
   selector: 'app-home',
@@ -8,25 +11,28 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
+  private ristoranti$: Observable<Ristorante[]>;
   categories = ['Pizzeria', 'Osteria', 'Trattoria', 'Cinese', 'Vegano'];
   cities = ['Milano', 'Roma', 'Venezia', 'Torino', 'L\'Aquila'];
   restaurants = ['Da Maurizio', 'Shabu Shabu', 'Farina & Co', 'Peste & Corna', 'Sole e Luna', 'Lu Barrott'];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private ristoranteService: RistoranteService) {}
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngOnInit() {
+    this.ristoranti$ = this.ristoranteService.list();
+  }
 
   onCategoryClick(category) {
     console.log(category);
-    //this.router.navigateByUrl('tabs/home/lista-ristoranti');
   }
 
   onCityClick(city) {
     console.log(city);
-    //this.router.navigateByUrl('tabs/home/lista-ristoranti');
   }
 
   onRestaurantClick(restaurant){
     console.log(restaurant);
-    //this.router.navigateByUrl('tabs/home/dettagli-ristorante');
   }
 
 }

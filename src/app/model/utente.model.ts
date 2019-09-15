@@ -1,11 +1,11 @@
 import {Immagine} from './immagine.model';
 
 export class Utente {
-    name: string;
-    surname: string;
+    nome: string;
+    cognome: string;
     email: string;
-    sex: string;
-    phone: string;
-    birthday: Date;
+    sesso: string;
+    telefono: string;
+    nascita: Date;
     immagineProfilo: Immagine;
 }

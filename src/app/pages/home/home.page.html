@@ -39,7 +39,7 @@
   <ion-title>{{'TITOLO_NEI_DINTORNI' | translate}}</ion-title>
 
   <ion-list>
-    <ion-item *ngFor="let restaurant of restaurants" [routerLink]="['dettagli-ristorante']" routerDirection="forward" (click)="onRestaurantClick(restaurant)">
+    <ion-item *ngFor="let ristorante of ristoranti$ | async" [routerLink]="['dettagli-ristorante']" routerDirection="forward" (click)="onRestaurantClick(restaurant)">
       <ion-grid>
         <ion-row>
           <ion-col>
@@ -51,7 +51,7 @@
 
         <ion-row>
           <ion-col>
-            {{restaurant}}
+            {{ristorante.nome}}
           </ion-col>
           <ion-col>
 
