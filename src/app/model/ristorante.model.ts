@@ -5,6 +5,7 @@ import {Categoria} from './categoria.model';
 import {Orario} from './orario.model';
 
 export class Ristorante {
+    id: number;
     nome: string;
     indirizzo: string;
     descrizione: string;
