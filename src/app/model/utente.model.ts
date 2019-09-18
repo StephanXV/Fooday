@@ -8,5 +8,5 @@ export class Utente {
     sesso: string;
     telefono: string;
     nascita: Date;
-    immagineProfilo: Immagine;
+    srcImmagineProfilo: string;
 }
