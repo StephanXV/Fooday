@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import {Observable} from 'rxjs';
 import {Ristorante} from '../../model/ristorante.model';
 import {RistoranteService} from '../../services/ristorante.service';
+import {Citta} from '../../model/citta.model';
+import {Categoria} from '../../model/categoria.model';
+import {CategoriaService} from '../../services/categoria.service';
 
 @Component({
   selector: 'app-home',
@@ -11,16 +14,18 @@ import {RistoranteService} from '../../services/ristorante.service';
 })
 export class HomePage {
 
+  private cityId = 6;
   private ristoranti$: Observable<Ristorante[]>;
-  categories = ['Pizzeria', 'Osteria', 'Trattoria', 'Cinese', 'Vegano'];
+  private categorie$: Observable<Categoria[]>;
   cities = ['Milano', 'Roma', 'Venezia', 'Torino', 'L\'Aquila'];
-  restaurants = ['Da Maurizio', 'Shabu Shabu', 'Farina & Co', 'Peste & Corna', 'Sole e Luna', 'Lu Barrott'];
 
-  constructor(private router: Router, private ristoranteService: RistoranteService) {}
+  constructor(private router: Router, private ristoranteService: RistoranteService,
+              private categoriaService: CategoriaService) {}
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
-    this.ristoranti$ = this.ristoranteService.list();
+    this.ristoranti$ = this.ristoranteService.listDintorni(this.cityId);
+    this.categorie$ = this.categoriaService.list();
   }
 
   onCategoryClick(category) {
@@ -31,7 +36,7 @@ export class HomePage {
     console.log(city);
   }
 
-  onRestaurantClick(restaurant){
+  onRestaurantClick(restaurant) {
     console.log(restaurant);
   }
 

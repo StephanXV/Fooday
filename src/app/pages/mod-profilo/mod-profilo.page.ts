@@ -14,13 +14,14 @@ export class ModProfiloPage implements OnInit {
 
   ngOnInit() {
     this.profileFormModule = this.formBuilder.group( {
-      nome: ['Nome'],
-      cognome: ['Cognome'],
-      email: ['Email'],
-      password: ['Password'],
-      telefono: ['3333333336'],
-      data: ['08-06-1997'],
-      sesso: ['M']
+      nome: ['Nome', Validators.compose([Validators.required])],
+      cognome: ['Cognome', Validators.compose([Validators.required])],
+      email: ['Email', Validators.compose([Validators.required])],
+      password: ['Password', Validators.compose([Validators.required])],
+      telefono: ['3333333336', Validators.compose([Validators.required])],
+      citta: ['Vasto', Validators.compose([Validators.required])],
+      data: ['08-06-1997', Validators.compose([Validators.required])],
+      sesso: ['M', Validators.compose([Validators.required])]
     });
   }
 

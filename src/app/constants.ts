@@ -10,6 +10,7 @@ export const URL = {
     INSEGNAMENTI: URL_BASE + '/insegnamenti',
     PRENOTAZIONI: URL_BASE + '/prenotazioni',
     RISTORANTI: URL_BASE + '/ristoranti',
+    CATEGORIE: URL_BASE + '/categorie',
     APPELLI: URL_BASE + '/appelli'
 };
 

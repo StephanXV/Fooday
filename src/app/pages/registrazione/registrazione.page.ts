@@ -21,6 +21,7 @@ export class RegistrazionePage implements OnInit {
       email: ['', Validators.compose([Validators.required])],
       password: ['', Validators.compose([Validators.required])],
       telefono: ['', Validators.compose([Validators.required])],
+      citta: ['', Validators.compose([Validators.required])],
       data: ['', Validators.compose([Validators.required])],
       sesso: ['', Validators.compose([Validators.required])]
     });

@@ -49,5 +49,6 @@
   "PLACEHOLDER_GIORNO": "Che giorno?",
   "PLACEHOLDER_ORARIO": "A che orario?",
   "PLACEHOLDER_NOME_PRENOTAZIONE": "A che nome?",
-  "PLACEHOLDER_USA_PUNTI": "Vuoi usare i tuoi punti?"
+  "PLACEHOLDER_USA_PUNTI": "Vuoi usare i tuoi punti?",
+  "PLACEHOLDER_CITTA": "Città in cui vivi"
 }

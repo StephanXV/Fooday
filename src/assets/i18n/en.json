@@ -48,5 +48,6 @@
   "PLACEHOLDER_GIORNO": "What day?",
   "PLACEHOLDER_ORARIO": "At what time?",
   "PLACEHOLDER_NOME_PRENOTAZIONE": "Enter reservation name",
-  "PLACEHOLDER_USA_PUNTI": "Use promotional points?"
+  "PLACEHOLDER_USA_PUNTI": "Use promotional points?",
+  "PLACEHOLDER_CITTA": "Your citys"
 }
