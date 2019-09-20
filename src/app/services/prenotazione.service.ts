@@ -15,8 +15,8 @@ export class PrenotazioneService {
     constructor(private http: HttpClient) {
     }
 
-    list(): Observable<Prenotazione[]> {
-        return this.http.get<Prenotazione[]>(URL.PRENOTAZIONI);
+    getPrenotazioni(idUtente): Observable<Prenotazione[]> {
+        return this.http.get<Prenotazione[]>(URL.PRENOTAZIONI + '?idUtente=' + idUtente);
 
     }
 

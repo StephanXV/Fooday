@@ -22,7 +22,7 @@ export class HomePage {
   constructor(private router: Router, private ristoranteService: RistoranteService,
               private categoriaService: CategoriaService) {}
 
-  // tslint:disable-next-line:use-life-cycle-interface
+
   ngOnInit() {
     this.ristoranti$ = this.ristoranteService.listDintorni(this.cityId);
     this.categorie$ = this.categoriaService.list();

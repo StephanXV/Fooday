@@ -9,13 +9,13 @@ import {PrenotazioneService} from '../../services/prenotazione.service';
   styleUrls: ['./prenotazioni.page.scss'],
 })
 export class PrenotazioniPage implements OnInit {
+  idUtente = 1;
   private prenotazioni$: Observable<Prenotazione[]>;
-  reservations = ['Shabu Shabu', 'Lu Barrott', 'Lu Barrott', 'Da Maurizio'];
 
   constructor(private prenotazioneService: PrenotazioneService) { }
 
   ngOnInit() {
-    this.prenotazioni$ = this.prenotazioneService.list();
+    this.prenotazioni$ = this.prenotazioneService.getPrenotazioni(this.idUtente);
   }
 
 }

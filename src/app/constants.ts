@@ -11,6 +11,7 @@ export const URL = {
     PRENOTAZIONI: URL_BASE + '/prenotazioni',
     RISTORANTI: URL_BASE + '/ristoranti',
     CATEGORIE: URL_BASE + '/categorie',
+    CITTA: URL_BASE + '/citta',
     APPELLI: URL_BASE + '/appelli'
 };
 

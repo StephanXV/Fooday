@@ -6,18 +6,18 @@
 
 <ion-content>
   <ion-list>
-    <ion-card *ngFor="let reservation of reservations">
+    <ion-card *ngFor="let prenotazione of prenotazioni$ | async">
       <ion-card-title margin-top>
         <ion-label margin>
-          {{reservation}}
+          {{prenotazione.ristorante}}
         </ion-label>
       </ion-card-title>
       <ion-card-content>
         <ion-label>
-          Data e Ora
+          {{prenotazione.orario}}
         </ion-label> <br>
         <ion-label>
-          Importo e Punti
+          {{prenotazione.scontoApplicato}}
         </ion-label>
         <ion-button float-end margin-bottom class="button2" [routerLink]="['recensione']" routerDirection="forward">
           <ion-label>
