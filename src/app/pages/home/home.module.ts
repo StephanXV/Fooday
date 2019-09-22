@@ -35,6 +35,15 @@ import {TranslateModule} from '@ngx-translate/core';
             loadChildren: '../dettagli-ristorante/dettagli-ristorante.module#DettagliRistorantePageModule'
           }
         ]
+      },
+      {
+        path: 'dettagli-ristorante/:id',
+        children: [
+          {
+            path: '',
+            loadChildren: '../dettagli-ristorante/dettagli-ristorante.module#DettagliRistorantePageModule'
+          }
+        ]
       }
     ])
   ],

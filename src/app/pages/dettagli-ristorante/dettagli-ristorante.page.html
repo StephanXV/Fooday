@@ -4,11 +4,11 @@
       <ion-back-button slot="start">
       </ion-back-button>
     </ion-buttons>
-    <ion-title text-center>Nome Ristorante</ion-title>
+    <ion-title *ngIf="(ristorante$ | async) as ristorante" text-center>{{ristorante.nome}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="(ristorante$ | async) as ristorante">
   <!-- carousel -->
   <div margin-top margin-end margin-start>
     <ion-slides padding-bottom pager="true">
@@ -51,7 +51,7 @@
       <ion-list>
         <ion-item>
           <ion-icon margin-end name="pin"></ion-icon>
-          <ion-label>Luogo - Indirizzo</ion-label>
+          <ion-label>{{ristorante.descrizione}}</ion-label>
         </ion-item>
 
         <ion-item>

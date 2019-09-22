@@ -20,4 +20,9 @@ export class RistoranteService {
 
     }
 
+    getRistoranteById(idRistorante): Observable<Ristorante> {
+        const ristoranteUrl = `${URL.RISTORANTI}/${idRistorante}`;
+        return this.http.get<Ristorante>(ristoranteUrl);
+    }
+
 }
