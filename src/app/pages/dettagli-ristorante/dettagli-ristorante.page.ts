@@ -3,6 +3,9 @@ import {RistoranteService} from '../../services/ristorante.service';
 import {Observable} from 'rxjs';
 import {Ristorante} from '../../model/ristorante.model';
 import {ActivatedRoute, ParamMap} from '@angular/router';
+import {Orario} from '../../model/orario.model';
+import {Immagine} from '../../model/immagine.model';
+import {Recensione} from '../../model/recensione.model';
 
 @Component({
   selector: 'app-dettagli-ristorante',
@@ -12,14 +15,10 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 export class DettagliRistorantePage implements OnInit {
   view: string;
   private ristorante$: Observable<Ristorante>;
-  private ristorante: Ristorante;
   private idRistorante: number;
-  antipasti = ['Bruschette', 'Arancini', 'Patatine fritte'];
-  primi = ['Spaghetti allo scoglio', 'Linguine all\'astice', 'Gnocchi al sugo'];
-  secondi = ['Cotoletta alla milanese', 'Arrosto di Maiale'];
-  dessert = ['Frutta di stagione', 'Torta al cioccolato', 'Cheesecake'];
-  bevande = ['Coca-Cola', 'Birra', 'Acqua', 'Sprite', 'Fanta'];
-  reviews = ['Tutto bene', 'Cibo ottimo, prezzo un po meno', 'Ci siamo sentiti a casa, davvero cordiali']
+  private mediaCucina = 0;
+  private mediaServizio = 0;
+  private mediaPrezzo = 0;
   constructor(private ristoranteService: RistoranteService,
               private route: ActivatedRoute) { }
 
@@ -33,5 +32,20 @@ export class DettagliRistorantePage implements OnInit {
 
   dettagliRistorante() {
     this.ristorante$ = this.ristoranteService.getRistoranteById(this.idRistorante);
+  }
+
+  calcolaMedie(recensioni: Recensione[]) {
+    for (const recensione of recensioni) {
+      this.mediaCucina += recensione.votoCucina;
+      this.mediaServizio += recensione.votoServizio;
+      this.mediaPrezzo += recensione.votoPrezzo;
+    }
+    this.mediaCucina /= recensioni.length;
+    this.mediaServizio /= recensioni.length;
+    this.mediaPrezzo /= recensioni.length;
+    this.mediaCucina = Math.floor(this.mediaCucina * 100) / 100;
+    this.mediaServizio = Math.floor(this.mediaServizio * 100) / 100;
+    this.mediaPrezzo = Math.floor(this.mediaPrezzo * 100) / 100;
+
   }
 }

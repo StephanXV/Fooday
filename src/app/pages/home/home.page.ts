@@ -15,6 +15,8 @@ import {CategoriaService} from '../../services/categoria.service';
 export class HomePage {
 
   private cityId = 6;
+  private requestType1 = 1;
+  private requestType2 = 2;
   private ristoranti$: Observable<Ristorante[]>;
   private categorie$: Observable<Categoria[]>;
   cities = ['Milano', 'Roma', 'Venezia', 'Torino', 'L\'Aquila'];

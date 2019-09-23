@@ -3,9 +3,10 @@ import {Ristorante} from './ristorante.model';
 
 export class Prenotazione {
     id: number;
-    orario: Date;
+    giorno: Date;
+    orario: string;
     posti: number;
-    timestamp: Date;
+    timestamp: string;
     scontoApplicato: number;
     utente: Utente;
     ristorante: Ristorante;

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, ParamMap} from '@angular/router';
+import {Ristorante} from '../../model/ristorante.model';
+import {Observable} from 'rxjs';
+import {RistoranteService} from '../../services/ristorante.service';
 
 @Component({
   selector: 'app-lista-ristoranti',
@@ -7,11 +11,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaRistorantiPage implements OnInit {
 
-  restaurants = ['Da Maurizio', 'Shabu Shabu', 'Farina & Co', 'Peste & Corna', 'Sole e Luna', 'Lu Barrott'];
+  private ristoranti$: Observable<Ristorante[]>;
+  private requestType: number;
+  private idCategoria: number;
+  private nomeCitta: string;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private ristoranteService: RistoranteService ) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.requestType = parseInt(params.get('requestType'), 0);
+      switch (this.requestType) {
+        case 1:
+          this.idCategoria = parseInt(params.get('id'), 0);
+          this.getRistorantiByCategoria();
+          break;
+        case 2:
+          this.nomeCitta = params.get('city');
+          this.getRistorantiByCitta();
+          break;
+      }
+    });
+  }
+
+  getRistorantiByCategoria() {
+
+  }
+
+  getRistorantiByCitta() {
+
   }
 
 }
