@@ -15,19 +15,22 @@ export class ListaRistorantiPage implements OnInit {
   private ristoranti$: Observable<Ristorante[]>;
   private idCategoria: number;
   private nomeCitta: string;
+  private requestType: number;
 
   constructor(private route: ActivatedRoute, private ristoranteService: RistoranteService ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      if (parseInt(params.get('id'), 0)) {
+      this.requestType = parseInt(params.get('requestType'), 0);
+      if (this.requestType === 1) {
         this.idCategoria = parseInt(params.get('id'), 0);
         this.getRistorantiByCategoria();
-      } else {
-        this.nomeCitta = params.get('city');
-        this.getRistorantiByCitta();
-      }
-      });
+      } else if (this.requestType === 2) {
+          this.nomeCitta = params.get('id');
+          console.log('Lista:' + this.nomeCitta);
+          this.getRistorantiByCitta();
+        }
+    });
   }
 
   getRistorantiByCategoria() {
@@ -37,7 +40,7 @@ export class ListaRistorantiPage implements OnInit {
 
   getRistorantiByCitta() {
     console.log('Richiesto elenco ristoranti della citta' + this.nomeCitta);
-    this.ristoranti$ = this.ristoranteService.getRistorantiByCittaId(this.idCategoria);
+    this.ristoranti$ = this.ristoranteService.getRistorantiByCittaNome(this.nomeCitta);
   }
 
 }

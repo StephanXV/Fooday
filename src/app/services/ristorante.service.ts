@@ -16,9 +16,13 @@ export class RistoranteService {
     }
 
     getRistorantiByCittaId(idCitta): Observable<Ristorante[]> {
-        const ristorantiByCittaUrl = `${URL.RISTORANTI_CITTA}/${idCitta}`;
-        return this.http.get<Ristorante[]>(ristorantiByCittaUrl);
+        const ristorantiByIdCittaUrl = `${URL.RISTORANTI_CITTA_ID}/${idCitta}`;
+        return this.http.get<Ristorante[]>(ristorantiByIdCittaUrl);
+    }
 
+    getRistorantiByCittaNome(nomeCitta): Observable<Ristorante[]> {
+        const ristorantiByNomeCittaUrl = `${URL.RISTORANTI_CITTA_NOME}/${nomeCitta}`;
+        return this.http.get<Ristorante[]>(ristorantiByNomeCittaUrl);
     }
 
     getRistorantiByCategoriaId(idCategoria): Observable<Ristorante[]> {

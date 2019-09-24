@@ -28,11 +28,11 @@ import {TranslateModule} from '@ngx-translate/core';
         ]
       },
       {
-        path: 'dettagli-ristorante',
+        path: 'lista-ristoranti/:requestType/:id',
         children: [
           {
             path: '',
-            loadChildren: '../dettagli-ristorante/dettagli-ristorante.module#DettagliRistorantePageModule'
+            loadChildren: '../lista-ristoranti/lista-ristoranti.module#ListaRistorantiPageModule'
           }
         ]
       },
@@ -42,15 +42,6 @@ import {TranslateModule} from '@ngx-translate/core';
           {
             path: '',
             loadChildren: '../dettagli-ristorante/dettagli-ristorante.module#DettagliRistorantePageModule'
-          }
-        ]
-      },
-      {
-        path: 'lista-ristoranti/:id',
-        children: [
-          {
-            path: '',
-            loadChildren: '../lista-ristoranti/lista-ristoranti.module#ListaRistorantiPageModule'
           }
         ]
       }

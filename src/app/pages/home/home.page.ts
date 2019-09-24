@@ -6,6 +6,7 @@ import {RistoranteService} from '../../services/ristorante.service';
 import {Citta} from '../../model/citta.model';
 import {Categoria} from '../../model/categoria.model';
 import {CategoriaService} from '../../services/categoria.service';
+import {NavController} from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ export class HomePage {
   private requestType: number;
   private ristoranti$: Observable<Ristorante[]>;
   private categorie$: Observable<Categoria[]>;
-  cities = ['Milano', 'Roma', 'Venezia', 'Torino', 'L\'Aquila'];
+  private cities = ['Roma', 'Milano', 'Torino', 'Napoli', 'L\'Aquila'];
 
   constructor(private router: Router, private ristoranteService: RistoranteService,
               private categoriaService: CategoriaService) {}
@@ -29,7 +30,14 @@ export class HomePage {
     this.categorie$ = this.categoriaService.list();
   }
 
-  changeRequestType(type) {
-    this.requestType = type;
+  onCategoryClick(idCategoria: number) {
+    this.requestType = 1;
+    this.router.navigate(['/tabs/home/lista-ristoranti', this.requestType, idCategoria]);
+  }
+
+  onCityClick(nomeCitta: string) {
+    this.requestType = 2;
+    console.log('Home:' + nomeCitta);
+    this.router.navigate(['/tabs/home/lista-ristoranti', this.requestType, nomeCitta]);
   }
 }
