@@ -15,8 +15,7 @@ import {CategoriaService} from '../../services/categoria.service';
 export class HomePage {
 
   private cityId = 6;
-  private requestType1 = 1;
-  private requestType2 = 2;
+  private requestType: number;
   private ristoranti$: Observable<Ristorante[]>;
   private categorie$: Observable<Categoria[]>;
   cities = ['Milano', 'Roma', 'Venezia', 'Torino', 'L\'Aquila'];
@@ -26,20 +25,11 @@ export class HomePage {
 
 
   ngOnInit() {
-    this.ristoranti$ = this.ristoranteService.listDintorni(this.cityId);
+    this.ristoranti$ = this.ristoranteService.getRistorantiByCittaId(this.cityId);
     this.categorie$ = this.categoriaService.list();
   }
 
-  onCategoryClick(category) {
-    console.log(category);
+  changeRequestType(type) {
+    this.requestType = type;
   }
-
-  onCityClick(city) {
-    console.log(city);
-  }
-
-  onRestaurantClick(restaurant) {
-    console.log(restaurant);
-  }
-
 }

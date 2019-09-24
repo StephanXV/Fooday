@@ -43,9 +43,9 @@ export class DettagliRistorantePage implements OnInit {
     this.mediaCucina /= recensioni.length;
     this.mediaServizio /= recensioni.length;
     this.mediaPrezzo /= recensioni.length;
-    this.mediaCucina = Math.floor(this.mediaCucina * 100) / 100;
-    this.mediaServizio = Math.floor(this.mediaServizio * 100) / 100;
-    this.mediaPrezzo = Math.floor(this.mediaPrezzo * 100) / 100;
+    this.mediaCucina = Math.floor(this.mediaCucina * 10) / 10;
+    this.mediaServizio = Math.floor(this.mediaServizio * 10) / 10;
+    this.mediaPrezzo = Math.floor(this.mediaPrezzo * 10) / 10;
 
   }
 }

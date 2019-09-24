@@ -14,7 +14,7 @@ const routes: Routes = [
     component: ListaRistorantiPage
   },
   {
-    path: 'dettagli-ristorante',
+    path: 'dettagli-ristorante/:id',
     children: [
       {
         path: '',

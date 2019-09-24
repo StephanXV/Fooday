@@ -8,6 +8,8 @@ export const URL = {
     UPDATE_PROFILO: URL_BASE + '/utente/updateprofilo',
     PRENOTAZIONI: URL_BASE + '/prenotazioni',
     RISTORANTI: URL_BASE + '/ristoranti',
+    RISTORANTI_CITTA: URL_BASE + '/ristoranti/citta',
+    RISTORANTI_CATEGORIA: URL_BASE + '/ristoranti/categoria',
     CATEGORIE: URL_BASE + '/categorie',
     CITTA: URL_BASE + '/citta',
     ORARI: URL_BASE + '/orari',
