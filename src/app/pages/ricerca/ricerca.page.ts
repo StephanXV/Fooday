@@ -11,28 +11,29 @@ import {CittaService} from '../../services/citta.service';
 })
 export class RicercaPage implements OnInit {
 
-  private citta$: Observable<Citta[]>;
   recentResearches = ['napoli', 'arrosticini', 'bistrot', 'carlo cracco', 'cannavacciuolo'];
-  value1: string;
-  value2: string;
+  private requestType: number;
+  nomeRisto: string;
+  nomeCitta: string;
 
-  constructor(private router: Router, private cittaService: CittaService) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-
+    this.nomeCitta = '';
+    this.nomeRisto = '';
   }
 
-  onSubmit1() {
-    console.log(this.value1);
-    if (this.value1 != null) {
-      this.router.navigateByUrl('tabs/ricerca/lista-ristoranti');
-    }
+  ngOn
+
+  onNomeSubmit() {
+    this.requestType = 3;
+    console.log('Nome input: ' + this.nomeRisto);
+    this.router.navigate(['/tabs/home/lista-ristoranti', this.requestType, this.nomeRisto]);
   }
 
-  onSubmit2() {
-    console.log(this.value2);
-    if (this.value2 != null) {
-      this.router.navigateByUrl('tabs/ricerca/lista-ristoranti');
-    }
+  onCitySubmit() {
+    this.requestType = 2;
+    console.log('Citta input: ' + this.nomeCitta);
+    this.router.navigate(['/tabs/home/lista-ristoranti', this.requestType, this.nomeCitta]);
   }
 }

@@ -9,6 +9,7 @@ export const URL = {
     PRENOTAZIONI: URL_BASE + '/prenotazioni',
     RISTORANTI: URL_BASE + '/ristoranti',
     RISTORANTI_CITTA_NOME: URL_BASE + '/ristoranti/bynomecitta',
+    RISTORANTI_NOME: URL_BASE + '/ristoranti/bynome',
     RISTORANTI_CITTA_ID: URL_BASE + '/ristoranti/byidcitta',
     RISTORANTI_CATEGORIA: URL_BASE + '/ristoranti/categoria',
     CATEGORIE: URL_BASE + '/categorie',

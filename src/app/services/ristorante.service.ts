@@ -34,4 +34,9 @@ export class RistoranteService {
         const ristoranteUrl = `${URL.RISTORANTI}/${idRistorante}`;
         return this.http.get<Ristorante>(ristoranteUrl);
     }
+
+    getRistorantiByNome(nomeRisto): Observable<Ristorante[]> {
+        const ristorantiByNomeUrl = `${URL.RISTORANTI_NOME}/${nomeRisto}`;
+        return this.http.get<Ristorante[]>(ristorantiByNomeUrl);
+    }
 }
