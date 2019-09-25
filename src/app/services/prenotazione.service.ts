@@ -1,7 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 
-
 import {URL} from '../constants';
 import {Prenotazione} from '../model/prenotazione.model';
 import {Observable} from 'rxjs';
@@ -16,8 +15,8 @@ export class PrenotazioneService {
     }
 
     getPrenotazioni(idUtente): Observable<Prenotazione[]> {
-        return this.http.get<Prenotazione[]>(URL.PRENOTAZIONI + '?idUtente=' + idUtente);
-
+        const prenotazioniUrl = `${URL.PRENOTAZIONI}/${idUtente}`;
+        return this.http.get<Prenotazione[]>(prenotazioniUrl);
     }
 
 }

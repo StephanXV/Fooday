@@ -3,7 +3,7 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Ristorante} from '../../model/ristorante.model';
 import {Observable} from 'rxjs';
 import {RistoranteService} from '../../services/ristorante.service';
-import {el} from '@angular/platform-browser/testing/src/browser_util';
+
 
 @Component({
   selector: 'app-lista-ristoranti',

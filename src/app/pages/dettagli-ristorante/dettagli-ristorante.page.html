@@ -4,7 +4,7 @@
       <ion-back-button >
       </ion-back-button>
     </ion-buttons>
-    <ion-title *ngIf="(ristorante$ | async) as ristorante" text-center>{{ristorante.nome}}</ion-title>
+    <ion-title *ngIf="(ristorante$ | async) as ristorante">{{ristorante.nome}}</ion-title>
   </ion-toolbar>
 </ion-header>
 

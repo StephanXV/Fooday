@@ -26,9 +26,9 @@
 
 
   <ion-list>
-    <ion-item *ngFor="let research of recentResearches" [routerLink]="['dettagli-ristorante']" routerDirection="forward">
+    <ion-item *ngFor="let ricerca of ricerche$ | async" (click)="onRicercaClick(ricerca.tipoRichiesta, ricerca.input)" routerDirection="forward">
       <ion-icon slot="start" name="sync"></ion-icon>
-      <ion-label>{{research}}</ion-label>
+      <ion-label>{{ricerca.input}}</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>
