@@ -8,7 +8,7 @@ export class Utente {
     email: string;
     sesso: string;
     telefono: string;
-    nascita: Date;
+    nascita: string;
     srcImmagineProfilo: string;
     citta: Citta;
 }

@@ -15,6 +15,7 @@ export const URL = {
     CATEGORIE: URL_BASE + '/categorie',
     CITTA: URL_BASE + '/citta',
     ORARI: URL_BASE + '/orari',
+    UTENTI: URL_BASE + '/utenti',
     RICERCHE: URL_BASE + '/ricerche',
     PIETANZE: URL_BASE + '/pietanze',
     IMMAGINI: URL_BASE + '/immagini'
