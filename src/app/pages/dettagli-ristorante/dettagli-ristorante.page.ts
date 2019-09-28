@@ -20,6 +20,8 @@ export class DettagliRistorantePage implements OnInit {
   private mediaCucina = 0;
   private mediaServizio = 0;
   private mediaPrezzo = 0;
+  private giorni = ['lunedi', 'martedi', 'mercoledi', 'giovedi',
+    'venerdi', 'sabato', 'domenica'];
   constructor(private ristoranteService: RistoranteService,
               private route: ActivatedRoute) { }
 
