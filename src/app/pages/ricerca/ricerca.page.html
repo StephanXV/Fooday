@@ -9,16 +9,16 @@
 <ion-content>
     <ion-item>
       <ion-icon padding name="search"></ion-icon>
-      <ion-input placeholder="{{'PLACEHOLDER_RICERCA_NOME' | translate}}" [(ngModel)]="value1" name="value1"></ion-input>
-      <ion-button (click)="onSubmit1()" slot="end">
+      <ion-input placeholder="{{'PLACEHOLDER_RICERCA_NOME' | translate}}" [(ngModel)]="nomeRisto"></ion-input>
+      <ion-button (click)="onNomeSubmit()" slot="end">
         <ion-icon  name="send">
         </ion-icon>
       </ion-button>
     </ion-item>
     <ion-item>
       <ion-icon padding name="pin"></ion-icon>
-      <ion-input placeholder="{{'PLACEHOLDER_RICERCA_LUOGO' | translate}}" [(ngModel)]="value2" name="value2"></ion-input>
-      <ion-button (click)="onSubmit2()" slot="end">
+      <ion-input placeholder="{{'PLACEHOLDER_RICERCA_LUOGO' | translate}}" [(ngModel)]="nomeCitta"></ion-input>
+      <ion-button (click)="onCitySubmit()" slot="end">
         <ion-icon  name="send">
         </ion-icon>
       </ion-button>
@@ -26,9 +26,9 @@
 
 
   <ion-list>
-    <ion-item *ngFor="let research of recentResearches" [routerLink]="['dettagli-ristorante']" routerDirection="forward">
+    <ion-item *ngFor="let ricerca of ricerche$ | async" (click)="onRicercaClick(ricerca.tipoRichiesta, ricerca.input)" routerDirection="forward">
       <ion-icon slot="start" name="sync"></ion-icon>
-      <ion-label>{{research}}</ion-label>
+      <ion-label>{{ricerca.input}}</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -30,6 +30,15 @@ const routes: Routes = [
         loadChildren: '../lista-ristoranti/lista-ristoranti.module#ListaRistorantiPageModule'
       }
     ]
+  },
+  {
+    path: 'lista-ristoranti/:requestType/:id',
+    children: [
+      {
+        path: '',
+        loadChildren: '../lista-ristoranti/lista-ristoranti.module#ListaRistorantiPageModule'
+      }
+    ]
   }
 ];
 

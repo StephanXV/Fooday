@@ -3,6 +3,8 @@ import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Citta} from '../../model/citta.model';
 import {CittaService} from '../../services/citta.service';
+import {Ricerca} from '../../model/ricerca.model';
+import {RicercaService} from '../../services/ricerca.service';
 
 @Component({
   selector: 'app-ricerca',
@@ -11,28 +13,34 @@ import {CittaService} from '../../services/citta.service';
 })
 export class RicercaPage implements OnInit {
 
-  private citta$: Observable<Citta[]>;
-  recentResearches = ['napoli', 'arrosticini', 'bistrot', 'carlo cracco', 'cannavacciuolo'];
-  value1: string;
-  value2: string;
+  private ricerche$: Observable<Ricerca[]>;
+  private requestType: number;
+  private idUtente = 1;
+  nomeRisto: string;
+  nomeCitta: string;
 
-  constructor(private router: Router, private cittaService: CittaService) { }
+  constructor(private router: Router, private ricercaService: RicercaService) { }
 
   ngOnInit() {
-
+    this.ricerche$ = this.ricercaService.getRicercheByUtente(1);
+    this.nomeCitta = '';
+    this.nomeRisto = '';
   }
 
-  onSubmit1() {
-    console.log(this.value1);
-    if (this.value1 != null) {
-      this.router.navigateByUrl('tabs/ricerca/lista-ristoranti');
-    }
+  onNomeSubmit() {
+    this.requestType = 3;
+    console.log('Nome input: ' + this.nomeRisto);
+    this.router.navigate(['/tabs/ricerca/lista-ristoranti', this.requestType, this.nomeRisto]);
   }
 
-  onSubmit2() {
-    console.log(this.value2);
-    if (this.value2 != null) {
-      this.router.navigateByUrl('tabs/ricerca/lista-ristoranti');
-    }
+  onCitySubmit() {
+    this.requestType = 2;
+    console.log('Citta input: ' + this.nomeCitta);
+    this.router.navigate(['/tabs/ricerca/lista-ristoranti', this.requestType, this.nomeCitta]);
+  }
+
+  onRicercaClick(tipoRichiesta: number, input: string) {
+    this.router.navigate(['/tabs/ricerca/lista-ristoranti', tipoRichiesta, input]);
   }
 }
+
