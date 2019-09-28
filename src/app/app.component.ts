@@ -1,9 +1,13 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import {NavController, Platform} from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {TranslateService} from '@ngx-translate/core';
+import {UtenteService} from './services/utente.service';
+import {Utente} from './model/utente.model';
+import {BehaviorSubject} from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
