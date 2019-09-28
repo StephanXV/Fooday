@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NavController} from '@ionic/angular';
+import {UtenteService} from '../../services/utente.service';
+import {Utente} from '../../model/utente.model';
 
 @Component({
   selector: 'app-mod-profilo',
@@ -9,19 +11,24 @@ import {NavController} from '@ionic/angular';
 })
 export class ModProfiloPage implements OnInit {
   private profileFormModule: FormGroup;
+  private utente: Utente;
   constructor(private formBuilder: FormBuilder,
+              private utenteService: UtenteService,
               private navController: NavController) { }
 
   ngOnInit() {
+    this.utenteService.getUtente().subscribe((utente) => {
+      this.utente = utente;
+    });
     this.profileFormModule = this.formBuilder.group( {
-      nome: ['Nome', Validators.compose([Validators.required])],
-      cognome: ['Cognome', Validators.compose([Validators.required])],
-      email: ['Email', Validators.compose([Validators.required])],
+      nome: [this.utente.nome, Validators.compose([Validators.required])],
+      cognome: [this.utente.cognome, Validators.compose([Validators.required])],
+      email: [this.utente.email, Validators.compose([Validators.required])],
       password: ['Password', Validators.compose([Validators.required])],
-      telefono: ['3333333336', Validators.compose([Validators.required])],
-      citta: ['Vasto', Validators.compose([Validators.required])],
-      data: ['08-06-1997', Validators.compose([Validators.required])],
-      sesso: ['M', Validators.compose([Validators.required])]
+      telefono: [this.utente.telefono, Validators.compose([Validators.required])],
+      citta: [this.utente.citta, Validators.compose([Validators.required])],
+      data: [this.utente.nascita, Validators.compose([Validators.required])],
+      sesso: [this.utente.sesso, Validators.compose([Validators.required])]
     });
   }
 

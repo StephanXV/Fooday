@@ -24,7 +24,6 @@ export class UtenteService {
     constructor(private http: HttpClient, private storage: Storage) {
 
         this.storage.get(AUTH_TOKEN).then((token) => {
-            console.log(token);
             this.authToken = token;
             if (token !== null && token !== undefined && token !== '') {
                 this.loggedIn$.next(true);
@@ -48,13 +47,15 @@ export class UtenteService {
                 // update dell'observable dell'utente
                 this.utente$.next(resp.body);
                 this.loggedIn$.next(true);
+                console.log(this.getUtente());
+                console.log(this.getAuthToken());
                 return resp.body;
             }));
     }
 
     logout() {
         this.authToken = null;
-        this.loggedIn$.next(true);
+        this.loggedIn$.next(false);
         this.storage.remove(AUTH_TOKEN);
         this.storage.remove(UTENTE_STORAGE);
 
@@ -63,7 +64,6 @@ export class UtenteService {
     }
 
     getUtente(): BehaviorSubject<Utente> {
-        console.log(this.utente$);
         return this.utente$;
     }
 

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { TabsPage } from './tabs.page';
 import {TranslateModule} from '@ngx-translate/core';
+import {AuthGuard} from '../../guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -36,7 +37,8 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../prenotazioni/prenotazioni.module#PrenotazioniPageModule'
+            loadChildren: '../prenotazioni/prenotazioni.module#PrenotazioniPageModule',
+            canActivate: [AuthGuard]
           }
         ]
       },
@@ -45,7 +47,8 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../preferiti/preferiti.module#PreferitiPageModule'
+            loadChildren: '../preferiti/preferiti.module#PreferitiPageModule',
+            canActivate: [AuthGuard]
           }
         ]
       },
@@ -54,7 +57,8 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../profilo/profilo.module#ProfiloPageModule'
+            loadChildren: '../profilo/profilo.module#ProfiloPageModule',
+            canActivate: [AuthGuard]
           }
         ]
       },
