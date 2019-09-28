@@ -64,10 +64,16 @@
           <ion-label>Spesa media: {{ristorante.prezzoMedio}} €</ion-label>
         </ion-item>
 
-        <ion-item margin-bottom>
-          <ion-icon margin-end name="clock"></ion-icon>
-          <ion-label *ngFor="let orario of ristorante.orari">{{orario.apertura}} - {{orario.chiusura}}</ion-label>
-        </ion-item>
+        <div *ngFor="let giorno of giorni">
+          <ion-item margin-bottom>
+            <ion-label >{{giorno.charAt(0).toUpperCase() + giorno.substring(1)}}</ion-label>
+            <div *ngFor="let orario of ristorante.orari">
+              <ion-label *ngIf="orario.giorno == giorno">
+                 {{orario.apertura}} <ion-text *ngIf="orario.apertura != 'Chiuso'">-</ion-text>  {{orario.chiusura}}&nbsp;
+              </ion-label>
+            </div>
+          </ion-item>
+        </div>
 
         <ion-item>
           <ion-img src="assets/images/maps.jpg"></ion-img>
