@@ -22,33 +22,32 @@
   </div>
   <div>
     <ion-item>
-      <ion-label>Nome</ion-label>
+      <ion-label>Nome: {{utente.nome}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>Cognome</ion-label>
+      <ion-label>Cognome: {{utente.cognome}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>Email</ion-label>
+      <ion-label>Email: {{utente.email}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>Password</ion-label>
+      <ion-label>Data di nascita: {{utente.nascita}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>Data di nascita</ion-label>
+      <ion-label>Sesso: {{utente.sesso}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>Sesso</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Telefono</ion-label>
+      <ion-label>Telefono: {{utente.telefono}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label>Punti</ion-label>
     </ion-item>
   </div>
-  <ion-button margin (click)="onLoginButtonClick()">
-    <ion-label>
-      {{'BOTTONE_LOGIN' | translate}}
-    </ion-label>
-  </ion-button>
+  <div text-center>
+    <ion-button  margin (click)="onLogoutButtonClick()">
+      <ion-label>
+        LOGOUT
+      </ion-label>
+    </ion-button>
+  </div>
 </ion-content>

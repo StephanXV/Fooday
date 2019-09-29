@@ -16,8 +16,8 @@ import {Account, UtenteService} from '../../services/utente.service';
 export class LoginPage implements OnInit {
 
   private loginFormModel: FormGroup;
-  private loginTitle: string;
-  private loginSubTitle: string;
+  private loginTitle: 'errore';
+  private loginSubTitle: 'password o username errati';
 
   constructor(private formBuilder: FormBuilder,
               private alertController: AlertController,
