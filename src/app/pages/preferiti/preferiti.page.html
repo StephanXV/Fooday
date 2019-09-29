@@ -5,52 +5,55 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let favourite of favourites" [routerLink]="['dettagli-ristorante']" routerDirection="forward">
-      <ion-grid>
+      <ion-card *ngFor="let preferito of preferiti$ | async">
         <ion-row>
           <ion-col>
-            <ion-img src="assets/images/1.jpg"></ion-img>
+            <ion-img [routerLink]="['dettagli-ristorante', preferito.id]" routerDirection="forward" src="{{preferito.immagini[0].src}}"></ion-img>
           </ion-col>
         </ion-row>
 
-        <ion-row align-items-center >
-          <ion-col>
-            {{favourite}}
-          </ion-col>
-          <ion-col>
+        <ion-card-title margin-top>
+          <ion-row>
+            <ion-col>
+            <ion-label margin-start float-left>
+            {{preferito.nome}}
+            </ion-label>
+            </ion-col>
+            <ion-col>
+            <ion-label margin-end style="color: #1c8aff" float-right>
+              {{preferito.punteggio}}
+            </ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-card-title>
 
-          </ion-col>
+        <ion-row>
           <ion-col>
-            20%
+        <ion-card-content>
+          {{preferito.citta.nome}}, {{preferito.indirizzo}}
+        </ion-card-content>
           </ion-col>
         </ion-row>
 
-        <ion-row align-items-center>
+        <ion-row>
           <ion-col>
-            Attributi
-          </ion-col>
-
-          <ion-col>
-            Voto 9/10
-          </ion-col>
-
-          <ion-col size="6" >
-            <ion-button class="button1" [routerLink]="['dettagli-ristorante']" routerDirection="forward">
-              <ion-label>
-                {{'BOTTONE_DETTAGLI' | translate}}
-              </ion-label>
-            </ion-button>
-            <ion-button class="button1" [routerLink]="['prenota']" routerDirection="forward">
-              <ion-label>
-                {{'BOTTONE_PRENOTA' | translate}}
-              </ion-label>
+            <ion-button float-start fill="clear" (click)="deleteRistoranteByPreferiti(preferito.id, idUtente)">
+              <ion-icon name="trash"></ion-icon>
+              <div>{{'RIMOZIONE_PREFERITI' | translate}}</div>
             </ion-button>
           </ion-col>
+          <ion-col>
+            <ion-button float-end fill="clear" [routerLink]="['prenota']" routerDirection="forward">
+              <ion-icon name="pricetag"></ion-icon>
+              <div>{{'BOTTONE_PRENOTA' | translate}}</div>
+            </ion-button>
+          </ion-col>
         </ion-row>
 
-      </ion-grid>
-    </ion-item>
-  </ion-list>
+
+
+
+
+      </ion-card>
 
 </ion-content>

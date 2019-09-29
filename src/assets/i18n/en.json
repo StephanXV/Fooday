@@ -17,6 +17,9 @@
   "BOTTONE_PRENOTA": "Book",
   "BOTTONE_DETTAGLI": "Details",
   "BOTTONE_LOGIN": "Login",
+  "CANCEL_BUTTON": "Cancel",
+  "DELETE_BUTTON": "Remove",
+  "RIMOZIONE_PREFERITI": "Delete",
   "TITOLO_PROFILO": "Your profile",
   "TITOLO_MODIFICA_PROFILO": "Change your informations",
   "BOTTONE_SALVA": "Save Changes",
@@ -25,6 +28,7 @@
   "DETTAGLI_INFO": "Info",
   "DETTAGLI_MENU": "Menù",
   "DETTAGLI_RECENSIONI": "Reviews",
+  "BOTTONE_ANNULLA_PRENOTAZIONE": "Cancel",
   "TITOLO_RECENSIONE": "Give your opinion",
   "PLACEHOLDER_NOME": "Name",
   "PLACEHOLDER_COGNOME": "Surname",
@@ -49,5 +53,7 @@
   "PLACEHOLDER_ORARIO": "At what time?",
   "PLACEHOLDER_NOME_PRENOTAZIONE": "Enter reservation name",
   "PLACEHOLDER_USA_PUNTI": "Use promotional points?",
-  "PLACEHOLDER_CITTA": "Your citys"
+  "PLACEHOLDER_CITTA": "Your citys",
+  "PREFERITI_DELETE_TITLE": "WARNING",
+  "PREFERITI_DELETE_MESSAGE": "Do you want to remove the restaurant from your favourites?"
 }

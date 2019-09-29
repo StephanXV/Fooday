@@ -13,10 +13,14 @@
   "PLACEHOLDER_RICERCA_LUOGO": "Ricerca per luogo",
   "TITOLO_PRENOTAZIONI": "Le tue prenotazioni",
   "BOTTONE_RECENSIONE": "Valuta",
+  "BOTTONE_ANNULLA_PRENOTAZIONE": "Annulla",
   "TITOLO_PREFERITI": "I tuoi preferiti",
   "BOTTONE_PRENOTA": "Prenota",
   "BOTTONE_DETTAGLI": "Dettagli",
   "BOTTONE_LOGIN": "Accedi",
+  "CANCEL_BUTTON": "Annulla",
+  "DELETE_BUTTON": "Elimina",
+  "RIMOZIONE_PREFERITI": "Rimuovi",
   "TITOLO_PROFILO": "Il tuo Profilo",
   "TITOLO_MODIFICA_PROFILO": "Modifica i tuoi dati",
   "BOTTONE_SALVA": "Salva Modifiche",
@@ -50,5 +54,7 @@
   "PLACEHOLDER_ORARIO": "A che orario?",
   "PLACEHOLDER_NOME_PRENOTAZIONE": "A che nome?",
   "PLACEHOLDER_USA_PUNTI": "Vuoi usare i tuoi punti?",
-  "PLACEHOLDER_CITTA": "Città in cui vivi"
+  "PLACEHOLDER_CITTA": "Città in cui vivi",
+  "PREFERITI_DELETE_TITLE": "ATTENZIONE",
+  "PREFERITI_DELETE_MESSAGE": "Vuoi rimuovere il ristorante dai preferiti?"
 }

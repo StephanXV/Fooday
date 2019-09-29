@@ -9,7 +9,7 @@ import {PrenotazioneService} from '../../services/prenotazione.service';
   styleUrls: ['./prenotazioni.page.scss'],
 })
 export class PrenotazioniPage implements OnInit {
-  idUtente = 1;
+  private idUtente = 1;
   private prenotazioni$: Observable<Prenotazione[]>;
 
   constructor(private prenotazioneService: PrenotazioneService) { }

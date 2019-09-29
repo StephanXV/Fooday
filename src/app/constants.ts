@@ -7,6 +7,7 @@ export const URL = {
     LOGOUT: URL_BASE + '/logout',
     UPDATE_PROFILO: URL_BASE + '/utente/updateprofilo',
     PRENOTAZIONI: URL_BASE + '/prenotazioni',
+    PREFERITI: URL_BASE + '/ristoranti/preferiti',
     RISTORANTI: URL_BASE + '/ristoranti',
     RISTORANTI_CITTA_NOME: URL_BASE + '/ristoranti/bynomecitta',
     RISTORANTI_NOME: URL_BASE + '/ristoranti/bynome',

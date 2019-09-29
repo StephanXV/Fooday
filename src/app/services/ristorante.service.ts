@@ -39,4 +39,14 @@ export class RistoranteService {
         const ristorantiByNomeUrl = `${URL.RISTORANTI_NOME}/${nomeRisto}`;
         return this.http.get<Ristorante[]>(ristorantiByNomeUrl);
     }
+
+    getRistorantiPreferiti(idUtente): Observable<Ristorante[]> {
+        const ristorantiPreferitiUrl = `${URL.PREFERITI}/${idUtente}`;
+        return this.http.get<Ristorante[]>(ristorantiPreferitiUrl);
+    }
+
+    deletePreferito(idRistorante, idUtente) {
+        const deletePreferitoUrl = `${URL.PREFERITI}/${idRistorante}/${idUtente}`;
+        return this.http.delete<Ristorante>(deletePreferitoUrl);
+    }
 }
