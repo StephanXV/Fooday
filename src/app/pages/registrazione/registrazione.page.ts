@@ -41,7 +41,7 @@ export class RegistrazionePage implements OnInit {
     this.nuovoUtente.password = this.registerFormModule.value.password;
     this.nuovoUtente.telefono = this.registerFormModule.value.telefono;
     const citta = new Citta();
-    citta.nomeCitta = this.registerFormModule.value.citta;
+    citta.nome = this.registerFormModule.value.citta;
     this.nuovoUtente.citta = citta;
     this.nuovoUtente.nascita = this.registerFormModule.value.data;
     this.nuovoUtente.sesso = this.registerFormModule.value.sesso;

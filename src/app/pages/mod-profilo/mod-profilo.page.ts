@@ -27,7 +27,7 @@ export class ModProfiloPage implements OnInit {
       email: [this.utente.email, Validators.compose([Validators.required])],
       nuovaPassword: ['', Validators.compose([Validators.required])],
       telefono: [this.utente.telefono, Validators.compose([Validators.required])],
-      citta: [this.utente.citta.nomeCitta, Validators.compose([Validators.required])],
+      citta: [this.utente.citta.nome, Validators.compose([Validators.required])],
       data: [this.utente.nascita, Validators.compose([Validators.required])],
       sesso: [this.utente.sesso, Validators.compose([Validators.required])]
     });
