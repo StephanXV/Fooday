@@ -5,7 +5,9 @@ export class Utente {
     id: number;
     nome: string;
     cognome: string;
+    username: string;
     email: string;
+    password: string;
     sesso: string;
     telefono: string;
     nascita: string;

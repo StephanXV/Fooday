@@ -23,10 +23,11 @@ export class ModProfiloPage implements OnInit {
     this.profileFormModule = this.formBuilder.group( {
       nome: [this.utente.nome, Validators.compose([Validators.required])],
       cognome: [this.utente.cognome, Validators.compose([Validators.required])],
+      username: [this.utente.username, Validators.compose([Validators.required])],
       email: [this.utente.email, Validators.compose([Validators.required])],
       nuovaPassword: ['', Validators.compose([Validators.required])],
       telefono: [this.utente.telefono, Validators.compose([Validators.required])],
-      citta: [this.utente.citta.nome, Validators.compose([Validators.required])],
+      citta: [this.utente.citta.nomeCitta, Validators.compose([Validators.required])],
       data: [this.utente.nascita, Validators.compose([Validators.required])],
       sesso: [this.utente.sesso, Validators.compose([Validators.required])]
     });

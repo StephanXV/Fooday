@@ -88,4 +88,8 @@ export class UtenteService {
             }));
     }
 
+    registerUtente(nuovoUtente: Utente): Observable<Utente> {
+        return this.http.post<Utente>(URL.REGISTRAZIONE, nuovoUtente);
+    }
+
 }

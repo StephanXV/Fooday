@@ -37,7 +37,7 @@
 
         <ion-row>
           <ion-col>
-            <ion-button float-start fill="clear" (click)="deleteRistoranteByPreferiti(preferito.id, idUtente)">
+            <ion-button float-start fill="clear" (click)="deleteRistoranteByPreferiti(preferito.id, utente.id)">
               <ion-icon name="trash"></ion-icon>
               <div>{{'RIMOZIONE_PREFERITI' | translate}}</div>
             </ion-button>
