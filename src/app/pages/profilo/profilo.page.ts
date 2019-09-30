@@ -11,12 +11,6 @@ import {UtenteService} from '../../services/utente.service';
 export class ProfiloPage implements OnInit {
 
   private utente: Utente;
-  private nome: string;
-  private cognome: string;
-  private email: string;
-  private nascita: string;
-  private sesso: string;
-  private telefono: string;
 
   constructor(private navController: NavController,
               private utenteService: UtenteService) { }
@@ -25,12 +19,6 @@ export class ProfiloPage implements OnInit {
     this.utenteService.getUtente().subscribe((utente) => {
       this.utente = utente;
     });
-    this.nome = this.utente.nome;
-    this.cognome = this.utente.cognome;
-    this.email = this.utente.email;
-    this.nascita = this.utente.nascita;
-    this.sesso = this.utente.sesso;
-    this.telefono = this.utente.telefono;
   }
 
   onLogoutButtonClick() {

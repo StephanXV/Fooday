@@ -11,4 +11,5 @@ export class Utente {
     nascita: string;
     srcImmagineProfilo: string;
     citta: Citta;
+    punti: number;
 }
