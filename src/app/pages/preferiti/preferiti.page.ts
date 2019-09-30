@@ -4,6 +4,8 @@ import {Ristorante} from '../../model/ristorante.model';
 import {RistoranteService} from '../../services/ristorante.service';
 import {AlertController, IonItemSliding, ModalController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
+import {Utente} from '../../model/utente.model';
+import {UtenteService} from '../../services/utente.service';
 
 @Component({
   selector: 'app-preferiti',
@@ -13,7 +15,7 @@ import {TranslateService} from '@ngx-translate/core';
 export class PreferitiPage implements OnInit {
 
   private preferiti$: Observable<Ristorante[]>;
-  private idUtente = 1;
+  private utente: Utente;
   private deleteTitle: string;
   private messageTitle: string;
   private deleteButton: string;
@@ -21,11 +23,15 @@ export class PreferitiPage implements OnInit {
 
   constructor(private ristoranteService: RistoranteService,
               private alertController: AlertController,
-              private translateService: TranslateService,) {}
+              private translateService: TranslateService,
+              private utenteService: UtenteService) {}
 
   ngOnInit() {
     this.initTranslate();
-    this.listPreferiti();
+    this.utenteService.getUtente().subscribe( (utente) => {
+      this.utente = utente;
+      this.listPreferiti();
+    });
   }
 
   async deleteRistoranteByPreferiti(idRistorante, idUtente) {
@@ -54,7 +60,7 @@ export class PreferitiPage implements OnInit {
   }
 
   listPreferiti() {
-    this.preferiti$ = this.ristoranteService.getRistorantiPreferiti(1);
+    this.preferiti$ = this.ristoranteService.getRistorantiPreferiti(this.utente.id);
   }
 
   initTranslate() {

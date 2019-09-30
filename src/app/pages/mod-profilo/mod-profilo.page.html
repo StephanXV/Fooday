@@ -12,7 +12,7 @@
 <ion-content>
   <div margin-top>
     <ion-item margin lines="none" class="add-photo">
-      <ion-img  src="assets/images/add-photo.png">
+      <ion-img  src="{{utente.srcImmagineProfilo}}">
 
       </ion-img>
     </ion-item>
@@ -20,28 +20,28 @@
   <div>
     <form [formGroup]="profileFormModule">
       <ion-item>
-        <ion-input formControlName="nome"></ion-input>
+        <ion-input placeholder="Nome" formControlName="nome"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input formControlName="cognome"></ion-input>
+        <ion-input placeholder="Cognome" formControlName="cognome"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input formControlName="email"></ion-input>
+        <ion-input placeholder="Email" formControlName="email"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="password" formControlName="password"></ion-input>
+        <ion-input placeholder="Nuova Password" type="password" formControlName="nuovaPassword"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input formControlName="telefono" type="number"></ion-input>
+        <ion-input placeholder="Telefono" formControlName="telefono" type="number"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input formControlName="citta"></ion-input>
+        <ion-input placeholder="Città" formControlName="citta"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-datetime formControlName="data"></ion-datetime>
+        <ion-datetime placeholder="Data di nascita" formControlName="data"></ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-select formControlName="sesso">
+        <ion-select placeholder="Sesso" formControlName="sesso">
           <ion-select-option value="M">
             M
           </ion-select-option>

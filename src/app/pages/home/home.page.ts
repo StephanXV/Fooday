@@ -16,23 +16,20 @@ import {UtenteService} from '../../services/utente.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  private utente$: BehaviorSubject<Utente>;
-  private cityId = 6;
   private requestType: number;
+  private cittaLocalizzata = 6;
   private ristoranti$: Observable<Ristorante[]>;
   private categorie$: Observable<Categoria[]>;
   private cities = ['Roma', 'Milano', 'Torino', 'Napoli', 'L\'Aquila'];
 
   constructor(private router: Router, private ristoranteService: RistoranteService,
               private categoriaService: CategoriaService,
-              private navController: NavController,
-              private utenteService: UtenteService) {}
+              private navController: NavController) {}
 
 
   ngOnInit() {
-    this.ristoranti$ = this.ristoranteService.getRistorantiByCittaId(this.cityId);
+    this.ristoranti$ = this.ristoranteService.getRistorantiByCittaId(this.cittaLocalizzata);
     this.categorie$ = this.categoriaService.list();
-    this.utente$ = this.utenteService.getUtente();
     this.navController.navigateRoot('tabs');
   }
 

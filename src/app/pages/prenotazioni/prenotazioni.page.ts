@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {Prenotazione} from '../../model/prenotazione.model';
 import {PrenotazioneService} from '../../services/prenotazione.service';
+import {Utente} from '../../model/utente.model';
+import {UtenteService} from '../../services/utente.service';
 
 @Component({
   selector: 'app-prenotazioni',
@@ -9,13 +11,20 @@ import {PrenotazioneService} from '../../services/prenotazione.service';
   styleUrls: ['./prenotazioni.page.scss'],
 })
 export class PrenotazioniPage implements OnInit {
-  private idUtente = 1;
+  private utente: Utente;
   private prenotazioni$: Observable<Prenotazione[]>;
 
-  constructor(private prenotazioneService: PrenotazioneService) { }
+  constructor(private prenotazioneService: PrenotazioneService,
+              private utenteservice: UtenteService) { }
 
   ngOnInit() {
-    this.prenotazioni$ = this.prenotazioneService.getPrenotazioni(this.idUtente);
+    this.utenteservice.getUtente().subscribe( (utente) => {
+      this.utente = utente;
+      this.listPrenotazioni(); });
+  }
+
+  listPrenotazioni() {
+    this.prenotazioni$ = this.prenotazioneService.getPrenotazioni(this.utente.id);
   }
 
 }
