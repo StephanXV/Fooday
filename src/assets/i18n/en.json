@@ -61,5 +61,7 @@
   "REGISTRAZIONE_SUCCESSO_MESSAGE": "Now insert username and password to login",
   "CONFIRM_BUTTON": "Ok",
   "LOGIN_ERROR_TITLE": "ERROR",
-  "LOGIN_ERROR_MESSAGE": "Invalid username or password"
+  "LOGIN_ERROR_MESSAGE": "Invalid username or password",
+  "RECENSIONE_SUCCESSO_TITLE": "Review submitted",
+  "RECENSIONE_SUCCESSO_MESSAGE": "The others users now can read your review"
 }
