@@ -61,7 +61,7 @@
           </ion-col>
 
           <ion-col size="7" >
-            <ion-button margin-end class="button1" [routerLink]="['recensione']" routerDirection="forward">
+            <ion-button margin-end class="button1" [routerLink]="['recensione', prenotazione.ristorante.id]" routerDirection="forward">
               <ion-label>
                 {{'BOTTONE_RECENSIONE' | translate}}
               </ion-label>

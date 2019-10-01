@@ -58,5 +58,16 @@
   "PLACEHOLDER_CITTA": "Città in cui vivi",
   "WARNING_TITLE": "ATTENZIONE",
   "PREFERITI_DELETE_MESSAGE": "Vuoi rimuovere il ristorante dai preferiti?",
-  "PRENOTAZIONI_DELETE_MESSAGE": "Vuoi davvero annullare la prenotazione?"
+  "PRENOTAZIONI_DELETE_MESSAGE": "Vuoi davvero annullare la prenotazione?",
+  "PREFERITI_DELETE_TITLE": "ATTENZIONE",
+  "PREFERITI_DELETE_MESSAGE": "Vuoi rimuovere il ristorante dai preferiti?",
+  "REGISTRAZIONE_SUCCESSO_TITLE": "Registrazione effettuata",
+  "REGISTRAZIONE_SUCCESSO_MESSAGE": "Ora inserisci username e password per effettuare l'accesso",
+  "CONFIRM_BUTTON": "Ok",
+  "PROFILO_SUCCESSO_TITLE": "Dati aggiornati",
+  "PROFILO_SUCCESSO_MESSAGE": "I campi modificati sono stati aggiornati",
+  "LOGIN_ERROR_TITLE": "ERRORE",
+  "LOGIN_ERROR_MESSAGE": "Username o password non corrette",
+  "RECENSIONE_SUCCESSO_TITLE": "Recensione effettuata",
+  "RECENSIONE_SUCCESSO_MESSAGE": "Gli altri utenti ora potranno vedere la sua valutazione"
 }

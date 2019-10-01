@@ -1,14 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {Ristorante} from '../../model/ristorante.model';
 import {RistoranteService} from '../../services/ristorante.service';
-import {Citta} from '../../model/citta.model';
 import {Categoria} from '../../model/categoria.model';
 import {CategoriaService} from '../../services/categoria.service';
 import {NavController} from '@ionic/angular';
-import {Utente} from '../../model/utente.model';
-import {UtenteService} from '../../services/utente.service';
+
+declare var google: any;
 
 @Component({
   selector: 'app-home',
@@ -22,10 +21,10 @@ export class HomePage implements OnInit {
   private categorie$: Observable<Categoria[]>;
   private cities = ['Roma', 'Milano', 'Torino', 'Napoli', 'L\'Aquila'];
 
-  constructor(private router: Router, private ristoranteService: RistoranteService,
+  constructor(private router: Router,
+              private ristoranteService: RistoranteService,
               private categoriaService: CategoriaService,
               private navController: NavController) {}
-
 
   ngOnInit() {
     this.ristoranti$ = this.ristoranteService.getRistorantiByCittaId(this.cittaLocalizzata);

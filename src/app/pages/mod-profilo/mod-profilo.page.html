@@ -53,10 +53,11 @@
           </ion-select-option>
         </ion-select>
       </ion-item>
-
-      <ion-button class="button3" size="medium" expand="full" shape="round" color="primary" (click)="onProfileSubmit()" [disabled]="!profileFormModule.valid" tappable>
-        <ion-label>{{'BOTTONE_SALVA' | translate}}</ion-label>
-      </ion-button>
+      <div margin>
+        <ion-button size="medium" expand="full" shape="round" color="primary" (click)="onProfileSubmit()" [disabled]="!profileFormModule.valid" tappable>
+          <ion-label>{{'BOTTONE_SALVA' | translate}}</ion-label>
+        </ion-button>
+      </div>
     </form>
   </div>
 

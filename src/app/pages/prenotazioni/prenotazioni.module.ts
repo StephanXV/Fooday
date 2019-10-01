@@ -14,7 +14,7 @@ const routes: Routes = [
     component: PrenotazioniPage
   },
   {
-    path: 'recensione',
+    path: 'recensione/:id',
     children: [
       {
         path: '',

@@ -6,8 +6,8 @@ export class Utente {
     nome: string;
     cognome: string;
     username: string;
-    email: string;
     password: string;
+    email: string;
     sesso: string;
     telefono: string;
     nascita: string;
