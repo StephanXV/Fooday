@@ -11,6 +11,7 @@
 @import '~@ionic/angular/css/flex-utils.css';
 
 .horizontalScroll {
+  margin-right: 8px;
   --indicator-color-checked: #FFFFFF;
   color: var(--ion-color-medium);
 }
@@ -20,13 +21,9 @@
 }
 
 .add-photo {
-  padding-top: 18px;
   margin: 0 auto;
-  width: 180px;
-  height: 180px;
-  border-style: solid;
-  border-color: #86888f;
-  border-radius: 10px;
+  width: 150px;
+  height: 150px;
 }
 
 .rounded {

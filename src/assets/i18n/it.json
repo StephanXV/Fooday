@@ -60,5 +60,9 @@
   "PREFERITI_DELETE_MESSAGE": "Vuoi rimuovere il ristorante dai preferiti?",
   "REGISTRAZIONE_SUCCESSO_TITLE": "Registrazione effettuata",
   "REGISTRAZIONE_SUCCESSO_MESSAGE": "Ora inserisci username e password per effettuare l'accesso",
-  "CONFIRM_BUTTON": "Ok"
+  "CONFIRM_BUTTON": "Ok",
+  "PROFILO_SUCCESSO_TITLE": "Dati aggiornati",
+  "PROFILO_SUCCESSO_MESSAGE": "I campi modificati sono stati aggiornati",
+  "LOGIN_ERROR_TITLE": "ERRORE",
+  "LOGIN_ERROR_MESSAGE": "Username o password non corrette"
 }

@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar>
 
-    <ion-button slot="start" margin [routerLink]="['mod-profilo']" routerDirection="forward">
+    <ion-button slot="start" shape="round" margin [routerLink]="['mod-profilo']" routerDirection="forward">
       <ion-icon name="create"></ion-icon>
     </ion-button>
     <ion-title>{{'TITOLO_PROFILO' | translate}}</ion-title>
-    <ion-button slot="end" margin [routerLink]="['preferenze']" routerDirection="forward">
+    <ion-button slot="end" shape="round" margin [routerLink]="['preferenze']" routerDirection="forward">
       <ion-icon name="settings"></ion-icon>
     </ion-button>
 
@@ -14,7 +14,7 @@
 
 <ion-content>
   <div margin-top>
-    <ion-item margin lines="none" class="add-photo">
+    <ion-item lines="none" class="add-photo">
       <ion-img  src="{{utente.srcImmagineProfilo}}">
 
       </ion-img>
@@ -46,8 +46,8 @@
       <ion-label>Punti: {{utente.punti}}</ion-label>
     </ion-item>
   </div>
-  <div text-center>
-    <ion-button  margin (click)="onLogoutButtonClick()">
+  <div margin>
+    <ion-button shape="round" expand="full" size="medium" (click)="onLogoutButtonClick()">
       <ion-label>
         LOGOUT
       </ion-label>
