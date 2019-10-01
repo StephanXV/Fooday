@@ -56,6 +56,7 @@
   "PLACEHOLDER_NOME_PRENOTAZIONE": "A che nome?",
   "PLACEHOLDER_USA_PUNTI": "Vuoi usare i tuoi punti?",
   "PLACEHOLDER_CITTA": "Città in cui vivi",
-  "PREFERITI_DELETE_TITLE": "ATTENZIONE",
-  "PREFERITI_DELETE_MESSAGE": "Vuoi rimuovere il ristorante dai preferiti?"
+  "WARNING_TITLE": "ATTENZIONE",
+  "PREFERITI_DELETE_MESSAGE": "Vuoi rimuovere il ristorante dai preferiti?",
+  "PRENOTAZIONI_DELETE_MESSAGE": "Vuoi davvero annullare la prenotazione?"
 }

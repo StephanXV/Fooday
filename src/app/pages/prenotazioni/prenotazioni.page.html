@@ -5,6 +5,35 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let prenotazione of prenotazioni$ | async" #sliding>
+      <ion-item>
+        <ion-label>
+          <h2><strong>{{prenotazione.ristorante.nome}}</strong></h2> <p>-{{prenotazione.scontoApplicato}}%&nbsp;</p>
+          <ion-badge margin-end margin-top margin-bottom color="primary" *ngFor="let cate of prenotazione.ristorante.categorie">{{cate.nome}}</ion-badge>
+          <p><strong>Giorno:</strong> {{prenotazione.giorno | date: 'EE d MMM, y': '+120'}}</p>
+          <p><strong>Orario:</strong> {{prenotazione.orario}}</p>
+          <br>
+          <ion-row>
+
+            <ion-icon size="normal" name="people"></ion-icon>
+            <div>&nbsp;&nbsp;{{prenotazione.posti}}</div>
+          </ion-row> <br>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="tertiary" (click)="deletePrenotazioni(sliding)">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="secondary" (click)="deletePrenotazioni(sliding)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+
   <ion-list>
     <ion-card *ngFor="let prenotazione of prenotazioni$ | async">
       <ion-card-title margin-top>
@@ -37,7 +66,7 @@
                 {{'BOTTONE_RECENSIONE' | translate}}
               </ion-label>
             </ion-button>
-            <ion-button class="button1" [routerLink]="['recensione']" routerDirection="forward">
+            <ion-button class="button1" (click)="deletePrenotazioneUtente(prenotazione.id)">
               <ion-label>
                 {{'BOTTONE_ANNULLA_PRENOTAZIONE' | translate}}
               </ion-label>

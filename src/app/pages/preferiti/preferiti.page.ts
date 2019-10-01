@@ -64,7 +64,7 @@ export class PreferitiPage implements OnInit {
   }
 
   initTranslate() {
-    this.translateService.get('PREFERITI_DELETE_TITLE').subscribe((data: string) => {
+    this.translateService.get('WARNING_TITLE').subscribe((data: string) => {
       this.deleteTitle = data;
     });
     this.translateService.get('PREFERITI_DELETE_MESSAGE').subscribe((data: string) => {

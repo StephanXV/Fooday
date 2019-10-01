@@ -4,6 +4,8 @@ import {Prenotazione} from '../../model/prenotazione.model';
 import {PrenotazioneService} from '../../services/prenotazione.service';
 import {Utente} from '../../model/utente.model';
 import {UtenteService} from '../../services/utente.service';
+import {AlertController, IonItemSliding, ModalController} from '@ionic/angular';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-prenotazioni',
@@ -13,11 +15,18 @@ import {UtenteService} from '../../services/utente.service';
 export class PrenotazioniPage implements OnInit {
   private utente: Utente;
   private prenotazioni$: Observable<Prenotazione[]>;
+  private deleteTitle: string;
+  private messageTitle: string;
+  private deleteButton: string;
+  private cancelButton: string;
 
   constructor(private prenotazioneService: PrenotazioneService,
+              private alertController: AlertController,
+              private translateService: TranslateService,
               private utenteservice: UtenteService) { }
 
   ngOnInit() {
+    this.initTranslate();
     this.utenteservice.getUtente().subscribe( (utente) => {
       this.utente = utente;
       this.listPrenotazioni(); });
@@ -25,6 +34,49 @@ export class PrenotazioniPage implements OnInit {
 
   listPrenotazioni() {
     this.prenotazioni$ = this.prenotazioneService.getPrenotazioni(this.utente.id);
+  }
+
+  async deletePrenotazioni(sliding: IonItemSliding) {
+    sliding.close();
+  }
+
+  async deletePrenotazioneUtente(idPrenotazione) {
+
+    const alert = await this.alertController.create({
+      header: this.deleteTitle,
+      message: this.messageTitle,
+      buttons: [
+        {
+          text: this.cancelButton,
+          handler: () => {
+            console.log('Annulla clicked');
+          }
+        },
+        {
+          text: this.deleteButton,
+          handler: () => {
+            console.log('Preferito Rimosso: ' + idPrenotazione);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  initTranslate() {
+    this.translateService.get('WARNING_TITLE').subscribe((data: string) => {
+      this.deleteTitle = data;
+    });
+    this.translateService.get('PRENOTAZIONI_DELETE_MESSAGE').subscribe((data: string) => {
+      this.messageTitle = data;
+    });
+    this.translateService.get('DELETE_BUTTON').subscribe((data: string) => {
+      this.deleteButton = data;
+    });
+    this.translateService.get('CANCEL_BUTTON').subscribe((data: string) => {
+      this.cancelButton = data;
+    });
   }
 
 }
