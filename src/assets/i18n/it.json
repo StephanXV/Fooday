@@ -57,5 +57,8 @@
   "PLACEHOLDER_USA_PUNTI": "Vuoi usare i tuoi punti?",
   "PLACEHOLDER_CITTA": "Città in cui vivi",
   "PREFERITI_DELETE_TITLE": "ATTENZIONE",
-  "PREFERITI_DELETE_MESSAGE": "Vuoi rimuovere il ristorante dai preferiti?"
+  "PREFERITI_DELETE_MESSAGE": "Vuoi rimuovere il ristorante dai preferiti?",
+  "REGISTRAZIONE_SUCCESSO_TITLE": "Registrazione effettuata",
+  "REGISTRAZIONE_SUCCESSO_MESSAGE": "Ora inserisci username e password per effettuare l'accesso",
+  "CONFIRM_BUTTON": "Ok"
 }

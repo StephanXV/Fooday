@@ -56,5 +56,8 @@
   "PLACEHOLDER_USA_PUNTI": "Use promotional points?",
   "PLACEHOLDER_CITTA": "Your citys",
   "PREFERITI_DELETE_TITLE": "WARNING",
-  "PREFERITI_DELETE_MESSAGE": "Do you want to remove the restaurant from your favourites?"
+  "PREFERITI_DELETE_MESSAGE": "Do you want to remove the restaurant from your favourites?",
+  "REGISTRAZIONE_SUCCESSO_TITLE": "Registration complete",
+  "REGISTRAZIONE_SUCCESSO_MESSAGE": "Now insert username and password to login",
+  "CONFIRM_BUTTON": "Ok"
 }
