@@ -15,6 +15,7 @@ import {TranslateService} from '@ngx-translate/core';
 export class PrenotazioniPage implements OnInit {
   private utente: Utente;
   private prenotazioni$: Observable<Prenotazione[]>;
+  private prenotazione: Prenotazione;
   private deleteTitle: string;
   private messageTitle: string;
   private deleteButton: string;
@@ -40,7 +41,7 @@ export class PrenotazioniPage implements OnInit {
     sliding.close();
   }
 
-  async deletePrenotazioneUtente(idRistorante) {
+  async deleteAlert(idRistorante) {
 
     const alert = await this.alertController.create({
       header: this.deleteTitle,
@@ -55,7 +56,9 @@ export class PrenotazioniPage implements OnInit {
         {
           text: this.deleteButton,
           handler: () => {
-            console.log('Preferito Rimosso: ' + idRistorante);
+            this.prenotazioneService.deletePrenotazioni(this.utente.id, idRistorante).subscribe( () =>
+                this.listPrenotazioni());
+            console.log('Prenotazione rimossa');
           }
         }
       ]

@@ -18,6 +18,11 @@ export class PrenotazioneService {
         return this.http.get<Prenotazione[]>(prenotazioniUrl);
     }
 
+    deletePrenotazioni(idUtente, idRistorante) {
+        const url = `${URL.PRENOTAZIONI_DELETE}/${idUtente}/${idRistorante}`;
+        return this.http.delete(url);
+    }
+
 
 
 }
