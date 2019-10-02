@@ -40,7 +40,7 @@ export class PrenotazioniPage implements OnInit {
     sliding.close();
   }
 
-  async deletePrenotazioneUtente(idPrenotazione) {
+  async deletePrenotazioneUtente(idRistorante) {
 
     const alert = await this.alertController.create({
       header: this.deleteTitle,
@@ -55,7 +55,7 @@ export class PrenotazioniPage implements OnInit {
         {
           text: this.deleteButton,
           handler: () => {
-            console.log('Preferito Rimosso: ' + idPrenotazione);
+            console.log('Preferito Rimosso: ' + idRistorante);
           }
         }
       ]

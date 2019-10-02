@@ -146,10 +146,21 @@
           <ion-grid>
             <ion-row justify-content-between>
               <ion-col>
-                <ion-card text-center>
+                <circle-progress subtitle="{{'LABEL_CUCINA' | translate}}" [maxPercent]="100" [title]=mediaCucina
+                [subtitleFontSize]="15"
+                        [percent]=mediaCucina*10
+                        [radius]="47"
+                        [outerStrokeWidth]="4"
+                        [innerStrokeWidth]="2"
+                        [outerStrokeColor]="'#78C000'"
+                        [innerStrokeColor]="'#C7E596'"
+                        [animation]="true"
+                        [animationDuration]="300" [showUnits]=false
+                ></circle-progress>
+                <!--<ion-card text-center>
                   <ion-card-title>{{'LABEL_CUCINA' | translate}}</ion-card-title>
                   <ion-card-content>{{mediaCucina}}</ion-card-content>
-                </ion-card>
+                </ion-card> -->
               </ion-col>
 
               <ion-col>

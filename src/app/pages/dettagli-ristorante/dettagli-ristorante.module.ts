@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { DettagliRistorantePage } from './dettagli-ristorante.page';
 import {TranslateModule} from '@ngx-translate/core';
+import {NgCircleProgressModule} from "ng-circle-progress";
 
 const routes: Routes = [
   {
@@ -34,13 +35,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    TranslateModule.forChild(),
-    RouterModule.forChild(routes)
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        TranslateModule.forChild(),
+        RouterModule.forChild(routes),
+        NgCircleProgressModule
+    ],
   declarations: [DettagliRistorantePage]
 })
 export class DettagliRistorantePageModule {}

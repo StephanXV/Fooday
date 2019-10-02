@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { PrenotazioniPage } from './prenotazioni.page';
 import {TranslateModule} from '@ngx-translate/core';
+import {NgCircleProgressModule} from "ng-circle-progress";
 
 const routes: Routes = [
   {
@@ -25,13 +26,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    TranslateModule.forChild(),
-    IonicModule,
-    RouterModule.forChild(routes)
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        TranslateModule.forChild(),
+        IonicModule,
+        RouterModule.forChild(routes),
+        NgCircleProgressModule
+    ],
   declarations: [PrenotazioniPage]
 })
 export class PrenotazioniPageModule {}
