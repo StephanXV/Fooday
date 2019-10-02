@@ -15,7 +15,7 @@ const routes: Routes = [
     component: DettagliRistorantePage
   },
   {
-    path: 'prenota',
+    path: 'prenota/:id',
     children: [
       {
         path: '',

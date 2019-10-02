@@ -35,7 +35,6 @@ export class DettagliRistorantePage implements OnInit {
 
   dettagliRistorante() {
     this.ristorante$ = this.ristoranteService.getRistoranteById(this.idRistorante);
-
   }
 
   calcolaMedie(recensioni: Recensione[]) {

@@ -20,11 +20,11 @@
     </ion-item>
 
     <ion-item margin-bottom class="animated fadeInUp">
-      <ion-datetime placeholder="{{'PLACEHOLDER_GIORNO' | translate}}" formControlName="data"></ion-datetime>
+      <ion-datetime placeholder="{{'PLACEHOLDER_GIORNO' | translate}}" (ionChange)="aggiornaGiorno()" formControlName="data"></ion-datetime>
     </ion-item>
 
     <ion-item margin-bottom class="animated fadeInUp">
-      <ion-select placeholder="{{'PLACEHOLDER_ORARIO' | translate}}" formControlName="orario">
+      <ion-select placeholder="{{'PLACEHOLDER_ORARIO' | translate}}" [disabled]="!bookFormModule.get('data').valid" formControlName="orario">
         <ion-select-option *ngFor="let orario of orari">{{orario}}</ion-select-option>
       </ion-select>
     </ion-item>
