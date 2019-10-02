@@ -3,7 +3,6 @@ import {Injectable} from '@angular/core';
 import {URL} from '../constants';
 import {Prenotazione} from '../model/prenotazione.model';
 import {Observable} from 'rxjs';
-import {Ristorante} from '../model/ristorante.model';
 
 @Injectable({
     providedIn: 'root'
