@@ -4,8 +4,6 @@ import {Observable} from 'rxjs';
 import {Ristorante} from '../../model/ristorante.model';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Recensione} from '../../model/recensione.model';
-import {Utente} from '../../model/utente.model';
-
 
 @Component({
   selector: 'app-dettagli-ristorante',
@@ -15,7 +13,6 @@ import {Utente} from '../../model/utente.model';
 export class DettagliRistorantePage implements OnInit {
   view: string;
   private ristorante$: Observable<Ristorante>;
-  private utente$: Observable<Utente>;
   private idRistorante: number;
   private mediaCucina = 0;
   private mediaServizio = 0;
@@ -35,6 +32,9 @@ export class DettagliRistorantePage implements OnInit {
 
   dettagliRistorante() {
     this.ristorante$ = this.ristoranteService.getRistoranteById(this.idRistorante);
+    this.ristoranteService.getRistoranteById(this.idRistorante).subscribe( (ristorante) => {
+      this.calcolaMedie(ristorante.recensioni);
+    });
   }
 
   calcolaMedie(recensioni: Recensione[]) {

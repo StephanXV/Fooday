@@ -1,13 +1,15 @@
 import {Utente} from './utente.model';
 import {Ristorante} from './ristorante.model';
+import {PrenotazioneId} from './prenotazioneId.model';
 
 export class Prenotazione {
-    id: number;
+    prenotazioneId: PrenotazioneId;
+    nome: string;
     giorno: Date;
     orario: string;
     posti: number;
-    timestamp: string;
     scontoApplicato: number;
     utente: Utente;
+    usaPunti: boolean;
     ristorante: Ristorante;
 }

@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {NavController} from '@ionic/angular';
+import {AlertController, NavController} from '@ionic/angular';
 import {UtenteService} from '../../services/utente.service';
 import {Utente} from '../../model/utente.model';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Ristorante} from '../../model/ristorante.model';
 import {RistoranteService} from '../../services/ristorante.service';
-import {Orario} from '../../model/orario.model';
-import {DISABLED} from '@angular/forms/src/model';
+import {Recensione} from '../../model/recensione.model';
+import {Prenotazione} from '../../model/prenotazione.model';
+import {PrenotazioneService} from '../../services/prenotazione.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-prenota',
@@ -21,18 +23,26 @@ export class PrenotaPage implements OnInit {
   private utente: Utente;
   private selectedDate: Date;
   private currentDate: Date;
+  private prenotazione: Prenotazione = new Prenotazione();
   private bookFormModule: FormGroup;
-  private giorni = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica']
-  private numbers: number[] = [1, 2, 3, 4, 5];
+  private prenotazioneTitle: string;
+  private prenotazioneMessage: string;
+  private confirmButton: string;
+  private giorni = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
+  private numbers: number[] = [];
   private orari: string[] = [];
 
   constructor(private formBuilder: FormBuilder,
               private navController: NavController,
               private utenteService: UtenteService,
               private route: ActivatedRoute,
-              private ristoranteService: RistoranteService) { }
+              private ristoranteService: RistoranteService,
+              private prenotazioneService: PrenotazioneService,
+              private alertController: AlertController,
+              private translateService: TranslateService) { }
 
   ngOnInit() {
+    this.initTranslate();
     this.currentDate = new Date();
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.idRistorante = parseInt(params.get('id'), 0);
@@ -45,7 +55,7 @@ export class PrenotaPage implements OnInit {
       posti: ['', Validators.compose([Validators.required])],
       data: ['', Validators.compose([Validators.required])],
       orario: ['', Validators.compose([Validators.required])],
-      nome: ['', Validators.compose([Validators.required])],
+      nome: [this.utente.nome + ' ' + this.utente.cognome, Validators.compose([Validators.required])],
       punti: ['', Validators.compose([Validators.required])]
     });
   }
@@ -53,7 +63,14 @@ export class PrenotaPage implements OnInit {
   dettagliRistorante() {
     this.ristoranteService.getRistoranteById(this.idRistorante).subscribe( (ristorante) => {
       this.ristorante = ristorante;
+      this.generatePosti();
     });
+  }
+
+  generatePosti() {
+    for (let i = 1; i < this.ristorante.postiTot; i++) {
+      this.numbers[i] = i;
+    }
   }
 
   aggiornaGiorno() {
@@ -95,7 +112,54 @@ export class PrenotaPage implements OnInit {
   }
 
   onBookSubmit() {
-    console.log('Prenotazione confermata');
-    this.navController.navigateBack('');
+    this.prenotazione.posti = this.bookFormModule.value.posti;
+    this.prenotazione.giorno = this.bookFormModule.value.data;
+    this.prenotazione.orario = this.bookFormModule.value.orario;
+    this.prenotazione.scontoApplicato = this.ristorante.sconto;
+    this.prenotazione.nome = this.bookFormModule.value.nome;
+    if (this.bookFormModule.value.punti === 'Si') {
+      this.prenotazione.usaPunti = true;
+    } else {
+      this.prenotazione.usaPunti = false;
+    }
+    this.prenotazione.ristorante = new Ristorante();
+    this.prenotazione.ristorante.id = this.idRistorante;
+    this.prenotazione.utente = new Utente();
+    this.prenotazione.utente.nome = this.utente.nome;
+    this.prenotazione.utente.id = this.utente.id;
+    this.prenotazioneService.createPrenotazione(this.prenotazione).subscribe((recensione: Prenotazione) =>
+            this.prenotazioneCompletata(),
+        error => (console.log('Username già presa')));
+  }
+
+
+  async prenotazioneCompletata() {
+
+    const alert = await this.alertController.create({
+      header: this.prenotazioneTitle,
+      message: this.prenotazioneMessage,
+      buttons: [
+        {
+          text: this.confirmButton,
+          handler: () => {
+            console.log('Prenotazione salvata: ' + this.prenotazione.nome);
+            this.navController.back();
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  initTranslate() {
+    this.translateService.get('PRENOTAZIONE_SUCCESSO_TITLE').subscribe((data: string) => {
+      this.prenotazioneTitle = data;
+    });
+    this.translateService.get('PRENOTAZIONE_SUCCESSO_MESSAGE').subscribe((data: string) => {
+      this.prenotazioneMessage = data;
+    });
+    this.translateService.get('CONFIRM_BUTTON').subscribe((data: string) => {
+      this.confirmButton = data;
+    });
   }
 }

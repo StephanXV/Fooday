@@ -14,28 +14,33 @@
   <form align-items-center margin="medium" [formGroup]="bookFormModule">
 
     <ion-item margin-bottom class="animated fadeInUp">
-      <ion-select placeholder="{{'PLACEHOLDER_NUM_PERSONE' | translate}}" formControlName="posti">
+      <ion-label>{{'PLACEHOLDER_NUM_PERSONE' | translate}}</ion-label>
+      <ion-select  formControlName="posti">
         <ion-select-option *ngFor="let number of numbers">{{number}}</ion-select-option>
       </ion-select>
     </ion-item>
 
     <ion-item margin-bottom class="animated fadeInUp">
-      <ion-datetime placeholder="{{'PLACEHOLDER_GIORNO' | translate}}" (ionChange)="aggiornaGiorno()" formControlName="data"></ion-datetime>
+      <ion-label>{{'PLACEHOLDER_GIORNO' | translate}}</ion-label>
+      <ion-datetime (ionChange)="aggiornaGiorno()" formControlName="data"></ion-datetime>
     </ion-item>
 
     <ion-item margin-bottom class="animated fadeInUp">
-      <ion-select placeholder="{{'PLACEHOLDER_ORARIO' | translate}}" [disabled]="!bookFormModule.get('data').valid" formControlName="orario">
+      <ion-label>{{'PLACEHOLDER_ORARIO' | translate}}</ion-label>
+      <ion-select [disabled]="!bookFormModule.get('data').valid" formControlName="orario">
         <ion-select-option *ngFor="let orario of orari">{{orario}}</ion-select-option>
       </ion-select>
     </ion-item>
 
     <ion-item margin-bottom class="animated fadeInUp">
-      <ion-input placeholder="{{'PLACEHOLDER_NOME_PRENOTAZIONE' | translate}}" formControlName="nome">
+      <ion-label>{{'PLACEHOLDER_NOME_PRENOTAZIONE' | translate}}</ion-label>
+      <ion-input style="text-align: right" formControlName="nome">
       </ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-select placeholder="{{'PLACEHOLDER_USA_PUNTI' | translate}}" formControlName="punti">
+      <ion-label>{{'PLACEHOLDER_USA_PUNTI' | translate}}</ion-label>
+      <ion-select formControlName="punti">
         <ion-select-option>Si</ion-select-option>
         <ion-select-option>No</ion-select-option>
       </ion-select>

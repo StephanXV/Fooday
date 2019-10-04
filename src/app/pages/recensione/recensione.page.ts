@@ -75,7 +75,7 @@ export class RecensionePage implements OnInit {
         {
           text: this.confirmButton,
           handler: () => {
-            console.log('Utente registrato: ' + this.recensione.descrizione);
+            console.log('Recensione salvata: ' + this.recensione.descrizione);
             this.navController.back();
           }
         }

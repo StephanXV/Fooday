@@ -14,7 +14,7 @@ const routes: Routes = [
     component: PreferitiPage
   },
   {
-    path: 'prenota',
+    path: 'prenota/:id',
     children: [
       {
         path: '',

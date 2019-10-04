@@ -35,7 +35,7 @@
       <ion-icon name="restaurant"></ion-icon>
     </ion-segment-button>
 
-    <ion-segment-button value="reviews" (click)="calcolaMedie(ristorante.recensioni)">
+    <ion-segment-button value="reviews">
       <ion-icon name="thumbs-up"></ion-icon>
       <ion-label>
         {{'DETTAGLI_RECENSIONI' | translate}}
@@ -191,7 +191,7 @@
                     <ion-label>{{recensione.utente.nome}} {{recensione.utente.cognome}}</ion-label>
                   </ion-col>
                   <ion-col>
-                    <ion-label>{{recensione.timestamp}}</ion-label>
+                    <ion-label>{{recensione.recensioneId.timestamp | date}}</ion-label>
                   </ion-col>
                 </ion-row>
                 <ion-label>Cucina: {{recensione.votoCucina}} - Servizio: {{recensione.votoServizio}} - Prezzo: {{recensione.votoPrezzo}}</ion-label>

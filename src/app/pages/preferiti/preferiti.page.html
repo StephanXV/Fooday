@@ -43,7 +43,7 @@
             </ion-button>
           </ion-col>
           <ion-col>
-            <ion-button float-end fill="clear" [routerLink]="['prenota']" routerDirection="forward">
+            <ion-button float-end fill="clear" [routerLink]="['prenota', preferito.id]" routerDirection="forward">
               <ion-icon name="pricetag"></ion-icon>
               <div>{{'BOTTONE_PRENOTA' | translate}}</div>
             </ion-button>
