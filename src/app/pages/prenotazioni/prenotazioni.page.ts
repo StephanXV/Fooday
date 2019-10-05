@@ -19,6 +19,7 @@ export class PrenotazioniPage implements OnInit {
   private messageTitle: string;
   private deleteButton: string;
   private cancelButton: string;
+  private currentDate: Date = new Date();
 
   constructor(private prenotazioneService: PrenotazioneService,
               private alertController: AlertController,
