@@ -11,6 +11,13 @@
 <ion-content *ngIf="(ristorante$ | async) as ristorante">
   <!-- carousel -->
   <div margin-top margin-end margin-start>
+    <ion-fab id="heartButton">
+      <ion-fab-button>
+        <ion-icon name="heart">
+
+        </ion-icon>
+      </ion-fab-button>
+    </ion-fab>
     <ion-slides padding-bottom pager="true">
       <ion-slide *ngFor="let immagine of ristorante.immagini " padding-bottom>
         <ion-img src="{{immagine.src}}"></ion-img>
