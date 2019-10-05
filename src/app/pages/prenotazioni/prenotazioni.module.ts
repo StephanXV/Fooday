@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { PrenotazioniPage } from './prenotazioni.page';
 import {TranslateModule} from '@ngx-translate/core';
-import {NgCircleProgressModule} from "ng-circle-progress";
+import {NgCircleProgressModule} from 'ng-circle-progress';
 
 const routes: Routes = [
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
     component: PrenotazioniPage
   },
   {
-    path: 'recensione/:id',
+    path: 'recensione/:id/:timestamp',
     children: [
       {
         path: '',

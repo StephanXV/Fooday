@@ -40,10 +40,10 @@
   <ion-title>{{'TITOLO_NEI_DINTORNI' | translate}}</ion-title>
 
   <ion-list>
-    <ion-card *ngFor="let ristorante of ristoranti$ | async">
+    <ion-card *ngFor="let ristorante of ristoranti$ | async" [routerLink]="['dettagli-ristorante', ristorante.id]" routerDirection="forward">
       <ion-row>
         <ion-col>
-          <ion-img [routerLink]="['dettagli-ristorante', ristorante.id]" routerDirection="forward" src="{{ristorante.immagini[0].src}}"></ion-img>
+          <ion-img src="{{ristorante.immagini[0].src}}"></ion-img>
         </ion-col>
       </ion-row>
 

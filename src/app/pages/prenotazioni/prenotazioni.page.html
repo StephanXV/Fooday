@@ -72,7 +72,8 @@
               </ion-label>
             </ion-button>
 
-            <ion-button *ngIf="currentDate > prenotazione.giorno && !prenotazione.isValutata"  margin-end class="button1" [routerLink]="['recensione', prenotazione.ristorante.id]" routerDirection="forward">
+            <ion-button *ngIf="currentDate > prenotazione.giorno && !prenotazione.valutata"  margin-end class="button1"
+                        [routerLink]="['recensione', prenotazione.ristorante.id, prenotazione.prenotazioneId.timestamp]" routerDirection="forward">
               <ion-label>
                 {{'BOTTONE_RECENSIONE' | translate}}
               </ion-label>

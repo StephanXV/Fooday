@@ -15,7 +15,7 @@ export class CittaService {
     }
 
     cittaInput(): Observable<Citta[]> {
-        return this.http.get<Citta[]>( URL.CITTA);
+        return this.http.get<Citta[]>(URL.CITTA);
 
     }
 
