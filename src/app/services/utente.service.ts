@@ -93,4 +93,9 @@ export class UtenteService {
         return this.http.post<Utente>(URL.REGISTRAZIONE, nuovoUtente);
     }
 
+    containsPreferito(idUtente, idRistorante): Observable<boolean> {
+        const url = `${URL.UTENTE_PREFERITI}/${idUtente}/${idRistorante}`;
+        return this.http.get<boolean>(url);
+    }
+
 }

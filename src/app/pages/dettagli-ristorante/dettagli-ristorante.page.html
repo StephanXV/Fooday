@@ -11,8 +11,13 @@
 <ion-content *ngIf="(ristorante$ | async) as ristorante">
   <!-- carousel -->
   <div margin-top margin-end margin-start>
-    <ion-fab id="heartButton">
-      <ion-fab-button>
+    <ion-fab [hidden]="!isLoggedIn" id="heartButton">
+        <ion-fab-button *ngIf="isFavourite" (click)="rimuoviPreferito(ristorante)">
+            <ion-icon name="heart">
+
+            </ion-icon>
+        </ion-fab-button>
+      <ion-fab-button *ngIf="!isFavourite" color="light" (click)="aggiungiPreferito(ristorante)">
         <ion-icon name="heart">
 
         </ion-icon>
