@@ -49,6 +49,9 @@ export class DettagliRistorantePage implements OnInit {
   }
 
   calcolaMedie(recensioni: Recensione[]) {
+    this.mediaCucina = 0;
+    this.mediaServizio = 0;
+    this.mediaPrezzo = 0;
     for (const recensione of recensioni) {
       this.mediaCucina += recensione.votoCucina;
       this.mediaServizio += recensione.votoServizio;
