@@ -12,13 +12,14 @@ import {TranslateService} from '@ngx-translate/core';
   templateUrl: './prenotazioni.page.html',
   styleUrls: ['./prenotazioni.page.scss'],
 })
-export class PrenotazioniPage implements OnInit {
+export class PrenotazioniPage implements OnInit{
   private utente: Utente;
   private prenotazioni$: Observable<Prenotazione[]>;
   private deleteTitle: string;
   private messageTitle: string;
   private deleteButton: string;
   private cancelButton: string;
+  private currentDate: Date = new Date();
 
   constructor(private prenotazioneService: PrenotazioneService,
               private alertController: AlertController,

@@ -11,5 +11,6 @@ export class Prenotazione {
     scontoApplicato: number;
     utente: Utente;
     usaPunti: boolean;
+    valutata: boolean;
     ristorante: Ristorante;
 }

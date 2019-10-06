@@ -9,6 +9,7 @@ export const URL = {
     REGISTRAZIONE: URL_BASE + '/utente/registrazione',
     PRENOTAZIONI: URL_BASE + '/prenotazioni',
     PRENOTAZIONI_DELETE: URL_BASE + '/prenotazioni/delete',
+    PRENOTAZIONI_VALUTATA: URL_BASE + '/prenotazioni/valutata',
     RECENSIONI: URL_BASE + '/recensioni',
     PREFERITI: URL_BASE + '/ristoranti/preferiti',
     RISTORANTI: URL_BASE + '/ristoranti',

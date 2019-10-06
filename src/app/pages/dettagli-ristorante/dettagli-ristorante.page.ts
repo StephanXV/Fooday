@@ -60,7 +60,6 @@ export class DettagliRistorantePage implements OnInit {
     this.mediaCucina = Math.floor(this.mediaCucina * 10) / 10;
     this.mediaServizio = Math.floor(this.mediaServizio * 10) / 10;
     this.mediaPrezzo = Math.floor(this.mediaPrezzo * 10) / 10;
-
   }
 
   callF() {

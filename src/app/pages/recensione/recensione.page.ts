@@ -3,12 +3,12 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AlertController, NavController} from '@ionic/angular';
 import {UtenteService} from '../../services/utente.service';
 import {Utente} from '../../model/utente.model';
-import {Citta} from '../../model/citta.model';
 import {RecensioneService} from '../../services/recensione.service';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslateService} from '@ngx-translate/core';
 import {Recensione} from '../../model/recensione.model';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Ristorante} from '../../model/ristorante.model';
+import {PrenotazioneService} from '../../services/prenotazione.service';
 
 @Component({
   selector: 'app-recensione',
@@ -18,6 +18,7 @@ import {Ristorante} from '../../model/ristorante.model';
 export class RecensionePage implements OnInit {
 
   private idRistorante: number;
+  private prenotazioneTimestamp: number;
   private utente: Utente = new Utente();
   private registrationTitle: string;
   private registrationMessage: string;
@@ -33,12 +34,14 @@ export class RecensionePage implements OnInit {
               private recensioneService: RecensioneService,
               private translateService: TranslateService,
               private alertController: AlertController,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private prenotazioneService: PrenotazioneService) { }
 
   ngOnInit() {
     this.initTranslate();
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.idRistorante = parseInt(params.get('id'), 0);
+      this.prenotazioneTimestamp = parseInt(params.get('timestamp'), 0);
     });
     this.utenteService.getUtente().subscribe((utente) => {
       this.utente = utente;
@@ -76,6 +79,7 @@ export class RecensionePage implements OnInit {
           text: this.confirmButton,
           handler: () => {
             console.log('Recensione salvata: ' + this.recensione.descrizione);
+            this.prenotazioneService.prenotazioneValutata(this.utente.id, this.idRistorante, this.prenotazioneTimestamp).subscribe();
             this.navController.back();
           }
         }

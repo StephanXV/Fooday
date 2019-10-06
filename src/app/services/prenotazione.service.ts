@@ -28,6 +28,11 @@ export class PrenotazioneService {
         return this.http.post<Prenotazione>(URL.PRENOTAZIONI, prenotazione);
     }
 
+    prenotazioneValutata(idUtente, idRistorante, timestamp) {
+        const url = `${URL.PRENOTAZIONI_VALUTATA}/${idUtente}/${idRistorante}/${timestamp}`;
+        return this.http.get(url);
+    }
+
 
 
 
