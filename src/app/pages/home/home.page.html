@@ -56,11 +56,13 @@
           </ion-col>
           <ion-col>
             <ion-label margin-end color="tertiary" float-right>
-              {{ristorante.punteggio}}
+              {{ristorante.punteggio}} <ion-label style="font-size: small; color: #989aa2">/10</ion-label>
             </ion-label>
           </ion-col>
         </ion-row>
       </ion-card-title>
+
+      <ion-badge margin-start margin-top color="primary" *ngFor="let cate of ristorante.categorie"> {{cate.nome}}</ion-badge>
 
       <ion-card-content>
 

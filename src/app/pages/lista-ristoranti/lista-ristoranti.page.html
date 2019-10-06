@@ -32,6 +32,8 @@
         </ion-row>
       </ion-card-title>
 
+      <ion-badge margin-start margin-top color="primary" *ngFor="let cate of ristorante.categorie"> {{cate.nome}}</ion-badge>
+
       <ion-card-content>
 
         <ion-row>
@@ -49,3 +51,10 @@
   </ion-list>
 
 </ion-content>
+
+<!-- fab placed to the bottom end -->
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button color="tertiary">
+    <ion-icon name="ios-funnel"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

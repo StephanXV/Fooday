@@ -24,7 +24,9 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+      AppComponent,
+  ],
   entryComponents: [],
   imports: [BrowserModule,
     NgCircleProgressModule.forRoot({

@@ -44,6 +44,7 @@ export class ModProfiloPage implements OnInit {
   }
 
   onProfileSubmit() {
+    const vecchioUser = this.utente.username;
     this.nuovoUtente.nome = this.profileFormModule.value.nome;
     this.nuovoUtente.cognome = this.profileFormModule.value.cognome;
     this.nuovoUtente.username = this.profileFormModule.value.username;
@@ -56,7 +57,7 @@ export class ModProfiloPage implements OnInit {
     this.nuovoUtente.nascita = this.profileFormModule.value.data;
     this.nuovoUtente.sesso = this.profileFormModule.value.sesso;
     console.log(this.nuovoUtente);
-    this.utenteService.updateProfilo(this.nuovoUtente).subscribe((nuovoUtente: Utente) => this.profiloAggiornato(),
+    this.utenteService.updateProfilo(this.nuovoUtente, vecchioUser).subscribe((nuovoUtente: Utente) => this.profiloAggiornato(),
         error => (console.log('Username già presa')));
   }
 

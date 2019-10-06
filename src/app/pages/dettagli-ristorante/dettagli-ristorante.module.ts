@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { DettagliRistorantePage } from './dettagli-ristorante.page';
 import {TranslateModule} from '@ngx-translate/core';
-import {NgCircleProgressModule} from "ng-circle-progress";
+import {NgCircleProgressModule} from 'ng-circle-progress';
 
 const routes: Routes = [
   {
@@ -43,6 +43,6 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         NgCircleProgressModule
     ],
-  declarations: [DettagliRistorantePage]
+    declarations: [DettagliRistorantePage]
 })
 export class DettagliRistorantePageModule {}

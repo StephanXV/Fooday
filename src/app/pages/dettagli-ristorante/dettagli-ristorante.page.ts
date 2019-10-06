@@ -5,6 +5,8 @@ import {Ristorante} from '../../model/ristorante.model';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Recensione} from '../../model/recensione.model';
 
+declare var f;
+
 @Component({
   selector: 'app-dettagli-ristorante',
   templateUrl: './dettagli-ristorante.page.html',
@@ -19,8 +21,16 @@ export class DettagliRistorantePage implements OnInit {
   private mediaPrezzo = 0;
   private giorni = ['lunedi', 'martedi', 'mercoledi', 'giovedi',
     'venerdi', 'sabato', 'domenica'];
-  constructor(private ristoranteService: RistoranteService,
-              private route: ActivatedRoute) { }
+  constructor(private ristoranteService: RistoranteService, private route: ActivatedRoute) {
+    /*coll[0].addEventListener('click', function() {
+      this.classList.toggle('active');
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    });*/
+  }
 
   ngOnInit() {
     this.view = 'info';
@@ -35,6 +45,7 @@ export class DettagliRistorantePage implements OnInit {
     this.ristoranteService.getRistoranteById(this.idRistorante).subscribe( (ristorante) => {
       this.calcolaMedie(ristorante.recensioni);
     });
+
   }
 
   calcolaMedie(recensioni: Recensione[]) {
@@ -51,4 +62,10 @@ export class DettagliRistorantePage implements OnInit {
     this.mediaPrezzo = Math.floor(this.mediaPrezzo * 10) / 10;
 
   }
+
+  callF() {
+    f();
+  }
+
+
 }

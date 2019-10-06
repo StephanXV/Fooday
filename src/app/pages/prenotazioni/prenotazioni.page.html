@@ -39,9 +39,18 @@
   <ion-list>
     <ion-card *ngFor="let prenotazione of prenotazioni$ | async">
       <ion-card-title margin-top>
-        <ion-label margin>
-          {{prenotazione.ristorante.nome}}
-        </ion-label>
+        <ion-row>
+          <ion-col>
+           <ion-label margin>
+              {{prenotazione.ristorante.nome}}
+           </ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label float-right color="tertiary"><ion-icon name="md-pricetag"></ion-icon>
+              -{{prenotazione.scontoApplicato}}%&nbsp;
+            </ion-label>
+          </ion-col>
+        </ion-row>
       </ion-card-title>
       <ion-card-content>
         <ion-label>
@@ -50,15 +59,17 @@
         <ion-label>
           <strong>Orario:</strong> {{prenotazione.orario}}
         </ion-label> <br>
-        <ion-label>
+        <ion-card-subtitle margin-top>
+        <ion-label style="font-style: italic">
           <strong>Effettuata il:</strong> {{prenotazione.prenotazioneId.timestamp | date: 'EE d MMM, y - hh:mm'}}
-        </ion-label> <br>
-        <ion-label color="tertiary">
-           -{{prenotazione.scontoApplicato}}%&nbsp;
         </ion-label>
-        <ion-label>
+        </ion-card-subtitle>
+
+        <ion-card-subtitle margin-top>
+        <ion-label> <ion-icon style="font-size: larger" name="people"></ion-icon>
           {{prenotazione.posti}} persone
         </ion-label>
+        </ion-card-subtitle>
 
         <ion-row align-items-center>
           <ion-col>
