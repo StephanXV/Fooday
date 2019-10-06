@@ -34,6 +34,10 @@ export class PreferitiPage implements OnInit {
     });
   }
 
+  ionViewWillEnter() {
+    this.listPreferiti();
+  }
+
   async deleteRistoranteByPreferiti(idRistorante, idUtente) {
 
     const alert = await this.alertController.create({

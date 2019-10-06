@@ -12,6 +12,7 @@ export const URL = {
     PRENOTAZIONI_VALUTATA: URL_BASE + '/prenotazioni/valutata',
     RECENSIONI: URL_BASE + '/recensioni',
     PREFERITI: URL_BASE + '/ristoranti/preferiti',
+    PREFERITO_AGGIUNGI: URL_BASE + '/ristoranti/preferiti/aggiungi',
     RISTORANTI: URL_BASE + '/ristoranti',
     RISTORANTI_CITTA_NOME: URL_BASE + '/ristoranti/bynomecitta',
     RISTORANTI_NOME: URL_BASE + '/ristoranti/bynome',
@@ -21,6 +22,7 @@ export const URL = {
     CITTA: URL_BASE + '/citta',
     ORARI: URL_BASE + '/orari',
     UTENTI: URL_BASE + '/utenti',
+    UTENTE_PREFERITI: URL_BASE + '/utente/preferiti',
     RICERCHE: URL_BASE + '/ricerche',
     PIETANZE: URL_BASE + '/pietanze',
     IMMAGINI: URL_BASE + '/immagini'

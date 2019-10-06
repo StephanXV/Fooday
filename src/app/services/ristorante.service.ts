@@ -5,6 +5,8 @@ import {Injectable} from '@angular/core';
 import {URL} from '../constants';
 import {Observable} from 'rxjs';
 import {Ristorante} from '../model/ristorante.model';
+import {Prenotazione} from '../model/prenotazione.model';
+import {Preferito} from '../model/preferito.model';
 
 @Injectable({
     providedIn: 'root'
@@ -48,5 +50,10 @@ export class RistoranteService {
     deletePreferito(idRistorante, idUtente) {
         const deletePreferitoUrl = `${URL.PREFERITI}/${idRistorante}/${idUtente}`;
         return this.http.delete<Ristorante>(deletePreferitoUrl);
+    }
+
+    addPreferito(idRistorante, idUtente): Observable<boolean> {
+        const addPreferitoUrl = `${URL.PREFERITO_AGGIUNGI}/${idRistorante}/${idUtente}`;
+        return this.http.get<boolean>(addPreferitoUrl);
     }
 }
