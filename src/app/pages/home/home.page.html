@@ -39,7 +39,18 @@
   <!-- Nei Dintorni -->
   <ion-title>{{'TITOLO_NEI_DINTORNI' | translate}}</ion-title>
 
+
+    <!--<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>-->
+
   <ion-list>
+
+    <!-- Crescent -->
+    <ion-label *ngIf="ristoranti$ == null">
+      <ion-spinner name="crescent"></ion-spinner>
+    </ion-label>
+
     <ion-card *ngFor="let ristorante of ristoranti$ | async" [routerLink]="['dettagli-ristorante', ristorante.id]" routerDirection="forward">
       <ion-row>
         <ion-col>
@@ -79,7 +90,6 @@
       </ion-card-content>
     </ion-card>
   </ion-list>
-
 
 
 </ion-content>

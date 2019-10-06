@@ -16,6 +16,7 @@ export const URL = {
     RISTORANTI_CITTA_NOME: URL_BASE + '/ristoranti/bynomecitta',
     RISTORANTI_NOME: URL_BASE + '/ristoranti/bynome',
     RISTORANTI_CITTA_ID: URL_BASE + '/ristoranti/byidcitta',
+    RISTORANTI_CITTA_AROUND: URL_BASE + '/ristoranti/around',
     RISTORANTI_CATEGORIA: URL_BASE + '/ristoranti/categoria',
     CATEGORIE: URL_BASE + '/categorie',
     CITTA: URL_BASE + '/citta',

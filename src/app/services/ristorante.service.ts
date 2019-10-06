@@ -49,4 +49,11 @@ export class RistoranteService {
         const deletePreferitoUrl = `${URL.PREFERITI}/${idRistorante}/${idUtente}`;
         return this.http.delete<Ristorante>(deletePreferitoUrl);
     }
+
+    getRistorantiAroundUser(lat, lon): Observable<Ristorante[]> {
+        console.log('entrato');
+        const ristorantiAroundUser = `${URL.RISTORANTI_CITTA_AROUND}/${lat}/${lon}`;
+        return this.http.get<Ristorante[]>(ristorantiAroundUser);
+        console.log('uscito');
+    }
 }
