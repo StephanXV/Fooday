@@ -11,6 +11,7 @@
 @import '~@ionic/angular/css/flex-utils.css';
 
 .horizontalScroll {
+  margin-right: 8px;
   --indicator-color-checked: #FFFFFF;
   color: var(--ion-color-medium);
 }
@@ -20,13 +21,9 @@
 }
 
 .add-photo {
-  padding-top: 18px;
   margin: 0 auto;
-  width: 180px;
-  height: 180px;
-  border-style: solid;
-  border-color: #86888f;
-  border-radius: 10px;
+  width: 150px;
+  height: 150px;
 }
 
 .rounded {
@@ -76,3 +73,48 @@
   margin-bottom: 50px;
 }
 
+.collapsible {
+  background-color: transparent;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 17px;
+}
+
+.collapsible:after {
+  content: '\002B';
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: transparent;
+}
+
+#heartButton {
+  position:absolute;
+  right: 10px;
+  top: 185px;
+  button {
+    color: red;
+  };
+}
+
+ion-spinner {
+  display: block;
+  margin: auto;
+  width: 50px !important;
+  height: 50px !important;
+  margin-top: 10px;
+}

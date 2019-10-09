@@ -5,7 +5,11 @@ import {Ristorante} from '../../model/ristorante.model';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Recensione} from '../../model/recensione.model';
 import {Utente} from '../../model/utente.model';
+import {UtenteService} from '../../services/utente.service';
+import {map, take} from 'rxjs/operators';
+import {Preferito} from '../../model/preferito.model';
 
+declare var f;
 
 @Component({
   selector: 'app-dettagli-ristorante',
@@ -14,8 +18,10 @@ import {Utente} from '../../model/utente.model';
 })
 export class DettagliRistorantePage implements OnInit {
   view: string;
+  private utente: Utente = new Utente();
+  private isFavourite: boolean;
+  private isLoggedIn: boolean;
   private ristorante$: Observable<Ristorante>;
-  private utente$: Observable<Utente>;
   private idRistorante: number;
   private mediaCucina = 0;
   private mediaServizio = 0;
@@ -23,22 +29,52 @@ export class DettagliRistorantePage implements OnInit {
   private giorni = ['lunedi', 'martedi', 'mercoledi', 'giovedi',
     'venerdi', 'sabato', 'domenica'];
   constructor(private ristoranteService: RistoranteService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private utenteService: UtenteService) {
+    /*coll[0].addEventListener('click', function() {
+      this.classList.toggle('active');
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    });*/
+  }
 
   ngOnInit() {
     this.view = 'info';
+  }
+
+  ionViewWillEnter() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.idRistorante = parseInt(params.get('id'), 0);
       this.dettagliRistorante();
+    });
+    this.utenteService.isLogged().subscribe( (isLoggedIn: boolean) => {
+      if (isLoggedIn) {
+        this.utenteService.getUtente().subscribe( (utente) => {
+          this.utente = utente;
+          this.controllaPreferito(this.idRistorante);
+          this.isLoggedIn = isLoggedIn;
+        });
+      } else {
+        this.isLoggedIn = isLoggedIn;
+      }
     });
   }
 
   dettagliRistorante() {
     this.ristorante$ = this.ristoranteService.getRistoranteById(this.idRistorante);
+    this.ristoranteService.getRistoranteById(this.idRistorante).subscribe( (ristorante) => {
+      this.calcolaMedie(ristorante.recensioni);
+    });
 
   }
 
   calcolaMedie(recensioni: Recensione[]) {
+    this.mediaCucina = 0;
+    this.mediaServizio = 0;
+    this.mediaPrezzo = 0;
     for (const recensione of recensioni) {
       this.mediaCucina += recensione.votoCucina;
       this.mediaServizio += recensione.votoServizio;
@@ -50,6 +86,29 @@ export class DettagliRistorantePage implements OnInit {
     this.mediaCucina = Math.floor(this.mediaCucina * 10) / 10;
     this.mediaServizio = Math.floor(this.mediaServizio * 10) / 10;
     this.mediaPrezzo = Math.floor(this.mediaPrezzo * 10) / 10;
-
   }
+
+  callF() {
+    f();
+  }
+
+  rimuoviPreferito(ristorante) {
+    this.ristoranteService.deletePreferito(ristorante.id, this.utente.id).subscribe( () => {
+      this.ionViewWillEnter();
+    });
+  }
+
+  aggiungiPreferito(ristorante) {
+    this.ristoranteService.addPreferito(this.idRistorante, this.utente.id).subscribe( () => {
+      this.ionViewWillEnter();
+    });
+  }
+
+  controllaPreferito(idRistorante) {
+    this.utenteService.containsPreferito(this.utente.id, idRistorante).subscribe( (isFavourite) => {
+      this.isFavourite = isFavourite;
+      console.log('Il ristorante ' + idRistorante + ' è nella lista preferiti dell\'utente ' + this.utente.id + ': ' + isFavourite);
+    });
+  }
+
 }

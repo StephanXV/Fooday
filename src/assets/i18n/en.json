@@ -24,7 +24,7 @@
   "TITOLO_MODIFICA_PROFILO": "Change your informations",
   "BOTTONE_SALVA": "Save Changes",
   "TITOLO_PREFERENZE": "Settings",
-  "TITOLO_LISTA_RISTORANTI": "Found restaurants by:",
+  "TITOLO_LISTA_RISTORANTI": "Results by ",
   "DETTAGLI_INFO": "Info",
   "DETTAGLI_MENU": "Menù",
   "DETTAGLI_RECENSIONI": "Reviews",
@@ -55,9 +55,17 @@
   "PLACEHOLDER_NOME_PRENOTAZIONE": "Enter reservation name",
   "PLACEHOLDER_USA_PUNTI": "Use promotional points?",
   "PLACEHOLDER_CITTA": "Your citys",
-  "PREFERITI_DELETE_TITLE": "WARNING",
+  "WARNING_TITLE": "WARNING",
   "PREFERITI_DELETE_MESSAGE": "Do you want to remove the restaurant from your favourites?",
+  "PRENOTAZIONI_DELETE_MESSAGE": "Do you really want to cancel the reservation?",
+  "PREFERITI_DELETE_TITLE": "WARNING",
   "REGISTRAZIONE_SUCCESSO_TITLE": "Registration complete",
   "REGISTRAZIONE_SUCCESSO_MESSAGE": "Now insert username and password to login",
-  "CONFIRM_BUTTON": "Ok"
+  "CONFIRM_BUTTON": "Ok",
+  "LOGIN_ERROR_TITLE": "ERROR",
+  "LOGIN_ERROR_MESSAGE": "Invalid username or password",
+  "RECENSIONE_SUCCESSO_TITLE": "Review submitted",
+  "RECENSIONE_SUCCESSO_MESSAGE": "The others users now can read your review",
+  "PRENOTAZIONE_SUCCESSO_TITLE": "Reservation confirmed",
+  "PRENOTAZIONE_SUCCESSO_MESSAGE": "Your reservations are shown in section 'reservations'"
 }

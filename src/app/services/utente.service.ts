@@ -75,8 +75,9 @@ export class UtenteService {
         return this.loggedIn$.asObservable();
     }
 
-    updateProfilo(nuovoUtente: Utente): Observable<Utente> {
-        return this.http.post<Utente>(URL.UPDATE_PROFILO, nuovoUtente, {observe: 'response'}).pipe(
+    updateProfilo(nuovoUtente: Utente, vecchioUser): Observable<Utente> {
+        const url = `${URL.UPDATE_PROFILO}/${vecchioUser}`;
+        return this.http.post<Utente>(url, nuovoUtente, {observe: 'response'}).pipe(
             map((resp: HttpResponse<Utente>) => {
                 // Aggiornamento dell'utente nello storage.
                 // Utente memorizzato nello storage per evitare chiamata REST quando si vuole modificare il profilo
@@ -90,6 +91,11 @@ export class UtenteService {
 
     registerUtente(nuovoUtente: Utente): Observable<Utente> {
         return this.http.post<Utente>(URL.REGISTRAZIONE, nuovoUtente);
+    }
+
+    containsPreferito(idUtente, idRistorante): Observable<boolean> {
+        const url = `${URL.UTENTE_PREFERITI}/${idUtente}/${idRistorante}`;
+        return this.http.get<boolean>(url);
     }
 
 }

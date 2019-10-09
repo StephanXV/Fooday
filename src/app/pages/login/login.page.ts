@@ -4,6 +4,7 @@ import {AlertController, NavController} from '@ionic/angular';
 import {Utente} from '../../model/utente.model';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Account, UtenteService} from '../../services/utente.service';
+import {TranslateService} from '@ngx-translate/core';
 
 
 
@@ -16,16 +17,18 @@ import {Account, UtenteService} from '../../services/utente.service';
 export class LoginPage implements OnInit {
 
   private loginFormModel: FormGroup;
-  private loginTitle: 'errore';
-  private loginSubTitle: 'password o username errati';
+  private loginTitle: string;
+  private loginSubTitle: string;
 
   constructor(private formBuilder: FormBuilder,
               private alertController: AlertController,
               private navController: NavController,
-              private utenteService: UtenteService) {
+              private utenteService: UtenteService,
+              private translateService: TranslateService) {
   }
 
   ngOnInit() {
+    this.initTranslate();
     this.loginFormModel = this.formBuilder.group({
       username: ['steflo', Validators.compose([
         Validators.required
@@ -58,5 +61,14 @@ export class LoginPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  initTranslate() {
+    this.translateService.get('LOGIN_ERROR_TITLE').subscribe((data: string) => {
+      this.loginTitle = data;
+    });
+    this.translateService.get('LOGIN_ERROR_MESSAGE').subscribe((data: string) => {
+      this.loginSubTitle = data;
+    });
   }
 }
