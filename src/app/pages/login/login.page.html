@@ -28,7 +28,7 @@
         <ion-text color="danger">password richiesta</ion-text>
       </p>
       <div margin-top="20px">
-        <ion-button icon-left size="medium" expand="full" shape="round" color="primary" (click)="onLogin()" [disabled]="!loginFormModel.valid" tappable>
+        <ion-button icon-left size="medium" expand="full" shape="round" color="primary" (click)="onLogin()" [disabled]="!loginFormModel.valid" class="ion-tappable">
           <ion-icon name="log-in"></ion-icon>
           {{'BOTTONE_LOGIN' | translate}}
         </ion-button>

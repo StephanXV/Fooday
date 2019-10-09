@@ -1,4 +1,3 @@
-import {Immagine} from './immagine.model';
 import {Citta} from './citta.model';
 
 export class Utente {
@@ -11,7 +10,7 @@ export class Utente {
     sesso: string;
     telefono: string;
     nascita: string;
-    srcImmagineProfilo: string;
+    immagine: any;
     citta: Citta;
     punti: number;
 }

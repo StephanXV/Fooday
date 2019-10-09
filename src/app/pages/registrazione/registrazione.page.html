@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-  <form align-items-center margin="medium" [formGroup]="registerFormModule">
+  <form class="ion-align-items-center" margin="medium" [formGroup]="registerFormModule">
 
     <ion-item lines="none" class="add-photo">
       <ion-img  src="assets/images/add-photo.png">
@@ -60,7 +60,7 @@
       </ion-select>
     </ion-item>
 
-    <ion-button class="button3" expand="full" shape="round" color="primary" (click)="onRegister()" [disabled]="!registerFormModule.valid" tappable>
+    <ion-button class="button3" expand="full" shape="round" color="primary" (click)="onRegister()" [disabled]="!registerFormModule.valid" class="ion-tappable">
       <ion-icon name="person-add"></ion-icon>
       <ion-label>{{'BOTTONE_REGISTRATI' | translate}}</ion-label>
     </ion-button>

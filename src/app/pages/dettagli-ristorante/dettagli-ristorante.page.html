@@ -10,7 +10,7 @@
 
 <ion-content *ngIf="(ristorante$ | async) as ristorante">
   <!-- carousel -->
-  <div margin-top margin-end margin-start>
+  <div class="ion-margin-top ion-margin-end ion-margin-start">
     <ion-fab [hidden]="!isLoggedIn" id="heartButton">
         <ion-fab-button *ngIf="isFavourite" (click)="rimuoviPreferito(ristorante)">
             <ion-icon name="heart">
@@ -23,9 +23,9 @@
         </ion-icon>
       </ion-fab-button>
     </ion-fab>
-    <ion-slides padding-bottom pager="true">
-      <ion-slide *ngFor="let immagine of ristorante.immagini " padding-bottom>
-        <ion-img src="{{immagine.src}}"></ion-img>
+    <ion-slides class="ion-padding-bottom" pager="true">
+      <ion-slide *ngFor="let immagine of ristorante.immagini " class="ion-padding-bottom">
+        <ion-img src="data:image/jpeg;base64, {{immagine.file}}"></ion-img>
       </ion-slide>
     </ion-slides>
   </div>
@@ -63,22 +63,22 @@
         </ion-item>
 
         <ion-item>
-          <ion-icon margin-end name="trophy"></ion-icon>
+          <ion-icon class="ion-margin-end" name="trophy"></ion-icon>
           <ion-label>{{ristorante.punteggio}}</ion-label>
         </ion-item>
 
         <ion-item>
-          <ion-icon margin-end name="pin"></ion-icon>
+          <ion-icon class="ion-margin-end" name="pin"></ion-icon>
           <ion-label> {{ristorante.citta.nome}} - {{ristorante.indirizzo}}</ion-label>
         </ion-item>
 
         <ion-item>
-          <ion-icon margin-end name="restaurant"></ion-icon>
-          <ion-badge margin-end color="tertiary" *ngFor="let cate of ristorante.categorie"> {{cate.nome}}</ion-badge>
+          <ion-icon class="ion-margin-end" name="restaurant"></ion-icon>
+          <ion-badge class="ion-margin-end" color="tertiary" *ngFor="let cate of ristorante.categorie"> {{cate.nome}}</ion-badge>
         </ion-item>
 
         <ion-item>
-          <ion-icon margin-end name="logo-euro"></ion-icon>
+          <ion-icon class="ion-margin-end" name="logo-euro"></ion-icon>
           <ion-label>Spesa media: {{ristorante.prezzoMedio}} €</ion-label>
         </ion-item>
 
@@ -102,7 +102,7 @@
 
 
 
-          <ion-img margin src="assets/images/maps.jpg"></ion-img>
+          <ion-img class="ion-margin" src="assets/images/maps.jpg"></ion-img>
 
       </ion-list>
     </div>
@@ -110,57 +110,57 @@
     <div *ngSwitchCase="'menu'">
       <ion-list>
         <ion-list-header>
-          <ion-title text-center>{{'LABEL_ANTIPASTI' | translate}}</ion-title>
+          <ion-title class="ion-text-center">{{'LABEL_ANTIPASTI' | translate}}</ion-title>
         </ion-list-header>
         <div *ngFor="let antipasto of ristorante.pietanze">
           <ion-item *ngIf="antipasto.tipologia == 'antipasto'">
             <ion-label>{{antipasto.nome}}</ion-label>
-            <ion-label text-end >{{antipasto.prezzo}} €</ion-label>
+            <ion-label class="ion-text-end" >{{antipasto.prezzo}} €</ion-label>
           </ion-item>
         </div>
 
       </ion-list>
       <ion-list>
         <ion-list-header>
-          <ion-title text-center>{{'LABEL_PRIMI' | translate}}</ion-title>
+          <ion-title class="ion-text-center">{{'LABEL_PRIMI' | translate}}</ion-title>
         </ion-list-header>
         <div *ngFor="let primo of ristorante.pietanze">
           <ion-item *ngIf="primo.tipologia == 'primo'">
             <ion-label>{{primo.nome}}</ion-label>
-            <ion-label text-end>{{primo.prezzo}} €</ion-label>
+            <ion-label class="ion-text-end">{{primo.prezzo}} €</ion-label>
           </ion-item>
         </div>
       </ion-list>
       <ion-list>
         <ion-list-header>
-          <ion-title text-center>{{'LABEL_SECONDI' | translate}}</ion-title>
+          <ion-title class="ion-text-center">{{'LABEL_SECONDI' | translate}}</ion-title>
         </ion-list-header>
         <div *ngFor="let secondo of ristorante.pietanze">
           <ion-item *ngIf="secondo.tipologia == 'secondo'">
             <ion-label>{{secondo.nome}}</ion-label>
-            <ion-label text-end>{{secondo.prezzo}} €</ion-label>
+            <ion-label class="ion-text-end">{{secondo.prezzo}} €</ion-label>
           </ion-item>
         </div>
       </ion-list>
       <ion-list>
         <ion-list-header>
-          <ion-title text-center>{{'LABEL_DESSERT' | translate}}</ion-title>
+          <ion-title class="ion-text-center">{{'LABEL_DESSERT' | translate}}</ion-title>
         </ion-list-header>
         <div *ngFor="let dessert of ristorante.pietanze">
           <ion-item *ngIf="dessert.tipologia == 'dessert'">
             <ion-label>{{dessert.nome}}</ion-label>
-            <ion-label text-end>{{dessert.prezzo}} €</ion-label>
+            <ion-label class="ion-text-end">{{dessert.prezzo}} €</ion-label>
           </ion-item>
         </div>
       </ion-list>
       <ion-list class="detailsList">
         <ion-list-header>
-          <ion-title text-center>{{'LABEL_BEVANDE' | translate}}</ion-title>
+          <ion-title class="ion-text-center">{{'LABEL_BEVANDE' | translate}}</ion-title>
         </ion-list-header>
         <div *ngFor="let bevanda of ristorante.pietanze">
           <ion-item *ngIf="bevanda.tipologia == 'bevanda'">
             <ion-label>{{bevanda.nome}}</ion-label>
-            <ion-label text-end>{{bevanda.prezzo}} €</ion-label>
+            <ion-label class="ion-text-end">{{bevanda.prezzo}} €</ion-label>
           </ion-item>
         </div>
       </ion-list>
@@ -170,7 +170,7 @@
       <ion-list class="detailsList">
         <ion-list-header>
           <ion-grid>
-            <ion-row justify-content-between>
+            <ion-row class="ion-justify-content-between">
               <ion-col>
                 <circle-progress subtitle="{{'LABEL_CUCINA' | translate}}"
                         [maxPercent]="100"
@@ -222,7 +222,7 @@
           </ion-grid>
         </ion-list-header>
 
-        <ion-item text-center>
+        <ion-item class="ion-text-center">
          <ion-label><ion-icon name="ios-chatbubbles"></ion-icon> {{ristorante.nome}} è stato recensito {{ristorante.recensioni.length}} volte </ion-label>
         </ion-item>
 
@@ -230,17 +230,17 @@
 
           <ion-item>
             <ion-avatar slot="start">
-              <img src="{{recensione.utente.srcImmagineProfilo}}">
+              <ion-img src="data:image/jpeg;base64, {{recensione.utente.immagine}}"></ion-img>
             </ion-avatar>
             <ion-row>
-              <ion-col margin-top>
+              <ion-col class="ion-margin-top">
                  <ion-label><strong>{{recensione.utente.nome}} {{recensione.utente.cognome}}</strong></ion-label>
               </ion-col>
-              <ion-col  margin-top>
-                <ion-label float-right color="medium" style="font-size: small">{{recensione.recensioneId.timestamp | date}}</ion-label>
+              <ion-col  class="ion-margin-top">
+                <ion-label class="ion-float-right" color="medium" style="font-size: small">{{recensione.recensioneId.timestamp | date}}</ion-label>
               </ion-col>
-              <ion-label color="tertiary" margin-top>Cucina: {{recensione.votoCucina}} - Servizio: {{recensione.votoServizio}} - Prezzo: {{recensione.votoPrezzo}}</ion-label>
-              <ion-text margin-top margin-bottom style="font-style: italic">{{recensione.descrizione}}</ion-text>
+              <ion-label color="tertiary" class="ion-margin-top">Cucina: {{recensione.votoCucina}} - Servizio: {{recensione.votoServizio}} - Prezzo: {{recensione.votoPrezzo}}</ion-label>
+              <ion-text class="ion-margin-top ion-margin-bottom" style="font-style: italic">{{recensione.descrizione}}</ion-text>
             </ion-row>
           </ion-item>
         </ion-item>
@@ -250,7 +250,7 @@
 
   </div>
 
-  <ion-button class="fixedButton" shape="round" color="primary" [routerLink]="['prenota', ristorante.id]" routerDirection="forward" tappable>
+  <ion-button class="fixedButton ion-tappable" shape="round" color="primary" [routerLink]="['prenota', ristorante.id]" routerDirection="forward">
     <ion-label>{{'BOTTONE_PRENOTA' | translate}}</ion-label>
   </ion-button>
 

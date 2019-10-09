@@ -13,9 +13,9 @@
 </ion-header>
 
 <ion-content>
-  <div margin-top>
+  <div class="ion-margin-top">
     <ion-item lines="none" class="add-photo">
-      <ion-img src="{{utente.srcImmagineProfilo}}"></ion-img>
+      <ion-img src='data:image/jpeg;base64, {{utente.immagine}}'></ion-img>
     </ion-item>
   </div>
   <div>
@@ -47,7 +47,7 @@
       <ion-label>Punti: {{utente.punti}}</ion-label>
     </ion-item>
   </div>
-  <div margin>
+  <div class="ion-margin">
     <ion-button shape="round" expand="full" size="medium" (click)="onLogoutButtonClick()">
       <ion-label>
         LOGOUT
