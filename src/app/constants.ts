@@ -20,7 +20,7 @@ export const URL = {
     UTENTI: URL_BASE + '/utenti',
     RICERCHE: URL_BASE + '/ricerche',
     PIETANZE: URL_BASE + '/pietanze',
-    IMMAGINI: URL_BASE + '/immagini'
+    IMMAGINI: URL_BASE + '/images'
 };
 
 export const X_AUTH = 'X-Auth';
