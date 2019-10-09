@@ -17,7 +17,14 @@ export class RicercaService {
     getRicercheByUtente(idUtente): Observable<Ricerca[]> {
         const ricercheUrl = `${URL.RICERCHE}/${idUtente}`;
         return this.http.get<Ricerca[]>(ricercheUrl);
-
     }
 
+    createRicerca(ricerca: Ricerca): Observable<Ricerca> {
+        return this.http.post<Ricerca>(URL.RICERCHE, ricerca);
+    }
+
+    deleteRicerca(idRicerca): Observable<Ricerca> {
+        const ricercheUrl = `${URL.RICERCHE}/${idRicerca}`;
+        return this.http.delete<Ricerca>(ricercheUrl);
+    }
 }
