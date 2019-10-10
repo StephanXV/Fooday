@@ -77,20 +77,24 @@
           </ion-col>
 
           <ion-col *ngIf="currentDate > prenotazione.giorno && !prenotazione.valutata">
-            <ion-button class="ion-margin-end" class="button1"
-                        [routerLink]="['recensione', prenotazione.ristorante.id, prenotazione.prenotazioneId.timestamp]" routerDirection="forward">
+            <ion-button class="ion-margin-end ion-float-end button1"
+                        [routerLink]="['recensione', prenotazione.ristorante.id, prenotazione.prenotazioneId.timestamp]"
+                        routerDirection="forward">
               <ion-label>
                 {{'BOTTONE_RECENSIONE' | translate}}
               </ion-label>
             </ion-button>
           </ion-col>
-        </ion-row>
-
-            <ion-button class="ion-margin ion-float-right" *ngIf="currentDate < prenotazione.giorno" class="button1" (click)="deleteAlert(prenotazione.ristorante.id, prenotazione.prenotazioneId.timestamp)">
+          <ion-col *ngIf="currentDate < prenotazione.giorno">
+            <ion-button class="ion-margin ion-float-end button1"
+                        (click)="deleteAlert(prenotazione.ristorante.id, prenotazione.prenotazioneId.timestamp)">
               <ion-label>
                 {{'BOTTONE_ANNULLA_PRENOTAZIONE' | translate}}
               </ion-label>
             </ion-button>
+          </ion-col>
+        </ion-row>
+
 
 
 

@@ -1,4 +1,4 @@
-<ion-header>
+ <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button >
@@ -60,7 +60,8 @@
       </ion-select>
     </ion-item>
 
-    <ion-button class="button3" expand="full" shape="round" color="primary" (click)="onRegister()" [disabled]="!registerFormModule.valid" class="ion-tappable">
+    <ion-button class="button3 ion-tappable" expand="full" shape="round" color="primary"
+                (click)="onRegister()" [disabled]="!registerFormModule.valid">
       <ion-icon name="person-add"></ion-icon>
       <ion-label>{{'BOTTONE_REGISTRATI' | translate}}</ion-label>
     </ion-button>

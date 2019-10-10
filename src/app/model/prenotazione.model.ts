@@ -5,7 +5,7 @@ import {PrenotazioneId} from './prenotazioneId.model';
 export class Prenotazione {
     prenotazioneId: PrenotazioneId;
     nome: string;
-    giorno: Date;
+    giorno: number;
     orario: string;
     posti: number;
     scontoApplicato: number;

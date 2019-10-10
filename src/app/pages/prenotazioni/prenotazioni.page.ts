@@ -42,6 +42,10 @@ export class PrenotazioniPage implements OnInit{
     sliding.close();
   }
 
+  ionViewWillEnter() {
+    this.listPrenotazioni();
+  }
+
   async deleteAlert(idRistorante, timestamp) {
 
     const alert = await this.alertController.create({
@@ -57,7 +61,7 @@ export class PrenotazioniPage implements OnInit{
         {
           text: this.deleteButton,
           handler: () => {
-            this.prenotazioneService.deletePrenotazioni(this.utente.id, idRistorante, timestamp).subscribe( () =>
+            this.prenotazioneService.deletePrenotazioni(this.utente.id, idRistorante, timestamp).subscribe( (number) =>
                 this.listPrenotazioni());
             console.log('Prenotazione rimossa');
           }
