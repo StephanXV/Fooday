@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content>
+
   <!--
   <ion-list>
     <ion-item-sliding *ngFor="let prenotazione of prenotazioni$ | async" #sliding>
@@ -102,4 +103,9 @@
     </ion-card>
   </ion-list>
 
+  <div *ngIf="prenotazioni.length < 1" class="ion-padding ion-text-center ion-margin">
+    <ion-label color="medium">
+      {{'PRENOTAZIONI_VUOTO' | translate}}
+    </ion-label>
+  </div>
 </ion-content>

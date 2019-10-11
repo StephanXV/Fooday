@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content>
+  <ion-list>
       <ion-card *ngFor="let preferito of preferiti$ | async">
         <ion-row>
           <ion-col>
@@ -49,7 +50,12 @@
             </ion-button>
           </ion-col>
         </ion-row>
-
       </ion-card>
+    </ion-list>
+  <div *ngIf="preferiti.length < 1" class="ion-padding ion-text-center ion-margin">
+    <ion-label color="medium">
+      {{'PREFERITI_VUOTO' | translate}}
+    </ion-label>
+  </div>
 
 </ion-content>

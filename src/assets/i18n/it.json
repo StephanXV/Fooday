@@ -67,8 +67,16 @@
   "PROFILO_SUCCESSO_MESSAGE": "I campi modificati sono stati aggiornati",
   "LOGIN_ERROR_TITLE": "ERRORE",
   "LOGIN_ERROR_MESSAGE": "Username o password non corrette",
+  "LOGIN_SUCCESS_TITLE": "Login effettuato",
+  "LOGIN_SUCCESS_MESSAGE": "Bentornato ",
+  "LOGOUT_TITLE": "ATTENZIONE",
+  "LOGOUT_MESSAGE": "Sei sicuro di voler effettuare il logout?",
+  "NO_BUTTON": "No",
+  "YES_BUTTON": "Sì",
   "RECENSIONE_SUCCESSO_TITLE": "Recensione effettuata",
   "RECENSIONE_SUCCESSO_MESSAGE": "Gli altri utenti ora potranno vedere la sua valutazione",
   "PRENOTAZIONE_SUCCESSO_TITLE": "Prenotazione confermata",
-  "PRENOTAZIONE_SUCCESSO_MESSAGE": "Puoi visualizzare le tue prenotazioni nella sezione 'prenotazioni'"
+  "PRENOTAZIONE_SUCCESSO_MESSAGE": "Puoi visualizzare le tue prenotazioni nella sezione 'prenotazioni'",
+  "PREFERITI_VUOTO": "Aggiungi i tuoi ristoranti preferiti dalla vista dettagliata, tappando sul cuore",
+  "PRENOTAZIONI_VUOTO": "Che stai aspettando? Corri a effettuare la tua prima prenotazione!"
 }

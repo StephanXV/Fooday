@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {NavController} from '@ionic/angular';
+import {AlertController, NavController} from '@ionic/angular';
 import {Utente} from '../../model/utente.model';
 import {UtenteService} from '../../services/utente.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-profilo',
@@ -11,19 +12,59 @@ import {UtenteService} from '../../services/utente.service';
 export class ProfiloPage implements OnInit {
 
   private utente: Utente;
+  private logoutTitle: string;
+  private logoutMessage: string;
+  private yesButton: string;
+  private noButton: string;
 
   constructor(private navController: NavController,
-              private utenteService: UtenteService) { }
+              private utenteService: UtenteService,
+              private translateService: TranslateService,
+              private alertController: AlertController) { }
 
   ngOnInit() {
+    this.initTranslate();
     this.utenteService.getUtente().subscribe((utente) => {
       this.utente = utente;
     });
   }
 
-  onLogoutButtonClick() {
-    this.utenteService.logout();
-    this.navController.navigateRoot('tabs');
+  async onLogoutButtonClick() {
+    const alert = await this.alertController.create({
+      header: this.logoutTitle,
+      message: this.logoutMessage,
+      buttons: [
+        {
+          text: this.noButton,
+          handler: () => {
+            console.log('Annulla clicked');
+          }
+        },
+        {
+          text: this.yesButton,
+          handler: () => {
+            this.utenteService.logout();
+            this.navController.navigateBack('');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
+  initTranslate() {
+    this.translateService.get('LOGOUT_TITLE').subscribe((data: string) => {
+      this.logoutTitle = data;
+    });
+    this.translateService.get('LOGOUT_MESSAGE').subscribe((data: string) => {
+      this.logoutMessage = data;
+    });
+    this.translateService.get('YES_BUTTON').subscribe((data: string) => {
+      this.yesButton = data;
+    });
+    this.translateService.get('NO_BUTTON').subscribe((data: string) => {
+      this.noButton = data;
+    });
+  }
 }

@@ -17,8 +17,10 @@ import {TranslateService} from '@ngx-translate/core';
 export class LoginPage implements OnInit {
 
   private loginFormModel: FormGroup;
-  private loginTitle: string;
-  private loginSubTitle: string;
+  private loginErrorTitle: string;
+  private loginErrorSubTitle: string;
+  private loginSuccessTitle: string;
+  private loginSuccessSubtitle: string;
 
   constructor(private formBuilder: FormBuilder,
               private alertController: AlertController,
@@ -42,8 +44,8 @@ export class LoginPage implements OnInit {
   onLogin() {
     const account: Account = this.loginFormModel.value;
     this.utenteService.login(account).subscribe((utente: Utente) => {
+          this.showLoginSuccess();
           this.loginFormModel.reset();
-          this.navController.navigateRoot('tabs');
         },
         (err: HttpErrorResponse) => {
           if (err.status === 401) {
@@ -55,9 +57,26 @@ export class LoginPage implements OnInit {
 
   async showLoginError() {
     const alert = await this.alertController.create({
-      header: this.loginTitle,
-      message: this.loginSubTitle,
+      header: this.loginErrorTitle,
+      message: this.loginErrorSubTitle,
       buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  async showLoginSuccess() {
+    const alert = await this.alertController.create({
+      header: this.loginSuccessTitle,
+      message: this.loginSuccessSubtitle + this.loginFormModel.value.username,
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            this.navController.navigateBack('');
+          }
+        }
+      ]
     });
 
     await alert.present();
@@ -65,10 +84,16 @@ export class LoginPage implements OnInit {
 
   initTranslate() {
     this.translateService.get('LOGIN_ERROR_TITLE').subscribe((data: string) => {
-      this.loginTitle = data;
+      this.loginErrorTitle = data;
     });
     this.translateService.get('LOGIN_ERROR_MESSAGE').subscribe((data: string) => {
-      this.loginSubTitle = data;
+      this.loginErrorSubTitle = data;
+    });
+    this.translateService.get('LOGIN_SUCCESS_TITLE').subscribe((data: string) => {
+      this.loginSuccessTitle = data;
+    });
+    this.translateService.get('LOGIN_SUCCESS_MESSAGE').subscribe((data: string) => {
+      this.loginSuccessSubtitle = data;
     });
   }
 }

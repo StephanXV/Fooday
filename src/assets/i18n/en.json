@@ -64,8 +64,16 @@
   "CONFIRM_BUTTON": "Ok",
   "LOGIN_ERROR_TITLE": "ERROR",
   "LOGIN_ERROR_MESSAGE": "Invalid username or password",
+  "LOGIN_SUCCESS_TITLE": "Logged in correctly",
+  "LOGIN_SUCCESS_MESSAGE": "Welcome back ",
+  "LOGOUT_TITLE": "WARNING",
+  "LOGOUT_MESSAGE": "Do you really want to logout?",
+  "NO_BUTTON": "No",
+  "YES_BUTTON": "Yes",
   "RECENSIONE_SUCCESSO_TITLE": "Review submitted",
   "RECENSIONE_SUCCESSO_MESSAGE": "The others users now can read your review",
   "PRENOTAZIONE_SUCCESSO_TITLE": "Reservation confirmed",
-  "PRENOTAZIONE_SUCCESSO_MESSAGE": "Your reservations are shown in section 'reservations'"
+  "PRENOTAZIONE_SUCCESSO_MESSAGE": "Your reservations are shown in section 'reservations'",
+  "PREFERITI_VUOTO": "Add your favourite restaurants from them detailed view, tapping the heart",
+  "PRENOTAZIONI_VUOTO": "What are you waiting for? Go to make your first reservation!"
 }

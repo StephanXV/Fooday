@@ -15,6 +15,7 @@ import {UtenteService} from '../../services/utente.service';
 export class PreferitiPage implements OnInit {
 
   private preferiti$: Observable<Ristorante[]>;
+  private preferiti: Ristorante[];
   private utente: Utente;
   private deleteTitle: string;
   private messageTitle: string;
@@ -54,7 +55,7 @@ export class PreferitiPage implements OnInit {
           text: this.deleteButton,
           handler: () => {
             console.log('Preferito Rimosso: ' + idRistorante);
-            this.ristoranteService.deletePreferito(idRistorante, idUtente).subscribe(() => {this.listPreferiti(); });
+            this.ristoranteService.deletePreferito(idRistorante, idUtente).subscribe(() => {this.ionViewWillEnter(); });
           }
         }
       ]
@@ -65,6 +66,9 @@ export class PreferitiPage implements OnInit {
 
   listPreferiti() {
     this.preferiti$ = this.ristoranteService.getRistorantiPreferiti(this.utente.id);
+    this.ristoranteService.getRistorantiPreferiti(this.utente.id).subscribe( (preferiti) => {
+      this.preferiti = preferiti;
+    });
   }
 
   initTranslate() {
