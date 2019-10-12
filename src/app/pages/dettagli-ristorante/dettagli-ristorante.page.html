@@ -62,9 +62,9 @@
           <ion-label><h1>{{ristorante.descrizione}}</h1></ion-label>
         </ion-item>
 
-        <ion-item>
+        <ion-item *ngIf="punteggio > 0">
           <ion-icon class="ion-margin-end" name="trophy"></ion-icon>
-          <ion-label>{{ristorante.punteggio}}</ion-label>
+          <ion-label>{{punteggio}}</ion-label>
         </ion-item>
 
         <ion-item>
@@ -80,6 +80,7 @@
         <ion-item>
           <ion-icon class="ion-margin-end" name="logo-euro"></ion-icon>
           <ion-label>Spesa media: {{ristorante.prezzoMedio}} €</ion-label>
+          <ion-label class="ion-float-end" color="tertiary" *ngIf="ristorante.sconto > 0">{{ristorante.sconto}}%</ion-label>
         </ion-item>
 
 

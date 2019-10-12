@@ -6,8 +6,6 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Recensione} from '../../model/recensione.model';
 import {Utente} from '../../model/utente.model';
 import {UtenteService} from '../../services/utente.service';
-import {map, take} from 'rxjs/operators';
-import {Preferito} from '../../model/preferito.model';
 
 declare var f;
 
@@ -26,19 +24,12 @@ export class DettagliRistorantePage implements OnInit {
   private mediaCucina = 0;
   private mediaServizio = 0;
   private mediaPrezzo = 0;
+  private punteggio = 0;
   private giorni = ['lunedi', 'martedi', 'mercoledi', 'giovedi',
     'venerdi', 'sabato', 'domenica'];
   constructor(private ristoranteService: RistoranteService,
               private route: ActivatedRoute,
               private utenteService: UtenteService) {
-    /*coll[0].addEventListener('click', function() {
-      this.classList.toggle('active');
-      if (content.style.maxHeight) {
-        content.style.maxHeight = null;
-      } else {
-        content.style.maxHeight = content.scrollHeight + 'px';
-      }
-    });*/
   }
 
   ngOnInit() {
@@ -86,6 +77,7 @@ export class DettagliRistorantePage implements OnInit {
     this.mediaCucina = Math.floor(this.mediaCucina * 10) / 10;
     this.mediaServizio = Math.floor(this.mediaServizio * 10) / 10;
     this.mediaPrezzo = Math.floor(this.mediaPrezzo * 10) / 10;
+    this.punteggio = Math.floor(((this.mediaCucina + this.mediaServizio + this.mediaPrezzo) / 3) * 10) / 10;
   }
 
   callF() {
