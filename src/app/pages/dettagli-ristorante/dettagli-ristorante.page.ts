@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {RistoranteService} from '../../services/ristorante.service';
 import {Observable} from 'rxjs';
 import {Ristorante} from '../../model/ristorante.model';
@@ -6,10 +6,9 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Recensione} from '../../model/recensione.model';
 import {Utente} from '../../model/utente.model';
 import {UtenteService} from '../../services/utente.service';
-import {map, take} from 'rxjs/operators';
-import {Preferito} from '../../model/preferito.model';
 
 declare var f;
+
 
 @Component({
   selector: 'app-dettagli-ristorante',
@@ -28,17 +27,10 @@ export class DettagliRistorantePage implements OnInit {
   private mediaPrezzo = 0;
   private giorni = ['lunedi', 'martedi', 'mercoledi', 'giovedi',
     'venerdi', 'sabato', 'domenica'];
+
   constructor(private ristoranteService: RistoranteService,
               private route: ActivatedRoute,
               private utenteService: UtenteService) {
-    /*coll[0].addEventListener('click', function() {
-      this.classList.toggle('active');
-      if (content.style.maxHeight) {
-        content.style.maxHeight = null;
-      } else {
-        content.style.maxHeight = content.scrollHeight + 'px';
-      }
-    });*/
   }
 
   ngOnInit() {
@@ -110,5 +102,4 @@ export class DettagliRistorantePage implements OnInit {
       console.log('Il ristorante ' + idRistorante + ' è nella lista preferiti dell\'utente ' + this.utente.id + ': ' + isFavourite);
     });
   }
-
 }

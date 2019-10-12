@@ -14,8 +14,10 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {IonicStorageModule} from '@ionic/storage';
 import {httpInterceptorProviders} from './interceptors';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import {FiltriPageModule} from './pages/filtri/filtri.module';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -25,11 +27,11 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
   declarations: [
-      AppComponent,
+    AppComponent
   ],
   entryComponents: [],
   imports: [BrowserModule,
-    NgCircleProgressModule.forRoot({
+      NgCircleProgressModule.forRoot({
       // set defaults here
       radius: 100,
       outerStrokeWidth: 16,
@@ -40,21 +42,25 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     IonicModule.forRoot(),
     AppRoutingModule,
+    FiltriPageModule,
     HttpClientModule,
-      IonicStorageModule.forRoot(),
+    IonicStorageModule.forRoot(),
     TranslateModule.forRoot({
-    loader: {
-      provide: TranslateLoader,
-      useFactory: (createTranslateLoader),
-      deps: [HttpClient]
-    }
-  })],
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-      httpInterceptorProviders,
-      Geolocation
+    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+    httpInterceptorProviders,
+    Geolocation,
+    NativeGeocoder
+  ],
+  exports: [
   ],
   bootstrap: [AppComponent]
 })

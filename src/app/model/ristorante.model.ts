@@ -15,6 +15,8 @@ export class Ristorante {
     punteggio: number;
     prezzoMedio: number;
     sconto: number;
+    latitudine: number;
+    longitudine: number;
     citta: Citta;
     categorie: Categoria[];
     prenotazioni: Prenotazione[];

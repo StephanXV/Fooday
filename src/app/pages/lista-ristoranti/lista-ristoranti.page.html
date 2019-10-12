@@ -14,7 +14,7 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-card *ngFor="let ristorante of ristoranti$ | async">
+    <ion-card *ngFor="let ristorante of passaRistorantiModale">
       <ion-row>
         <ion-col>
           <ion-img [routerLink]="['dettagli-ristorante', ristorante.id]" routerDirection="forward" src="{{ristorante.immagini[0].src}}"></ion-img>
@@ -58,7 +58,7 @@
 
 <!-- fab placed to the bottom end -->
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button color="tertiary">
+  <ion-fab-button (click)="openFilters()" color="tertiary">
     <ion-icon name="ios-funnel"></ion-icon>
   </ion-fab-button>
 </ion-fab>
