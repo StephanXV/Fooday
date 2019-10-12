@@ -11,49 +11,43 @@
 
 <ion-content>
 
-  <form align-items-center margin="medium" [formGroup]="bookFormModule">
+  <form class="ion-align-items-center" margin="medium" [formGroup]="bookFormModule">
 
-    <ion-item margin-bottom class="animated fadeInUp">
+    <ion-item class="ion-margin-bottom animated fadeInUp">
       <ion-label>{{'PLACEHOLDER_NUM_PERSONE' | translate}}</ion-label>
       <ion-select  formControlName="posti">
         <ion-select-option *ngFor="let number of numbers">{{number}}</ion-select-option>
       </ion-select>
     </ion-item>
 
-    <ion-item margin-bottom class="animated fadeInUp">
+    <ion-item class="ion-margin-bottom animated fadeInUp">
       <ion-label>{{'PLACEHOLDER_GIORNO' | translate}}</ion-label>
       <ion-datetime (ionChange)="aggiornaGiorno()" formControlName="data"></ion-datetime>
     </ion-item>
 
-    <ion-item margin-bottom class="animated fadeInUp">
+    <ion-item class="ion-margin-bottom animated fadeInUp">
       <ion-label>{{'PLACEHOLDER_ORARIO' | translate}}</ion-label>
       <ion-select [disabled]="!bookFormModule.get('data').valid" formControlName="orario">
         <ion-select-option *ngFor="let orario of orari">{{orario}}</ion-select-option>
       </ion-select>
     </ion-item>
 
-    <ion-item margin-bottom class="animated fadeInUp">
+    <ion-item class="ion-margin-bottom animated fadeInUp">
       <ion-label>{{'PLACEHOLDER_NOME_PRENOTAZIONE' | translate}}</ion-label>
       <ion-input style="text-align: right" formControlName="nome">
       </ion-input>
     </ion-item>
 
-    <ion-item *ngIf="utente.punti > 100">
+    <ion-item class="ion-margin-bottom animated fadeInUp">
       <ion-label>{{'PLACEHOLDER_USA_PUNTI' | translate}}</ion-label>
-      <ion-checkbox formControlName="punti">
-      </ion-checkbox>
+      <ion-select formControlName="punti" value="No">
+        <ion-select-option value="Si">Si</ion-select-option>
+        <ion-select-option value="No">No</ion-select-option>
+      </ion-select>
     </ion-item>
 
-    <ion-item margin-bottom *ngIf="utente.punti < 100">
-      <ion-label>{{'PLACEHOLDER_USA_PUNTI' | translate}}</ion-label>
-      <ion-checkbox checked="false" disabled="true" formControlName="punti">
-      </ion-checkbox> <br>
-      <!--<ion-label>Ogni 100 punti hai diritto a 10 euro di sconto sulla tua prenotazione!</ion-label>-->
-    </ion-item>
-
-    <ion-label>Questa prenotazione ti farà accumulare 10 punti!</ion-label>
-
-    <ion-button class="button3" size="medium" expand="full" shape="round" color="primary" (click)="onBookSubmit()" [disabled]="!bookFormModule.valid" tappable>
+    <ion-button class="button3 ion-tappable" size="medium" expand="full" shape="round"
+                color="primary" (click)="onBookSubmit()" [disabled]="!bookFormModule.valid">
       <ion-label>{{'BOTTONE_PRENOTA' | translate}}</ion-label>
     </ion-button>
   </form>

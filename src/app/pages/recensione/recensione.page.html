@@ -10,37 +10,38 @@
 </ion-header>
 
 <ion-content>
-  <form align-items-center margin="medium" [formGroup]="reviewFormModule">
+  <form class="ion-align-items-center" margin="medium" [formGroup]="reviewFormModule">
 
-    <ion-item margin-bottom class="animated fadeInUp">
-      <ion-icon color="primary" margin-end name="restaurant"></ion-icon>
+    <ion-item class="ion-margin-bottom animated fadeInUp">
+      <ion-icon color="primary" class="ion-margin-end" name="restaurant"></ion-icon>
       <ion-label>Cucina</ion-label>
       <ion-select formControlName="votoCucina">
         <ion-select-option *ngFor="let number of numbers">{{number}}</ion-select-option>
       </ion-select>
     </ion-item>
 
-    <ion-item margin-bottom class="animated fadeInUp">
-      <ion-icon color="primary" margin-end name="clock"></ion-icon>
+    <ion-item class="ion-margin-bottom animated fadeInUp">
+      <ion-icon color="primary" class="ion-margin-end" name="clock"></ion-icon>
       <ion-label>Servizio</ion-label>
       <ion-select formControlName="votoServizio">
         <ion-select-option *ngFor="let number of numbers">{{number}}</ion-select-option>
       </ion-select>
     </ion-item>
 
-    <ion-item margin-bottom class="animated fadeInUp">
-      <ion-icon color="primary" margin-end name="cash"></ion-icon>
+    <ion-item class="ion-margin-bottom animated fadeInUp">
+      <ion-icon color="primary" class="ion-margin-end" name="cash"></ion-icon>
       <ion-label>Prezzo</ion-label>
       <ion-select formControlName="votoPrezzo">
         <ion-select-option *ngFor="let number of numbers">{{number}}</ion-select-option>
       </ion-select>
     </ion-item>
 
-    <ion-item margin-bottom class="animated fadeInUp">
+    <ion-item class="ion-margin-bottom animated fadeInUp">
       <ion-textarea style="height: 300px" class="review-item" placeholder="Descrivi la tua esperienza.." formControlName="descrizione"></ion-textarea>
     </ion-item>
 
-    <ion-button class="button3" size="medium" expand="full" shape="round" color="primary" (click)="onReviewSubmit()" [disabled]="!reviewFormModule.valid" tappable>
+    <ion-button class="button3 ion-tappable" size="medium" expand="full" shape="round" color="primary"
+                (click)="onReviewSubmit()" [disabled]="!reviewFormModule.valid">
       <ion-label>{{'BOTTONE_RECENSIONE' | translate}}</ion-label>
     </ion-button>
 

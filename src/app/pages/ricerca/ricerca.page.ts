@@ -5,6 +5,8 @@ import {Citta} from '../../model/citta.model';
 import {CittaService} from '../../services/citta.service';
 import {Ricerca} from '../../model/ricerca.model';
 import {RicercaService} from '../../services/ricerca.service';
+import {UtenteService} from '../../services/utente.service';
+import {Utente} from '../../model/utente.model';
 
 @Component({
   selector: 'app-ricerca',
@@ -15,32 +17,62 @@ export class RicercaPage implements OnInit {
 
   private ricerche$: Observable<Ricerca[]>;
   private requestType: number;
-  private idUtente = 1;
-  nomeRisto: string;
-  nomeCitta: string;
+  private utente: Utente;
+  private nomeRisto: string;
+  private nomeCitta: string;
 
-  constructor(private router: Router, private ricercaService: RicercaService) { }
+  constructor(private router: Router,
+              private ricercaService: RicercaService,
+              private utenteService: UtenteService) { }
 
   ngOnInit() {
-    this.ricerche$ = this.ricercaService.getRicercheByUtente(1);
+    this.utenteService.getUtente().subscribe( (utente) => {
+      this.utente = utente;
+      this.listRicerche();
+    });
+  }
+
+  ionViewWillEnter() {
     this.nomeCitta = '';
     this.nomeRisto = '';
+    this.listRicerche();
+  }
+
+  listRicerche() {
+    this.ricerche$ = this.ricercaService.getRicercheByUtente(this.utente.id);
   }
 
   onNomeSubmit() {
     this.requestType = 3;
     console.log('Nome input: ' + this.nomeRisto);
+    this.createRicerca(this.nomeRisto, this.requestType);
     this.router.navigate(['/tabs/ricerca/lista-ristoranti', this.requestType, this.nomeRisto]);
   }
 
   onCitySubmit() {
     this.requestType = 2;
     console.log('Citta input: ' + this.nomeCitta);
+    this.createRicerca(this.nomeCitta, this.requestType);
     this.router.navigate(['/tabs/ricerca/lista-ristoranti', this.requestType, this.nomeCitta]);
   }
 
   onRicercaClick(tipoRichiesta: number, input: string) {
     this.router.navigate(['/tabs/ricerca/lista-ristoranti', tipoRichiesta, input]);
+  }
+
+  createRicerca(nomeRicerca, requestType) {
+    const ricerca: Ricerca = new Ricerca();
+    ricerca.input = nomeRicerca;
+    ricerca.tipoRichiesta = requestType;
+    ricerca.utente = new Utente();
+    ricerca.utente.id = this.utente.id;
+    this.ricercaService.createRicerca(ricerca).subscribe();
+  }
+
+  deleteRicerca(ricerca) {
+    this.ricercaService.deleteRicerca(ricerca).subscribe( () => {
+      this.listRicerche();
+    });
   }
 }
 

@@ -7,6 +7,7 @@ import {CategoriaService} from '../../services/categoria.service';
 import {Categoria} from '../../model/categoria.model';
 import {ModalController} from '@ionic/angular';
 import {FiltriPage} from '../filtri/filtri.page';
+import {Recensione} from 'src/app/model/recensione.model';
 
 
 @Component({
@@ -77,6 +78,7 @@ export class ListaRistorantiPage implements OnInit {
     }, () => console.log('Errore'));
   }
 
+
     async  openFilters() {
       const modal = await this.modalController.create({
         component: FiltriPage,
@@ -90,5 +92,24 @@ export class ListaRistorantiPage implements OnInit {
       });
       return await modal.present();
     }
+
+  calcolaMedie(recensioni: Recensione[]): number {
+    let mediaCucina = 0;
+    let mediaServizio = 0;
+    let mediaPrezzo = 0;
+    for (const recensione of recensioni) {
+      mediaCucina += recensione.votoCucina;
+      mediaServizio += recensione.votoServizio;
+      mediaPrezzo += recensione.votoPrezzo;
+    }
+    mediaCucina /= recensioni.length;
+    mediaServizio /= recensioni.length;
+    mediaPrezzo /= recensioni.length;
+    mediaCucina = Math.floor(mediaCucina * 10) / 10;
+    mediaServizio = Math.floor(mediaServizio * 10) / 10;
+    mediaPrezzo = Math.floor(mediaPrezzo * 10) / 10;
+    return Math.floor(((mediaCucina + mediaServizio + mediaPrezzo) / 3) * 10) / 10;
+  }
+
 
 }

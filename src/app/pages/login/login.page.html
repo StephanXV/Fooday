@@ -1,7 +1,14 @@
-<ion-content padding class="animated fadeIn">
-  <div></div>
-  <div>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button >
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content padding class="animated fadeIn">
     <!-- Logo -->
     <div padding-horizontal text-center class="animated fadeInDown">
       <div class="logo">
@@ -13,32 +20,33 @@
     <form [formGroup]="loginFormModel" >
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
-          <ion-icon name="contact" item-start></ion-icon>username</ion-label>
+          <ion-icon name="contact"></ion-icon>username</ion-label>
         <ion-input color="secondary" type="email" formControlName="username"></ion-input>
       </ion-item>
-      <p ion-text *ngIf="loginFormModel.get('username').touched && loginFormModel.get('username').invalid">
+      <p *ngIf="loginFormModel.get('username').touched && loginFormModel.get('username').invalid">
         <ion-text color="danger">username richiesto</ion-text>
       </p>
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
-          <ion-icon name="lock" item-start></ion-icon>password</ion-label>
+          <ion-icon name="lock"></ion-icon>password</ion-label>
         <ion-input color="secondary" type="password" formControlName="password"></ion-input>
       </ion-item>
-      <p ion-text *ngIf="loginFormModel.get('password').touched && loginFormModel.get('password').invalid">
+      <p *ngIf="loginFormModel.get('password').touched && loginFormModel.get('password').invalid">
         <ion-text color="danger">password richiesta</ion-text>
       </p>
       <div margin-top="20px">
-        <ion-button icon-left size="medium" expand="full" shape="round" color="primary" (click)="onLogin()" [disabled]="!loginFormModel.valid" tappable>
+        <ion-button size="medium" expand="full" shape="round" color="primary"
+                    (click)="onLogin()" [disabled]="!loginFormModel.valid" class="ion-tappable">
           <ion-icon name="log-in"></ion-icon>
           {{'BOTTONE_LOGIN' | translate}}
         </ion-button>
       </div>
       <div margin-top="20px">
-        <ion-button icon-left size="medium" expand="full" shape="round" color="primary" [routerLink]="['registrazione']" routerDirection="forward">
+        <ion-button size="medium" expand="full" shape="round" color="primary"
+                    [routerLink]="['registrazione']" routerDirection="forward">
           <ion-icon name="person-add"></ion-icon>
           {{'BOTTONE_REGISTRATI' | translate}}
         </ion-button>
       </div>
     </form>
-  </div>
 </ion-content>

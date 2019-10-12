@@ -6,11 +6,18 @@ import {RistoranteService} from '../../services/ristorante.service';
 import {Categoria} from '../../model/categoria.model';
 import {CategoriaService} from '../../services/categoria.service';
 import {NavController} from '@ionic/angular';
+import {Utente} from '../../model/utente.model';
+import {UtenteService} from '../../services/utente.service';
+import {URL_BASE} from '../../constants';
+import {ImmagineService} from '../../services/immagine.service';
+import { DomSanitizer } from '@angular/platform-browser';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {Platform} from '@ionic/angular';
 import {HttpClient} from '@angular/common/http';
+import {Recensione} from '../../model/recensione.model';
 
 declare var google: any;
+
 
 @Component({
   selector: 'app-home',
@@ -25,24 +32,25 @@ export class HomePage implements OnInit {
   private cities = ['Roma', 'Milano', 'Torino', 'Napoli', 'L\'Aquila'];
   private latitude: any = '';
   private longitude: any = '';
-  private keyOpen = '73f45256d96f6980fc804cca915873ea';
 
   constructor(private router: Router,
               private ristoranteService: RistoranteService,
               private categoriaService: CategoriaService,
               private navController: NavController,
               private geolocation: Geolocation,
-              private platform: Platform,
-              private httpClient: HttpClient) {
-                this.platform.ready().then(() => {
-                  this.getCurrentLocation();
-                  // this.ristoranteService.getRistorantiAroundUser(this.latitude, this.longitude);
-                  this.categorie$ = this.categoriaService.list();
-                  this.navController.navigateRoot('tabs');
-                });
-              }
+              private platform: Platform) {
+      this.platform.ready().then(() => {
+      this.getCurrentLocation();
+      // this.ristoranteService.getRistorantiAroundUser(this.latitude, this.longitude);
+      this.categorie$ = this.categoriaService.list();
+      this.navController.navigateRoot('tabs');
+      });
+  }
 
   ngOnInit() {
+      this.ristoranti$ = this.ristoranteService.getRistorantiByCittaId(this.cittaLocalizzata);
+      this.categorie$ = this.categoriaService.list();
+      this.navController.navigateRoot('tabs');
   }
 
   onCategoryClick(idCategoria: number) {
@@ -55,7 +63,6 @@ export class HomePage implements OnInit {
     console.log('Home:' + nomeCitta);
     this.router.navigate(['/tabs/home/lista-ristoranti', this.requestType, nomeCitta]);
   }
-
   getCurrentLocation()  {
     this.geolocation.getCurrentPosition().then((position) => {
       this.latitude = position.coords.latitude;
@@ -66,20 +73,21 @@ export class HomePage implements OnInit {
     });
   }
 
-  /*getCityAroundUser(lat, lon) {
-    let url = 'https://api.openweathermap.org/data/2.5/find?lat=' + lat + '&lon=' + lon + '&cnt=10&appid=' +
-             this.keyOpen + '&units=metric&lang=it';
-    this.httpClient.get(url).subscribe((cityData) => {
-      const obj = cityData as any;
-      console.log(obj);
-    });
+  calcolaMedie(recensioni: Recensione[]): number {
+    let mediaCucina = 0;
+    let mediaServizio = 0;
+    let mediaPrezzo = 0;
+    for (const recensione of recensioni) {
+      mediaCucina += recensione.votoCucina;
+      mediaServizio += recensione.votoServizio;
+      mediaPrezzo += recensione.votoPrezzo;
+    }
+    mediaCucina /= recensioni.length;
+    mediaServizio /= recensioni.length;
+    mediaPrezzo /= recensioni.length;
+    mediaCucina = Math.floor(mediaCucina * 10) / 10;
+    mediaServizio = Math.floor(mediaServizio * 10) / 10;
+    mediaPrezzo = Math.floor(mediaPrezzo * 10) / 10;
+    return Math.floor(((mediaCucina + mediaServizio + mediaPrezzo) / 3) * 10) / 10;
   }
-  doRefresh(event) {
-    console.log('Begin async operation');
-
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      event.target.complete();
-    }, 2000);
-  }*/
 }

@@ -10,9 +10,9 @@
 </ion-header>
 
 <ion-content>
-  <div margin-top>
+  <div class="ion-margin-top">
     <ion-item margin lines="none" class="add-photo">
-      <ion-img  src="{{utente.srcImmagineProfilo}}">
+      <ion-img  src="data:image/jpeg;base64, {{utente.immagine}}">
 
       </ion-img>
     </ion-item>
@@ -53,8 +53,9 @@
           </ion-select-option>
         </ion-select>
       </ion-item>
-      <div margin>
-        <ion-button size="medium" expand="full" shape="round" color="primary" (click)="onProfileSubmit()" [disabled]="!profileFormModule.valid" tappable>
+      <div class="ion-margin">
+        <ion-button size="medium" expand="full" shape="round" color="primary"
+                    (click)="onProfileSubmit()" [disabled]="!profileFormModule.valid" class="ion-tappable">
           <ion-label>{{'BOTTONE_SALVA' | translate}}</ion-label>
         </ion-button>
       </div>

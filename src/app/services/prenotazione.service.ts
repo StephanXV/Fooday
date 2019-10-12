@@ -19,9 +19,9 @@ export class PrenotazioneService {
         return this.http.get<Prenotazione[]>(prenotazioniUrl);
     }
 
-    deletePrenotazioni(idUtente, idRistorante, timestamp) {
+    deletePrenotazioni(idUtente, idRistorante, timestamp): Observable<number> {
         const url = `${URL.PRENOTAZIONI_DELETE}/${idUtente}/${idRistorante}/${timestamp}`;
-        return this.http.delete(url);
+        return this.http.delete<number>(url);
     }
 
     createPrenotazione(prenotazione: Prenotazione): Observable<Prenotazione> {

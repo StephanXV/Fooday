@@ -15,7 +15,6 @@ import {IonicStorageModule} from '@ionic/storage';
 import {httpInterceptorProviders} from './interceptors';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
-
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import {FiltriPageModule} from './pages/filtri/filtri.module';
 
@@ -60,8 +59,7 @@ export function createTranslateLoader(http: HttpClient) {
     Geolocation,
     NativeGeocoder
   ],
-  exports: [
-  ],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

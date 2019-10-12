@@ -8,7 +8,7 @@
 
 <ion-content>
     <ion-item>
-      <ion-icon padding name="search"></ion-icon>
+      <ion-icon class="ion-padding" name="search"></ion-icon>
       <ion-input placeholder="{{'PLACEHOLDER_RICERCA_NOME' | translate}}" [(ngModel)]="nomeRisto"></ion-input>
       <ion-button (click)="onNomeSubmit()" slot="end">
         <ion-icon  name="send">
@@ -16,7 +16,7 @@
       </ion-button>
     </ion-item>
     <ion-item>
-      <ion-icon padding name="pin"></ion-icon>
+      <ion-icon class="ion-padding" name="pin"></ion-icon>
       <ion-input placeholder="{{'PLACEHOLDER_RICERCA_LUOGO' | translate}}" [(ngModel)]="nomeCitta"></ion-input>
       <ion-button (click)="onCitySubmit()" slot="end">
         <ion-icon  name="send">
@@ -26,9 +26,12 @@
 
 
   <ion-list>
-    <ion-item *ngFor="let ricerca of ricerche$ | async" (click)="onRicercaClick(ricerca.tipoRichiesta, ricerca.input)" routerDirection="forward">
+    <ion-item *ngFor="let ricerca of ricerche$ | async"  routerDirection="forward">
       <ion-icon slot="start" name="sync"></ion-icon>
-      <ion-label>{{ricerca.input}}</ion-label>
+      <ion-label (click)="onRicercaClick(ricerca.tipoRichiesta, ricerca.input)">{{ricerca.input}}</ion-label>
+      <ion-button fill="clear" (click)="deleteRicerca(ricerca.id)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

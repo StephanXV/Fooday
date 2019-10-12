@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content>
+
   <!--
   <ion-list>
     <ion-item-sliding *ngFor="let prenotazione of prenotazioni$ | async" #sliding>
@@ -38,15 +39,15 @@
 
   <ion-list>
     <ion-card *ngFor="let prenotazione of prenotazioni$ | async">
-      <ion-card-title margin-top>
+      <ion-card-title class="ion-margin-top">
         <ion-row>
           <ion-col>
-           <ion-label margin>
+           <ion-label class="ion-margin">
               {{prenotazione.ristorante.nome}}
            </ion-label>
           </ion-col>
           <ion-col>
-            <ion-label float-right color="tertiary"><ion-icon name="md-pricetag"></ion-icon>
+            <ion-label class="ion-float-right" color="tertiary"><ion-icon name="md-pricetag"></ion-icon>
               -{{prenotazione.scontoApplicato}}%&nbsp;
             </ion-label>
           </ion-col>
@@ -59,13 +60,13 @@
         <ion-label>
           <strong>Orario:</strong> {{prenotazione.orario}}
         </ion-label> <br>
-        <ion-card-subtitle margin-top>
+        <ion-card-subtitle class="ion-margin-top">
         <ion-label style="font-style: italic">
           <strong>Effettuata il:</strong> {{prenotazione.prenotazioneId.timestamp | date: 'EE d MMM, y - hh:mm'}}
         </ion-label>
         </ion-card-subtitle>
 
-        <ion-card-subtitle margin-top>
+        <ion-card-subtitle class="ion-margin-top">
         <ion-label> <ion-icon style="font-size: larger" name="people"></ion-icon>
           {{prenotazione.posti}} persone
         </ion-label>
@@ -77,20 +78,24 @@
           </ion-col>
 
           <ion-col *ngIf="currentDate > prenotazione.giorno && !prenotazione.valutata">
-            <ion-button margin-end class="button1"
-                        [routerLink]="['recensione', prenotazione.ristorante.id, prenotazione.prenotazioneId.timestamp]" routerDirection="forward">
+            <ion-button class="ion-margin-end ion-float-end button1"
+                        [routerLink]="['recensione', prenotazione.ristorante.id, prenotazione.prenotazioneId.timestamp]"
+                        routerDirection="forward">
               <ion-label>
                 {{'BOTTONE_RECENSIONE' | translate}}
               </ion-label>
             </ion-button>
           </ion-col>
-        </ion-row>
-
-            <ion-button margin float-right *ngIf="currentDate < prenotazione.giorno" class="button1" (click)="deleteAlert(prenotazione.ristorante.id, prenotazione.prenotazioneId.timestamp)">
+          <ion-col *ngIf="currentDate < prenotazione.giorno">
+            <ion-button class="ion-margin ion-float-end button1"
+                        (click)="deleteAlert(prenotazione.ristorante.id, prenotazione.prenotazioneId.timestamp)">
               <ion-label>
                 {{'BOTTONE_ANNULLA_PRENOTAZIONE' | translate}}
               </ion-label>
             </ion-button>
+          </ion-col>
+        </ion-row>
+
 
 
 
@@ -98,4 +103,9 @@
     </ion-card>
   </ion-list>
 
+  <div *ngIf="prenotazioni.length < 1" class="ion-padding ion-text-center ion-margin">
+    <ion-label color="medium">
+      {{'PRENOTAZIONI_VUOTO' | translate}}
+    </ion-label>
+  </div>
 </ion-content>

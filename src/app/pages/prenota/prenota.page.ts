@@ -56,7 +56,7 @@ export class PrenotaPage implements OnInit {
       data: ['', Validators.compose([Validators.required])],
       orario: ['', Validators.compose([Validators.required])],
       nome: [this.utente.nome + ' ' + this.utente.cognome, Validators.compose([Validators.required])],
-      punti: ['', Validators.compose([Validators.required])]
+      punti: ['No', Validators.compose([Validators.required])]
     });
   }
 
@@ -113,7 +113,8 @@ export class PrenotaPage implements OnInit {
 
   onBookSubmit() {
     this.prenotazione.posti = this.bookFormModule.value.posti;
-    this.prenotazione.giorno = this.bookFormModule.value.data;
+    const temp = new Date(this.bookFormModule.value.data);
+    this.prenotazione.giorno = temp.getTime();
     this.prenotazione.orario = this.bookFormModule.value.orario;
     this.prenotazione.scontoApplicato = this.ristorante.sconto;
     this.prenotazione.nome = this.bookFormModule.value.nome;
