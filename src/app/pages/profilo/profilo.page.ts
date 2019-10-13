@@ -29,6 +29,12 @@ export class ProfiloPage implements OnInit {
     });
   }
 
+  ionViewWillEnter() {
+    this.utenteService.getUtente().subscribe((utente) => {
+      this.utente = utente;
+    });
+  }
+
   async onLogoutButtonClick() {
     const alert = await this.alertController.create({
       header: this.logoutTitle,

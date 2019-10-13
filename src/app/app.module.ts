@@ -14,6 +14,8 @@ import {httpInterceptorProviders} from './interceptors';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { Camera } from '@ionic-native/Camera/ngx';
+import { File } from '@ionic-native/file/ngx';
 import {FiltriPageModule} from './pages/filtri/filtri.module';
 
 // The translate loader needs to know where to load i18n files
@@ -52,10 +54,12 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
-    httpInterceptorProviders,
-    Geolocation,
-    NativeGeocoder
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+      httpInterceptorProviders,
+      Geolocation,
+      Camera,
+      File,
+      NativeGeocoder
   ],
   exports: [],
   bootstrap: [AppComponent]
