@@ -19,7 +19,7 @@
           <ion-spinner name="crescent"></ion-spinner>
       </ion-label>
 
-      <ion-card *ngFor="let ristorante of passaRistorantiModale">
+      <ion-card *ngFor="let ristorante of passaRistorantiModale" [routerLink]="['dettagli-ristorante', ristorante.id]" routerDirection="forward">
 
       <ion-row>
         <ion-col>
