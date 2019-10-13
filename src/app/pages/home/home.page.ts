@@ -14,6 +14,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {Platform} from '@ionic/angular';
 import {HttpClient} from '@angular/common/http';
+import {Recensione} from '../../model/recensione.model';
 
 declare var google: any;
 
@@ -31,26 +32,23 @@ export class HomePage implements OnInit {
   private cities = ['Roma', 'Milano', 'Torino', 'Napoli', 'L\'Aquila'];
   private latitude: any = '';
   private longitude: any = '';
-  private keyOpen = '73f45256d96f6980fc804cca915873ea';
 
   constructor(private router: Router,
               private ristoranteService: RistoranteService,
               private categoriaService: CategoriaService,
               private navController: NavController,
               private geolocation: Geolocation,
-              private platform: Platform,
-              private httpClient: HttpClient) {
+              private platform: Platform) {
       this.platform.ready().then(() => {
-          this.getCurrentLocation();
-          // this.ristoranteService.getRistorantiAroundUser(this.latitude, this.longitude);
-          this.categorie$ = this.categoriaService.list();
-          this.navController.navigateRoot('tabs');
+      this.getCurrentLocation();
+      // this.ristoranteService.getRistorantiAroundUser(this.latitude, this.longitude);
+      this.categorie$ = this.categoriaService.list();
+      this.navController.navigateRoot('tabs');
       });
   }
 
-
   ngOnInit() {
-      this.ristoranti$ = this.ristoranteService.getRistorantiByCittaId(this.cittaLocalizzata);
+      //this.ristoranti$ = this.ristoranteService.getRistorantiByCittaId(this.cittaLocalizzata);
       this.categorie$ = this.categoriaService.list();
       this.navController.navigateRoot('tabs');
   }
@@ -70,25 +68,25 @@ export class HomePage implements OnInit {
       this.latitude = position.coords.latitude;
       this.longitude = position.coords.longitude;
       console.log(this.longitude + ' long');
-      console.log(this.latitude + ' lat');
       this.ristoranti$ = this.ristoranteService.getRistorantiAroundUser(this.latitude, this.longitude);
     });
   }
 
-  /*getCityAroundUser(lat, lon) {
-    let url = 'https://api.openweathermap.org/data/2.5/find?lat=' + lat + '&lon=' + lon + '&cnt=10&appid=' +
-             this.keyOpen + '&units=metric&lang=it';
-    this.httpClient.get(url).subscribe((cityData) => {
-      const obj = cityData as any;
-      console.log(obj);
-    });
+  calcolaMedie(recensioni: Recensione[]): number {
+    let mediaCucina = 0;
+    let mediaServizio = 0;
+    let mediaPrezzo = 0;
+    for (const recensione of recensioni) {
+      mediaCucina += recensione.votoCucina;
+      mediaServizio += recensione.votoServizio;
+      mediaPrezzo += recensione.votoPrezzo;
+    }
+    mediaCucina /= recensioni.length;
+    mediaServizio /= recensioni.length;
+    mediaPrezzo /= recensioni.length;
+    mediaCucina = Math.floor(mediaCucina * 10) / 10;
+    mediaServizio = Math.floor(mediaServizio * 10) / 10;
+    mediaPrezzo = Math.floor(mediaPrezzo * 10) / 10;
+    return Math.floor(((mediaCucina + mediaServizio + mediaPrezzo) / 3) * 10) / 10;
   }
-  doRefresh(event) {
-    console.log('Begin async operation');
-
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      event.target.complete();
-    }, 2000);
-  }*/
 }

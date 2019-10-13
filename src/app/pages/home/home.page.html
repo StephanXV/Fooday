@@ -68,8 +68,8 @@
             </ion-label>
           </ion-col>
           <ion-col>
-            <ion-label class="ion-margin-end ion-float-end" color="tertiary">
-              {{ristorante.punteggio}} <ion-label style="font-size: small; color: #989aa2">/10</ion-label>
+            <ion-label *ngIf="!ristorante.recensioni.length < 1" class="ion-margin-end ion-float-end" color="tertiary">
+              {{calcolaMedie(ristorante.recensioni)}} <ion-label style="font-size: small; color: #989aa2">/10</ion-label>
             </ion-label>
           </ion-col>
         </ion-row>
@@ -85,7 +85,7 @@
           </ion-col>
 
           <ion-col>
-            <ion-label class="ion-float-end" color="secondary">{{ristorante.sconto}}% di sconto!</ion-label>
+            <ion-label *ngIf="ristorante.sconto > 0" class="ion-float-end" color="secondary">{{ristorante.sconto}}% di sconto!</ion-label>
           </ion-col>
         </ion-row>
 

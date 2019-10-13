@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { DettagliRistorantePage } from './dettagli-ristorante.page';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgCircleProgressModule} from 'ng-circle-progress';
+import {HereMapComponent} from '../../here-map/here-map.component';
 
 const routes: Routes = [
   {
@@ -41,8 +42,9 @@ const routes: Routes = [
         IonicModule,
         TranslateModule.forChild(),
         RouterModule.forChild(routes),
-        NgCircleProgressModule
+        NgCircleProgressModule,
     ],
-    declarations: [DettagliRistorantePage]
+    declarations: [DettagliRistorantePage, HereMapComponent],
+    exports: [HereMapComponent]
 })
 export class DettagliRistorantePageModule {}
