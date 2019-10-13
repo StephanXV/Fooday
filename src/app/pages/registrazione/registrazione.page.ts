@@ -21,12 +21,6 @@ export class RegistrazionePage implements OnInit {
   private messageTitle: string;
   private confirmButton: string;
   private immagine: any;
-  isLoading = false;
-
-  imagePickerOptions = {
-    maximumImagesCount: 1,
-    quality: 50
-  };
 
   constructor(private formBuilder: FormBuilder,
               private navController: NavController,
@@ -109,12 +103,10 @@ export class RegistrazionePage implements OnInit {
       mediaType: this.camera.MediaType.PICTURE
     };
     this.camera.getPicture(options).then((imageData) => {
-// imageData is either a base64 encoded string or a file URI
-// If it's base64 (DATA_URL):
       this.showLoading(imageData);
       this.immagineAggiunta();
     }, (err) => {
-// Handle error
+        this.immagineNonAggiunta();
     });
   }
 
@@ -135,6 +127,7 @@ export class RegistrazionePage implements OnInit {
     this.immagine = base64;
     await (this.immagine != null);
   }
+
   async immagineAggiunta() {
 
     const alert = await this.alertController.create({
@@ -174,5 +167,22 @@ export class RegistrazionePage implements OnInit {
       ]
     });
     await actionSheet.present();
+  }
+
+  async immagineNonAggiunta() {
+
+    const alert = await this.alertController.create({
+      header: 'Errore! Immagine non aggiunta',
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            console.log('ok');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }

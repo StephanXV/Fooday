@@ -6,14 +6,8 @@ import {RistoranteService} from '../../services/ristorante.service';
 import {Categoria} from '../../model/categoria.model';
 import {CategoriaService} from '../../services/categoria.service';
 import {NavController} from '@ionic/angular';
-import {Utente} from '../../model/utente.model';
-import {UtenteService} from '../../services/utente.service';
-import {URL_BASE} from '../../constants';
-import {ImmagineService} from '../../services/immagine.service';
-import { DomSanitizer } from '@angular/platform-browser';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {Platform} from '@ionic/angular';
-import {HttpClient} from '@angular/common/http';
 import {Recensione} from '../../model/recensione.model';
 
 declare var google: any;
