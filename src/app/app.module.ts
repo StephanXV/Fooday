@@ -13,9 +13,10 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {IonicStorageModule} from '@ionic/storage';
 import {httpInterceptorProviders} from './interceptors';
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { Camera } from '@ionic-native/Camera/ngx';
+import { File } from '@ionic-native/file/ngx';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -54,8 +55,9 @@ export function createTranslateLoader(http: HttpClient) {
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
       httpInterceptorProviders,
-      ImagePicker,
-      Geolocation
+      Geolocation,
+      Camera,
+      File
   ],
   bootstrap: [AppComponent]
 })
