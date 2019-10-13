@@ -39,7 +39,7 @@ export class FiltriPage implements OnInit {
   }
 
   async closeModal() {
-    await this.modalController.dismiss();
+    await this.modalController.dismiss(this.passaRistorantiModale);
   }
 
   changeCategoria(categoria) {

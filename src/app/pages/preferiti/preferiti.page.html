@@ -52,7 +52,7 @@
         </ion-row>
       </ion-card>
     </ion-list>
-  <div *ngIf="preferiti.length < 1" class="ion-padding ion-text-center ion-margin">
+  <div *ngIf="preferiti != null && preferiti.length < 1" class="ion-padding ion-text-center ion-margin">
     <ion-label color="medium">
       {{'PREFERITI_VUOTO' | translate}}
     </ion-label>

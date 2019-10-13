@@ -23,29 +23,41 @@ export class ListaRistorantiPage implements OnInit {
   private nomeRisto: string;
   private requestType: number;
   private passaRistorantiModale: Ristorante[];
+  private latlng: string;
+  private lat: string;
+  private lon: string;
 
   constructor(private route: ActivatedRoute,
               private ristoranteService: RistoranteService,
               private categoriaService: CategoriaService,
-              private modalController: ModalController) { }
+              private modalController: ModalController) {
+  }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.requestType = parseInt(params.get('requestType'), 0);
       if (this.requestType === 1) {
         this.idCategoria = parseInt(params.get('id'), 0);
-        this.categoriaService.getCategoria(this.idCategoria).subscribe( (categoria) => {
+        this.categoriaService.getCategoria(this.idCategoria).subscribe((categoria) => {
           this.categoria.nome = categoria.nome;
         });
         this.getRistorantiByCategoria();
       } else if (this.requestType === 2) {
-          this.nomeCitta = params.get('id');
-          console.log('Lista:' + this.nomeCitta);
-          this.getRistorantiByCitta();
-        } else if (this.requestType === 3) {
+        this.nomeCitta = params.get('id');
+        console.log('Lista:' + this.nomeCitta);
+        this.getRistorantiByCitta();
+      } else if (this.requestType === 3) {
         this.nomeRisto = params.get('id');
         console.log('Lista:' + this.nomeRisto);
         this.getRistorantiByNome();
+      } else if (this.requestType === 4) {
+        this.latlng = params.get('id');
+        console.log(this.latlng);
+        const coord = this.latlng.split(',');
+        console.log(coord);
+        this.lat = coord[0];
+        this.lon = coord[1];
+        this.getRistorantiByCoord();
       }
     });
   }
@@ -54,7 +66,7 @@ export class ListaRistorantiPage implements OnInit {
   getRistorantiByCategoria() {
     console.log('Richiesto elenco ristoranti della categoria: ' + this.idCategoria);
     // this.ristoranti$ = this.ristoranteService.getRistorantiByCategoriaId(this.idCategoria);
-    this.ristoranteService.getRistorantiByCategoriaId(this.idCategoria).subscribe( (ristoranti) => {
+    this.ristoranteService.getRistorantiByCategoriaId(this.idCategoria).subscribe((ristoranti) => {
       this.passaRistorantiModale = ristoranti;
       console.log(this.passaRistorantiModale);
     }, () => console.log('Errore'));
@@ -63,7 +75,7 @@ export class ListaRistorantiPage implements OnInit {
   getRistorantiByCitta() {
     console.log('Richiesto elenco ristoranti della citta: ' + this.nomeCitta);
     // this.ristoranti$ = this.ristoranteService.getRistorantiByCittaNome(this.nomeCitta);
-    this.ristoranteService.getRistorantiByCittaNome(this.nomeCitta).subscribe( (ristoranti) => {
+    this.ristoranteService.getRistorantiByCittaNome(this.nomeCitta).subscribe((ristoranti) => {
       this.passaRistorantiModale = ristoranti;
       console.log(this.passaRistorantiModale);
     }, () => console.log('Errore'));
@@ -72,26 +84,26 @@ export class ListaRistorantiPage implements OnInit {
   getRistorantiByNome() {
     console.log('Richiesto elenco ristoranti con nome: ' + this.nomeRisto);
     // this.ristoranti$ = this.ristoranteService.getRistorantiByNome(this.nomeRisto);
-    this.ristoranteService.getRistorantiByNome(this.nomeRisto).subscribe( (ristoranti) => {
+    this.ristoranteService.getRistorantiByNome(this.nomeRisto).subscribe((ristoranti) => {
       this.passaRistorantiModale = ristoranti;
       console.log(this.passaRistorantiModale);
     }, () => console.log('Errore'));
   }
 
 
-    async  openFilters() {
-      const modal = await this.modalController.create({
-        component: FiltriPage,
-        componentProps: {
-          passaRistorantiModale: this.passaRistorantiModale
-        }
-      });
-      modal.onWillDismiss().then(dataReturned => {
-        this.passaRistorantiModale = dataReturned.data;
-        console.log('Receive: ', this.passaRistorantiModale);
-      });
-      return await modal.present();
-    }
+  async openFilters() {
+    const modal = await this.modalController.create({
+      component: FiltriPage,
+      componentProps: {
+        passaRistorantiModale: this.passaRistorantiModale
+      }
+    });
+    modal.onWillDismiss().then(dataReturned => {
+      this.passaRistorantiModale = dataReturned.data;
+      console.log('Receive: ', this.passaRistorantiModale);
+    });
+    return await modal.present();
+  }
 
   calcolaMedie(recensioni: Recensione[]): number {
     let mediaCucina = 0;
@@ -111,5 +123,10 @@ export class ListaRistorantiPage implements OnInit {
     return Math.floor(((mediaCucina + mediaServizio + mediaPrezzo) / 3) * 10) / 10;
   }
 
-
+  getRistorantiByCoord() {
+    this.ristoranteService.getRistorantiAroundUser(this.lat, this.lon).subscribe((ristoranti) => {
+      this.passaRistorantiModale = ristoranti;
+      console.log(this.passaRistorantiModale);
+    }, () => console.log('Errore'));
+  }
 }

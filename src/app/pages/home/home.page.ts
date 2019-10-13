@@ -83,4 +83,9 @@ export class HomePage implements OnInit {
     mediaPrezzo = Math.floor(mediaPrezzo * 10) / 10;
     return Math.floor(((mediaCucina + mediaServizio + mediaPrezzo) / 3) * 10) / 10;
   }
+
+  showMore() {
+    this.requestType = 4;
+    this.router.navigate(['/tabs/home/lista-ristoranti', this.requestType, this.latitude + ',' + this.longitude]);
+  }
 }

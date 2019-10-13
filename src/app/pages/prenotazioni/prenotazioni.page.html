@@ -103,7 +103,7 @@
     </ion-card>
   </ion-list>
 
-  <div *ngIf="prenotazioni.length < 1" class="ion-padding ion-text-center ion-margin">
+  <div *ngIf="prenotazioni != null && prenotazioni.length < 1" class="ion-padding ion-text-center ion-margin">
     <ion-label color="medium">
       {{'PRENOTAZIONI_VUOTO' | translate}}
     </ion-label>
