@@ -12,7 +12,9 @@
 <ion-content>
   <div class="ion-margin-top">
     <ion-item margin lines="none" class="add-photo">
-      <ion-img *ngIf="immagine==null" src="data:image/jpeg;base64, {{utente.immagine}}" (click)="selectImage()">
+      <ion-img *ngIf="utente.immagine==null && immagine==null" src="assets/images/user-icon.jpg" (click)="selectImage()">
+      </ion-img>
+      <ion-img *ngIf="immagine==null && utente.immagine!=null" src="data:image/jpeg;base64, {{utente.immagine}}" (click)="selectImage()">
 
       </ion-img>
       <ion-img *ngIf="immagine!=null" src="data:image/jpeg;base64, {{immagine}}" (click)="selectImage()">

@@ -15,7 +15,8 @@
 <ion-content>
   <div class="ion-margin-top">
     <ion-item lines="none" class="add-photo">
-      <ion-img src='data:image/jpeg;base64, {{utente.immagine}}'></ion-img>
+      <ion-img *ngIf="utente.immagine==null" src="assets/images/user-icon.jpg"></ion-img>
+      <ion-img *ngIf="utente.immagine!=null" src='data:image/jpeg;base64, {{utente.immagine}}'></ion-img>
     </ion-item>
   </div>
   <div>

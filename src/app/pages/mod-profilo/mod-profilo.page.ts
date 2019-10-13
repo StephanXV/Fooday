@@ -34,6 +34,9 @@ export class ModProfiloPage implements OnInit {
     this.initTranslate();
     this.utenteService.getUtente().subscribe((utente) => {
       this.utente = utente;
+      if (this.utente.immagine !== null) {
+        this.immagine = this.utente.immagine;
+      }
     });
     this.profileFormModule = this.formBuilder.group( {
       nome: [this.utente.nome, Validators.compose([Validators.required])],
