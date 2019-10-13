@@ -30,12 +30,12 @@ export class FiltriPage implements OnInit {
         };
         this.isToggledPromo = false;
         this.categoriaScelta = null;
+        this.votiVal = null;
     });
   }
   @Input() passaRistorantiModale: Ristorante[];
 
   ngOnInit() {
-    this.votiVal = '6';
   }
 
   async closeModal() {
@@ -101,7 +101,7 @@ export class FiltriPage implements OnInit {
       });
     } else if (this.ordinaPerSelected === 'popolarita') { // ordina per popolarità
       this.passaRistorantiModale.sort(function(a, b) {
-        return b.punteggio - a.prezzoMedio;
+        return b.punteggio - a.punteggio;
       });
     }
     console.log(this.passaRistorantiModale);

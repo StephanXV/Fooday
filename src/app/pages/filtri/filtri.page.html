@@ -57,7 +57,8 @@
         VOTI
     </ion-label>
     <ion-label margin float-end>
-        <ion-badge color="medium">Più di: {{votiVal}}</ion-badge>
+        <ion-badge *ngIf="votiVal != null" color="medium">Più di: {{votiVal}}</ion-badge>
+        <ion-badge *ngIf="votiVal == null" color="medium">Tutti</ion-badge>
     </ion-label>
   </ion-list-header>
 

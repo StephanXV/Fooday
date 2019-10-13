@@ -48,7 +48,7 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-      this.ristoranti$ = this.ristoranteService.getRistorantiByCittaId(this.cittaLocalizzata);
+      //this.ristoranti$ = this.ristoranteService.getRistorantiByCittaId(this.cittaLocalizzata);
       this.categorie$ = this.categoriaService.list();
       this.navController.navigateRoot('tabs');
   }
@@ -68,7 +68,6 @@ export class HomePage implements OnInit {
       this.latitude = position.coords.latitude;
       this.longitude = position.coords.longitude;
       console.log(this.longitude + ' long');
-      console.log(this.latitude + ' lat');
       this.ristoranti$ = this.ristoranteService.getRistorantiAroundUser(this.latitude, this.longitude);
     });
   }
