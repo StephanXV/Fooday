@@ -30,6 +30,7 @@ export class AppComponent {
       this.splashScreen.hide();
       this.initTranslate();
     });
+
   }
 
   initTranslate() {

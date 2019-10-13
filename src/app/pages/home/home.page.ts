@@ -6,18 +6,10 @@ import {RistoranteService} from '../../services/ristorante.service';
 import {Categoria} from '../../model/categoria.model';
 import {CategoriaService} from '../../services/categoria.service';
 import {NavController} from '@ionic/angular';
-import {Utente} from '../../model/utente.model';
-import {UtenteService} from '../../services/utente.service';
-import {URL_BASE} from '../../constants';
-import {ImmagineService} from '../../services/immagine.service';
-import { DomSanitizer } from '@angular/platform-browser';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {Platform} from '@ionic/angular';
-import {HttpClient} from '@angular/common/http';
 import {Recensione} from '../../model/recensione.model';
-
-declare var google: any;
-
+import {Storage} from '@ionic/storage';
 
 @Component({
   selector: 'app-home',
@@ -32,13 +24,15 @@ export class HomePage implements OnInit {
   private cities = ['Roma', 'Milano', 'Torino', 'Napoli', 'L\'Aquila'];
   private latitude: any = '';
   private longitude: any = '';
+  private loaded = false;
 
   constructor(private router: Router,
               private ristoranteService: RistoranteService,
               private categoriaService: CategoriaService,
               private navController: NavController,
               private geolocation: Geolocation,
-              private platform: Platform) {
+              private platform: Platform,
+              private storage: Storage) {
       this.platform.ready().then(() => {
       this.getCurrentLocation();
       // this.ristoranteService.getRistorantiAroundUser(this.latitude, this.longitude);
@@ -48,9 +42,7 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-      //this.ristoranti$ = this.ristoranteService.getRistorantiByCittaId(this.cittaLocalizzata);
-      this.categorie$ = this.categoriaService.list();
-      this.navController.navigateRoot('tabs');
+      this.storage.clear().then(() => this.categorie$ = this.categoriaService.list());
   }
 
   onCategoryClick(idCategoria: number) {
@@ -69,6 +61,7 @@ export class HomePage implements OnInit {
       this.longitude = position.coords.longitude;
       console.log(this.longitude + ' long');
       this.ristoranti$ = this.ristoranteService.getRistorantiAroundUser(this.latitude, this.longitude);
+      this.ristoranti$.subscribe(data => this.loaded = true);
     });
   }
 

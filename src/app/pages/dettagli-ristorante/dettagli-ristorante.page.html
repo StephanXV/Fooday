@@ -229,7 +229,8 @@
 
           <ion-item>
             <ion-avatar slot="start">
-              <ion-img src="data:image/jpeg;base64, {{recensione.utente.immagine}}"></ion-img>
+              <ion-img *ngIf="recensione.utente.immagine!=null" src="data:image/jpeg;base64, {{recensione.utente.immagine}}"></ion-img>
+              <ion-img *ngIf="recensione.utente.immagine==null" src="assets/images/user-icon.jpg"></ion-img>
             </ion-avatar>
             <ion-row>
               <ion-col class="ion-margin-top">
