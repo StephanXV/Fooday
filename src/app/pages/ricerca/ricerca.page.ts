@@ -39,21 +39,31 @@ export class RicercaPage implements OnInit {
   }
 
   listRicerche() {
-    this.ricerche$ = this.ricercaService.getRicercheByUtente(this.utente.id);
+    if (this.utente != null) {
+      this.ricerche$ = this.ricercaService.getRicercheByUtente(this.utente.id);
+    }
   }
 
   onNomeSubmit() {
-    this.requestType = 3;
-    console.log('Nome input: ' + this.nomeRisto);
-    this.createRicerca(this.nomeRisto, this.requestType);
-    this.router.navigate(['/tabs/ricerca/lista-ristoranti', this.requestType, this.nomeRisto]);
+    if (this.nomeRisto !== '') {
+      this.requestType = 3;
+      console.log('Nome input: ' + this.nomeRisto);
+      if (this.utente != null) {
+        this.createRicerca(this.nomeRisto, this.requestType);
+      }
+      this.router.navigate(['/tabs/ricerca/lista-ristoranti', this.requestType, this.nomeRisto]);
+    }
   }
 
   onCitySubmit() {
-    this.requestType = 2;
-    console.log('Citta input: ' + this.nomeCitta);
-    this.createRicerca(this.nomeCitta, this.requestType);
-    this.router.navigate(['/tabs/ricerca/lista-ristoranti', this.requestType, this.nomeCitta]);
+    if (this.nomeCitta !== '') {
+      this.requestType = 2;
+      console.log('Citta input: ' + this.nomeCitta);
+      if (this.utente != null) {
+        this.createRicerca(this.nomeCitta, this.requestType);
+      }
+      this.router.navigate(['/tabs/ricerca/lista-ristoranti', this.requestType, this.nomeCitta]);
+    }
   }
 
   onRicercaClick(tipoRichiesta: number, input: string) {

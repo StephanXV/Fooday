@@ -9,6 +9,9 @@ import {NavController} from '@ionic/angular';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {Platform} from '@ionic/angular';
 import {Recensione} from '../../model/recensione.model';
+import {Storage} from '@ionic/storage';
+import {ImmagineService} from '../../services/immagine.service';
+import {Immagine} from '../../model/immagine.model';
 
 declare var google: any;
 
@@ -20,9 +23,10 @@ declare var google: any;
 })
 export class HomePage implements OnInit {
   private requestType: number;
-  private cittaLocalizzata = 6;
   private ristoranti$: Observable<Ristorante[]>;
+  private ristoranti: Ristorante[];
   private categorie$: Observable<Categoria[]>;
+  private immagine$: Observable<Immagine>;
   private cities = ['Roma', 'Milano', 'Torino', 'Napoli', 'L\'Aquila'];
   private latitude: any = '';
   private longitude: any = '';
@@ -32,19 +36,18 @@ export class HomePage implements OnInit {
               private categoriaService: CategoriaService,
               private navController: NavController,
               private geolocation: Geolocation,
-              private platform: Platform) {
+              private platform: Platform,
+              private storage: Storage,
+              private immagineService: ImmagineService) {
       this.platform.ready().then(() => {
       this.getCurrentLocation();
-      // this.ristoranteService.getRistorantiAroundUser(this.latitude, this.longitude);
       this.categorie$ = this.categoriaService.list();
       this.navController.navigateRoot('tabs');
       });
   }
 
   ngOnInit() {
-      //this.ristoranti$ = this.ristoranteService.getRistorantiByCittaId(this.cittaLocalizzata);
-      this.categorie$ = this.categoriaService.list();
-      this.navController.navigateRoot('tabs');
+      this.storage.clear().then(() => this.categorie$ = this.categoriaService.list());
   }
 
   onCategoryClick(idCategoria: number) {
@@ -62,7 +65,9 @@ export class HomePage implements OnInit {
       this.latitude = position.coords.latitude;
       this.longitude = position.coords.longitude;
       console.log(this.longitude + ' long');
-      this.ristoranti$ = this.ristoranteService.getRistorantiAroundUser(this.latitude, this.longitude);
+      this.ristoranteService.getRistorantiAroundUser(this.latitude, this.longitude).subscribe( (ristoranti) => {
+        this.ristoranti = ristoranti;
+      });
     });
   }
 
