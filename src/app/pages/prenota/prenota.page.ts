@@ -129,7 +129,10 @@ export class PrenotaPage implements OnInit {
     this.prenotazione.utente.nome = this.utente.nome;
     this.prenotazione.utente.id = this.utente.id;
     this.prenotazioneService.createPrenotazione(this.prenotazione).subscribe((recensione: Prenotazione) =>
-            this.prenotazioneCompletata(),
+        this.prenotazioneCompletata,
+        error => (console.log('Username già presa')));
+    // set user param to update punti
+    this.prenotazioneService.updatePunti(this.utente, this.prenotazione.usaPunti).subscribe((utente: Utente) =>
         error => (console.log('Username già presa')));
   }
 
@@ -162,5 +165,19 @@ export class PrenotaPage implements OnInit {
     this.translateService.get('CONFIRM_BUTTON').subscribe((data: string) => {
       this.confirmButton = data;
     });
+  }
+
+  async infoUsaPunti() {
+    const alert = await this.alertController.create({
+      header: 'Info',
+      message: 'Accettando di usare i propri punti per la prenotazione verranno sottratti 1000 punti al saldo ' +
+                'e verrà applicato uno sconto di 10 € direttamente in cassa.',
+      buttons: [
+        {
+          text: this.confirmButton,
+        }
+      ]
+    });
+    await alert.present();
   }
 }

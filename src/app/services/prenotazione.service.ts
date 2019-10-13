@@ -4,6 +4,7 @@ import {URL} from '../constants';
 import {Prenotazione} from '../model/prenotazione.model';
 import {Observable} from 'rxjs';
 import {Recensione} from '../model/recensione.model';
+import {Utente} from "../model/utente.model";
 
 @Injectable({
     providedIn: 'root'
@@ -31,6 +32,11 @@ export class PrenotazioneService {
     prenotazioneValutata(idUtente, idRistorante, timestamp) {
         const url = `${URL.PRENOTAZIONI_VALUTATA}/${idUtente}/${idRistorante}/${timestamp}`;
         return this.http.get(url);
+    }
+
+    updatePunti(utente: Utente, usaPunti) {
+        const url = `${URL.PRENOTAZIONI}/up/${usaPunti}`;
+        return this.http.put<Utente>(url, utente);
     }
 
 

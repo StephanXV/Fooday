@@ -13,8 +13,6 @@ import {Storage} from '@ionic/storage';
 import {ImmagineService} from '../../services/immagine.service';
 import {Immagine} from '../../model/immagine.model';
 
-declare var google: any;
-
 
 @Component({
   selector: 'app-home',
@@ -23,13 +21,12 @@ declare var google: any;
 })
 export class HomePage implements OnInit {
   private requestType: number;
-  private ristoranti$: Observable<Ristorante[]>;
   private ristoranti: Ristorante[];
   private categorie$: Observable<Categoria[]>;
-  private immagine$: Observable<Immagine>;
   private cities = ['Roma', 'Milano', 'Torino', 'Napoli', 'L\'Aquila'];
   private latitude: any = '';
   private longitude: any = '';
+  private loaded = false;
 
   constructor(private router: Router,
               private ristoranteService: RistoranteService,
@@ -39,6 +36,7 @@ export class HomePage implements OnInit {
               private platform: Platform,
               private storage: Storage,
               private immagineService: ImmagineService) {
+
       this.platform.ready().then(() => {
       this.getCurrentLocation();
       this.categorie$ = this.categoriaService.list();
