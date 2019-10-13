@@ -12,7 +12,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content>
+    <!--
+    <div *ngIf="passaRistorantiModale.length < 1" class="ion-padding ion-text-center ion-margin">
+        <ion-label color="medium">
+            {{'PRENOTAZIONI_VUOTO' | translate}}
+        </ion-label>
+    </div>
+    -->
 
   <ion-list>
       <ion-label *ngIf="passaRistorantiModale == null">
