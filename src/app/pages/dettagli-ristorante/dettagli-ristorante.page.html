@@ -80,7 +80,7 @@
         <ion-item>
           <ion-icon class="ion-margin-end" name="logo-euro"></ion-icon>
           <ion-label>Spesa media: {{ristorante.prezzoMedio}} €</ion-label>
-          <ion-label class="ion-float-end" color="tertiary" *ngIf="ristorante.sconto > 0">{{ristorante.sconto}}%</ion-label>
+          <ion-text class="ion-float-end" color="tertiary" *ngIf="ristorante.sconto > 0">-{{ristorante.sconto}}%</ion-text>
         </ion-item>
 
 
@@ -100,7 +100,7 @@
             </div>
         </div>
 
-        <ion-card margin><here-map appId="FOOoEDaH5rq3XZwsDslW" appCode="1m8hpnrgMskdle0WoXjjyg" lat="{{ristorante.latitudine}}" lng="{{ristorante.longitudine}}"></here-map></ion-card>
+        <ion-card class="ion-margin"><here-map *ngIf="(ristorante$ | async) as ristorante" appId="FOOoEDaH5rq3XZwsDslW" appCode="1m8hpnrgMskdle0WoXjjyg" lat="{{ristorante.latitudine}}" lng="{{ristorante.longitudine}}"></here-map></ion-card>
 
       </ion-list>
 
