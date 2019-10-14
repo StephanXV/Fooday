@@ -6,7 +6,6 @@ import {Utente} from '../../model/utente.model';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Ristorante} from '../../model/ristorante.model';
 import {RistoranteService} from '../../services/ristorante.service';
-import {Recensione} from '../../model/recensione.model';
 import {Prenotazione} from '../../model/prenotazione.model';
 import {PrenotazioneService} from '../../services/prenotazione.service';
 import {TranslateService} from '@ngx-translate/core';
@@ -22,12 +21,13 @@ export class PrenotaPage implements OnInit {
   private idRistorante: number;
   private utente: Utente;
   private selectedDate: Date;
-  private currentDate: Date;
+  private currentDate: Date = new Date();
   private prenotazione: Prenotazione = new Prenotazione();
   private bookFormModule: FormGroup;
   private prenotazioneTitle: string;
   private prenotazioneMessage: string;
   private confirmButton: string;
+  private isChiuso = true;
   private giorni = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
   private numbers: number[] = [];
   private orari: string[] = [];
@@ -43,21 +43,23 @@ export class PrenotaPage implements OnInit {
 
   ngOnInit() {
     this.initTranslate();
-    this.bookFormModule = this.formBuilder.group({
-      posti: ['', Validators.compose([Validators.required])],
-      data: ['', Validators.compose([Validators.required])],
-      orario: ['', Validators.compose([Validators.required])],
-      nome: ['', Validators.compose([Validators.required])],
-      punti: ['No', Validators.compose([Validators.required])]
-    });
     this.currentDate = new Date();
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.idRistorante = parseInt(params.get('id'), 0);
       this.dettagliRistorante();
+
     });
     this.utenteService.getUtente().subscribe( (utente) => {
       this.utente = utente;
     });
+    this.bookFormModule = this.formBuilder.group({
+      posti: ['', Validators.compose([Validators.required])],
+      data: ['', Validators.compose([Validators.required])],
+      orario: ['', Validators.compose([Validators.required])],
+      nome: [this.utente.nome + ' ' + this.utente.cognome, Validators.compose([Validators.required])],
+      punti: ['No', Validators.compose([Validators.required])]
+    });
+
   }
 
   dettagliRistorante() {
@@ -87,8 +89,13 @@ export class PrenotaPage implements OnInit {
 
   generateOrari(giorno: string) {
     let i = 0;
+    this.orari = [];
+    this.isChiuso = false;
     for (const orario of this.ristorante.orari) {
       if (orario.giorno === giorno) {
+        if (orario.apertura === 'Chiuso') {
+          this.orari[i] = 'Chiuso';
+        }
         const dateApertura = new Date();
         dateApertura.setHours(+orario.apertura.substring(0, 2));
         dateApertura.setMinutes(+orario.apertura.substring(3, 5));
@@ -108,7 +115,11 @@ export class PrenotaPage implements OnInit {
         }
       }
     }
+    if (this.orari[0] === 'Chiuso') {
+      this.isChiuso = true;
+    }
     this.orari.sort();
+    console.log(this.orari);
   }
 
   onBookSubmit() {
