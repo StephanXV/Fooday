@@ -6,6 +6,7 @@ import {AlertController, IonItemSliding, ModalController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
 import {Utente} from '../../model/utente.model';
 import {UtenteService} from '../../services/utente.service';
+import {Recensione} from '../../model/recensione.model';
 
 @Component({
   selector: 'app-preferiti',
@@ -84,6 +85,24 @@ export class PreferitiPage implements OnInit {
     this.translateService.get('CANCEL_BUTTON').subscribe((data: string) => {
       this.cancelButton = data;
     });
+  }
+
+  calcolaMedie(recensioni: Recensione[]): number {
+    let mediaCucina = 0;
+    let mediaServizio = 0;
+    let mediaPrezzo = 0;
+    for (const recensione of recensioni) {
+      mediaCucina += recensione.votoCucina;
+      mediaServizio += recensione.votoServizio;
+      mediaPrezzo += recensione.votoPrezzo;
+    }
+    mediaCucina /= recensioni.length;
+    mediaServizio /= recensioni.length;
+    mediaPrezzo /= recensioni.length;
+    mediaCucina = Math.floor(mediaCucina * 10) / 10;
+    mediaServizio = Math.floor(mediaServizio * 10) / 10;
+    mediaPrezzo = Math.floor(mediaPrezzo * 10) / 10;
+    return Math.floor(((mediaCucina + mediaServizio + mediaPrezzo) / 3) * 10) / 10;
   }
 
 }
