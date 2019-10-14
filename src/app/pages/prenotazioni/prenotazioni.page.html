@@ -37,6 +37,10 @@
   </ion-list>
   -->
 
+  <ion-label *ngIf="!loaded">
+    <ion-spinner name="crescent"></ion-spinner>
+  </ion-label>
+
   <ion-list>
     <ion-card *ngFor="let prenotazione of prenotazioni$ | async">
       <ion-card-title class="ion-margin-top">

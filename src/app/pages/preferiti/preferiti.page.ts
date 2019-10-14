@@ -22,6 +22,7 @@ export class PreferitiPage implements OnInit {
   private messageTitle: string;
   private deleteButton: string;
   private cancelButton: string;
+  private loaded = false;
 
   constructor(private ristoranteService: RistoranteService,
               private alertController: AlertController,
@@ -38,6 +39,7 @@ export class PreferitiPage implements OnInit {
 
   ionViewWillEnter() {
     this.listPreferiti();
+    this.loaded = false;
   }
 
   async deleteRistoranteByPreferiti(idRistorante, idUtente) {
@@ -69,6 +71,7 @@ export class PreferitiPage implements OnInit {
     this.preferiti$ = this.ristoranteService.getRistorantiPreferiti(this.utente.id);
     this.ristoranteService.getRistorantiPreferiti(this.utente.id).subscribe( (preferiti) => {
       this.preferiti = preferiti;
+      this.loaded = true;
     });
   }
 

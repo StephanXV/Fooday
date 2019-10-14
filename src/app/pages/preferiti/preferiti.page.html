@@ -5,6 +5,11 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-label *ngIf="!loaded">
+    <ion-spinner name="crescent"></ion-spinner>
+  </ion-label>
+
   <ion-list>
       <ion-card *ngFor="let preferito of preferiti$ | async">
         <ion-row>
