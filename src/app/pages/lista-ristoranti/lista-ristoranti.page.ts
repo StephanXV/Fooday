@@ -105,7 +105,7 @@ export class ListaRistorantiPage implements OnInit {
     return await modal.present();
   }
 
-  calcolaMedie(recensioni: Recensione[]): number {
+  calcolaMedie(recensioni: Recensione[], ristorante: Ristorante): number {
     let mediaCucina = 0;
     let mediaServizio = 0;
     let mediaPrezzo = 0;
@@ -120,7 +120,8 @@ export class ListaRistorantiPage implements OnInit {
     mediaCucina = Math.floor(mediaCucina * 10) / 10;
     mediaServizio = Math.floor(mediaServizio * 10) / 10;
     mediaPrezzo = Math.floor(mediaPrezzo * 10) / 10;
-    return Math.floor(((mediaCucina + mediaServizio + mediaPrezzo) / 3) * 10) / 10;
+    ristorante.punteggio = Math.floor(((mediaCucina + mediaServizio + mediaPrezzo) / 3) * 10) / 10;
+    return ristorante.punteggio;
   }
 
   getRistorantiByCoord() {

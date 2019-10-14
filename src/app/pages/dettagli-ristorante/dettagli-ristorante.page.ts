@@ -21,6 +21,7 @@ export class DettagliRistorantePage implements OnInit {
   private isFavourite: boolean;
   private isLoggedIn: boolean;
   private ristorante$: Observable<Ristorante>;
+  private recensioni$: Observable<Recensione[]>;
   private idRistorante: number;
   private mediaCucina = 0;
   private mediaServizio = 0;

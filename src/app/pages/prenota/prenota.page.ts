@@ -43,6 +43,13 @@ export class PrenotaPage implements OnInit {
 
   ngOnInit() {
     this.initTranslate();
+    this.bookFormModule = this.formBuilder.group({
+      posti: ['', Validators.compose([Validators.required])],
+      data: ['', Validators.compose([Validators.required])],
+      orario: ['', Validators.compose([Validators.required])],
+      nome: ['', Validators.compose([Validators.required])],
+      punti: ['No', Validators.compose([Validators.required])]
+    });
     this.currentDate = new Date();
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.idRistorante = parseInt(params.get('id'), 0);
@@ -50,13 +57,6 @@ export class PrenotaPage implements OnInit {
     });
     this.utenteService.getUtente().subscribe( (utente) => {
       this.utente = utente;
-    });
-    this.bookFormModule = this.formBuilder.group({
-      posti: ['', Validators.compose([Validators.required])],
-      data: ['', Validators.compose([Validators.required])],
-      orario: ['', Validators.compose([Validators.required])],
-      nome: [this.utente.nome + ' ' + this.utente.cognome, Validators.compose([Validators.required])],
-      punti: ['No', Validators.compose([Validators.required])]
     });
   }
 
@@ -129,7 +129,7 @@ export class PrenotaPage implements OnInit {
     this.prenotazione.utente.nome = this.utente.nome;
     this.prenotazione.utente.id = this.utente.id;
     this.prenotazioneService.createPrenotazione(this.prenotazione).subscribe((recensione: Prenotazione) =>
-        this.prenotazioneCompletata,
+        this.prenotazioneCompletata(),
         error => (console.log('Username già presa')));
     // set user param to update punti
     this.prenotazioneService.updatePunti(this.utente, this.prenotazione.usaPunti).subscribe((utente: Utente) =>

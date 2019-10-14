@@ -27,10 +27,10 @@
 
     <ion-item class="ion-margin-bottom animated fadeInUp">
       <ion-label>{{'PLACEHOLDER_GIORNO' | translate}}</ion-label>
-      <ion-datetime (ionChange)="aggiornaGiorno()" formControlName="data"></ion-datetime>
+      <ion-datetime min="{{currentDate}}" max="2020" (ionChange)="aggiornaGiorno()" formControlName="data"></ion-datetime>
     </ion-item>
 
-    <ion-item class="ion-margin-bottom animated fadeInUp">
+    <ion-item *ngIf="bookFormModule != null" class="ion-margin-bottom animated fadeInUp">
       <ion-label>{{'PLACEHOLDER_ORARIO' | translate}}</ion-label>
       <ion-select [disabled]="!bookFormModule.get('data').valid" formControlName="orario">
         <ion-select-option *ngFor="let orario of orari">{{orario}}</ion-select-option>
@@ -51,7 +51,7 @@
       </ion-select>
     </ion-item>
 
-    <ion-label margin style="font-style: italic" color="tertiary">Questa prenotazione ti farà acquisire 100 punti</ion-label>
+    <ion-label class="ion-margin" style="font-style: italic" color="tertiary">Questa prenotazione ti farà acquisire 100 punti</ion-label>
 
     <ion-button class="button3 ion-tappable" size="medium" expand="full" shape="round"
                 color="primary" (click)="onBookSubmit()" [disabled]="!bookFormModule.valid">

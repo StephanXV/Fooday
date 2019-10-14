@@ -9,6 +9,7 @@ import { DettagliRistorantePage } from './dettagli-ristorante.page';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgCircleProgressModule} from 'ng-circle-progress';
 import {HereMapComponent} from '../../here-map/here-map.component';
+import {AuthGuard} from '../../guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: '../prenota/prenota.module#PrenotaPageModule'
+        loadChildren: '../prenota/prenota.module#PrenotaPageModule',
+        canActivate: [AuthGuard]
       }
     ]
   },
