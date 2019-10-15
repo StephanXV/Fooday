@@ -10,9 +10,6 @@ import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {Platform} from '@ionic/angular';
 import {Recensione} from '../../model/recensione.model';
 import {Storage} from '@ionic/storage';
-import {ImmagineService} from '../../services/immagine.service';
-import {Immagine} from '../../model/immagine.model';
-
 
 @Component({
   selector: 'app-home',
@@ -20,13 +17,14 @@ import {Immagine} from '../../model/immagine.model';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  private tabBarElement: any;
+  private splash = true;
   private requestType: number;
   private ristoranti: Ristorante[];
   private categorie$: Observable<Categoria[]>;
   private cities = ['Roma', 'Milano', 'Torino', 'Napoli', 'L\'Aquila'];
   private latitude: any = '';
   private longitude: any = '';
-  private loaded = false;
 
   constructor(private router: Router,
               private ristoranteService: RistoranteService,
@@ -34,14 +32,18 @@ export class HomePage implements OnInit {
               private navController: NavController,
               private geolocation: Geolocation,
               private platform: Platform,
-              private storage: Storage,
-              private immagineService: ImmagineService) {
-
-      this.platform.ready().then(() => {
+              private storage: Storage) {
+    this.tabBarElement = document.querySelector('.tabbar');
+    this.platform.ready().then(() => {
+      this.tabBarElement.style.display = 'none';
+      setTimeout(() => {
+        this.splash = false;
+        this.tabBarElement.style.display = 'flex';
+      }, 4000);
       this.getCurrentLocation();
       this.categorie$ = this.categoriaService.list();
       this.navController.navigateRoot('tabs');
-      });
+    });
   }
 
   ngOnInit() {
