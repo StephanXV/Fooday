@@ -16,6 +16,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { Camera } from '@ionic-native/Camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { FiltriPageModule } from './pages/filtri/filtri.module';
+import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -56,6 +57,7 @@ export function createTranslateLoader(http: HttpClient) {
       httpInterceptorProviders,
       Geolocation,
       Camera,
+      SplashScreen,
       File,
       NativeGeocoder
   ],

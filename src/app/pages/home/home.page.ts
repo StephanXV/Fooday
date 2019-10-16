@@ -17,7 +17,6 @@ import {Storage} from '@ionic/storage';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  private tabBarElement: any;
   private splash = true;
   private requestType: number;
   private ristoranti: Ristorante[];
@@ -33,13 +32,7 @@ export class HomePage implements OnInit {
               private geolocation: Geolocation,
               private platform: Platform,
               private storage: Storage) {
-    this.tabBarElement = document.querySelector('.tabbar');
-    this.platform.ready().then(() => {
-      this.tabBarElement.style.display = 'none';
-      setTimeout(() => {
-        this.splash = false;
-        this.tabBarElement.style.display = 'flex';
-      }, 4000);
+      this.platform.ready().then(() => {
       this.getCurrentLocation();
       this.categorie$ = this.categoriaService.list();
       this.navController.navigateRoot('tabs');
