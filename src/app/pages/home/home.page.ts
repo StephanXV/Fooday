@@ -17,14 +17,13 @@ import {Storage} from '@ionic/storage';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  private splash = true;
   private requestType: number;
-  private cittaLocalizzata = 6;
-  private ristoranti$: Observable<Ristorante[]>;
+  private ristoranti: Ristorante[];
   private categorie$: Observable<Categoria[]>;
   private cities = ['Roma', 'Milano', 'Torino', 'Napoli', 'L\'Aquila'];
   private latitude: any = '';
   private longitude: any = '';
-  private loaded = false;
 
   constructor(private router: Router,
               private ristoranteService: RistoranteService,
@@ -35,10 +34,9 @@ export class HomePage implements OnInit {
               private storage: Storage) {
       this.platform.ready().then(() => {
       this.getCurrentLocation();
-      // this.ristoranteService.getRistorantiAroundUser(this.latitude, this.longitude);
       this.categorie$ = this.categoriaService.list();
       this.navController.navigateRoot('tabs');
-      });
+    });
   }
 
   ngOnInit() {
@@ -60,8 +58,9 @@ export class HomePage implements OnInit {
       this.latitude = position.coords.latitude;
       this.longitude = position.coords.longitude;
       console.log(this.longitude + ' long');
-      this.ristoranti$ = this.ristoranteService.getRistorantiAroundUser(this.latitude, this.longitude);
-      this.ristoranti$.subscribe(data => this.loaded = true);
+      this.ristoranteService.getRistorantiAroundUser(this.latitude, this.longitude).subscribe( (ristoranti) => {
+        this.ristoranti = ristoranti;
+      });
     });
   }
 

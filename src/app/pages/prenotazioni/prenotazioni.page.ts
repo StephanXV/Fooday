@@ -21,6 +21,7 @@ export class PrenotazioniPage implements OnInit{
   private deleteButton: string;
   private cancelButton: string;
   private currentDate: Date = new Date();
+  private loaded = false;
 
   constructor(private prenotazioneService: PrenotazioneService,
               private alertController: AlertController,
@@ -35,19 +36,21 @@ export class PrenotazioniPage implements OnInit{
     });
   }
 
+  ionViewWillEnter() {
+    this.loaded = false;
+    this.listPrenotazioni();
+  }
+
   listPrenotazioni() {
     this.prenotazioni$ = this.prenotazioneService.getPrenotazioni(this.utente.id);
     this.prenotazioneService.getPrenotazioni(this.utente.id).subscribe( (prenotazioni) => {
       this.prenotazioni = prenotazioni;
+      this.loaded = true;
     });
   }
 
   async deletePrenotazioni(sliding: IonItemSliding) {
     sliding.close();
-  }
-
-  ionViewWillEnter() {
-    this.listPrenotazioni();
   }
 
   async deleteAlert(idRistorante, timestamp) {

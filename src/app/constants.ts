@@ -26,7 +26,8 @@ export const URL = {
     UTENTE_PREFERITI: URL_BASE + '/utente/preferiti',
     RICERCHE: URL_BASE + '/ricerche',
     PIETANZE: URL_BASE + '/pietanze',
-    IMMAGINI: URL_BASE + '/images'
+    IMMAGINI: URL_BASE + '/immagini',
+    IMMAGINE_PRINCIPALE: URL_BASE + '/immagini/principale'
 };
 
 export const X_AUTH = 'X-Auth';
