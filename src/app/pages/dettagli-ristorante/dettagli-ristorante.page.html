@@ -12,16 +12,16 @@
   <!-- carousel -->
   <div class="ion-margin-top ion-margin-end ion-margin-start">
     <ion-fab [hidden]="!isLoggedIn" id="heartButton">
-        <ion-fab-button *ngIf="isFavourite" (click)="rimuoviPreferito(ristorante)">
+        <ion-fab-button id="heartB" color="{{this.colorFab}}" (click)="rimAggPreferito(ristorante)">
             <ion-icon name="heart">
 
             </ion-icon>
         </ion-fab-button>
-      <ion-fab-button *ngIf="!isFavourite" color="light" (click)="aggiungiPreferito(ristorante)">
+      <!-- <ion-fab-button *ngIf="!isFavourite" color="light" (click)="aggiungiPreferito(ristorante)">
         <ion-icon name="heart">
 
         </ion-icon>
-      </ion-fab-button>
+      </ion-fab-button> -->
     </ion-fab>
     <ion-slides class="ion-padding-bottom" pager="true">
       <ion-slide *ngFor="let immagine of ristorante.immagini " class="ion-padding-bottom">

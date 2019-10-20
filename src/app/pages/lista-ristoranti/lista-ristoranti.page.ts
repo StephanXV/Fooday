@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Ristorante} from '../../model/ristorante.model';
-import {Observable} from 'rxjs';
 import {RistoranteService} from '../../services/ristorante.service';
 import {CategoriaService} from '../../services/categoria.service';
 import {Categoria} from '../../model/categoria.model';
 import {ModalController} from '@ionic/angular';
 import {FiltriPage} from '../filtri/filtri.page';
 import {Recensione} from 'src/app/model/recensione.model';
+import {MappaRistorantiPage} from '../mappa-ristoranti/mappa-ristoranti.page';
 
 
 @Component({
@@ -16,6 +16,12 @@ import {Recensione} from 'src/app/model/recensione.model';
   styleUrls: ['./lista-ristoranti.page.scss'],
 })
 export class ListaRistorantiPage implements OnInit {
+
+  constructor(private route: ActivatedRoute,
+              private ristoranteService: RistoranteService,
+              private categoriaService: CategoriaService,
+              private modalController: ModalController) {
+  }
 
   private categoria: Categoria = new Categoria();
   private idCategoria: number;
@@ -27,11 +33,7 @@ export class ListaRistorantiPage implements OnInit {
   private lat: string;
   private lon: string;
 
-  constructor(private route: ActivatedRoute,
-              private ristoranteService: RistoranteService,
-              private categoriaService: CategoriaService,
-              private modalController: ModalController) {
-  }
+  private zoomMap: number;
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -42,14 +44,17 @@ export class ListaRistorantiPage implements OnInit {
           this.categoria.nome = categoria.nome;
         });
         this.getRistorantiByCategoria();
+        this.zoomMap = 10;
       } else if (this.requestType === 2) {
         this.nomeCitta = params.get('id');
         console.log('Lista:' + this.nomeCitta);
         this.getRistorantiByCitta();
+        this.zoomMap = 14;
       } else if (this.requestType === 3) {
         this.nomeRisto = params.get('id');
         console.log('Lista:' + this.nomeRisto);
         this.getRistorantiByNome();
+        this.zoomMap = 10;
       } else if (this.requestType === 4) {
         this.latlng = params.get('id');
         console.log(this.latlng);
@@ -58,6 +63,7 @@ export class ListaRistorantiPage implements OnInit {
         this.lat = coord[0];
         this.lon = coord[1];
         this.getRistorantiByCoord();
+        this.zoomMap = 10;
       }
     });
   }
@@ -129,4 +135,18 @@ export class ListaRistorantiPage implements OnInit {
       console.log(this.passaRistorantiModale);
     }, () => console.log('Errore'));
   }
+
+   async openMap() {
+      const modal = await this.modalController.create({
+        component: MappaRistorantiPage,
+        componentProps: {
+          passaRistorantiModale: this.passaRistorantiModale,
+          zoomMap: this.zoomMap
+        }
+      });
+      modal.onWillDismiss().then(dataReturned => {
+        this.passaRistorantiModale = dataReturned.data;
+      });
+      return await modal.present();
+    }
 }

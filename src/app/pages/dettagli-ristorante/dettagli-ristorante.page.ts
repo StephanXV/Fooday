@@ -6,8 +6,10 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Recensione} from '../../model/recensione.model';
 import {Utente} from '../../model/utente.model';
 import {UtenteService} from '../../services/utente.service';
+import {MappaRistorantiPage} from '../mappa-ristoranti/mappa-ristoranti.page';
 
 declare var f;
+declare var myFunction;
 
 
 @Component({
@@ -28,6 +30,7 @@ export class DettagliRistorantePage implements OnInit {
   private punteggio = 0;
   private giorni = ['lunedi', 'martedi', 'mercoledi', 'giovedi',
     'venerdi', 'sabato', 'domenica'];
+  private colorFab = null;
 
   constructor(private ristoranteService: RistoranteService,
               private route: ActivatedRoute,
@@ -86,21 +89,31 @@ export class DettagliRistorantePage implements OnInit {
     f();
   }
 
-  rimuoviPreferito(ristorante) {
-    this.ristoranteService.deletePreferito(ristorante.id, this.utente.id).subscribe( () => {
-      this.ionViewWillEnter();
-    });
+  rimAggPreferito(ristorante) {
+    myFunction();
+    if (this.isFavourite) {
+      this.ristoranteService.deletePreferito(ristorante.id, this.utente.id).subscribe(() => {
+        console.log('preferito rimosso');
+      });
+    } else {
+      this.aggiungiPreferito(ristorante);
+    }
   }
 
   aggiungiPreferito(ristorante) {
     this.ristoranteService.addPreferito(this.idRistorante, this.utente.id).subscribe( () => {
-      this.ionViewWillEnter();
+      console.log('preferito aggiunto');
     });
   }
 
   controllaPreferito(idRistorante) {
     this.utenteService.containsPreferito(this.utente.id, idRistorante).subscribe( (isFavourite) => {
       this.isFavourite = isFavourite;
+      if (this.isFavourite) {
+        this.colorFab = 'primary';
+      } else {
+        this.colorFab = 'light';
+      }
       console.log('Il ristorante ' + idRistorante + ' è nella lista preferiti dell\'utente ' + this.utente.id + ': ' + isFavourite);
     });
   }

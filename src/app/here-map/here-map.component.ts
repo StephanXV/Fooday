@@ -35,16 +35,17 @@ export class HereMapComponent implements OnInit {
       app_code: this.appCode
     });
     const defaultLayers = platform.createDefaultLayers();
+
     const map = new H.Map(
-        this.mapElement.nativeElement,
-        defaultLayers.normal.map,
-        {
-          zoom: 10,
-          center: { lat: this.lat, lng: this.lng }
-        },
-    );
+          this.mapElement.nativeElement,
+          defaultLayers.normal.map,
+          {
+            zoom: 10,
+            center: {lat: this.lat, lng: this.lng}
+          },
+      );
     const icon = new H.map.Icon('/assets/images/logo-no-write.png', {size: {w: 56, h: 64}});
-    const marker = new H.map.Marker({ lat: this.lat, lng: this.lng}, { icon });
+    const marker = new H.map.Marker({lat: this.lat, lng: this.lng}, {icon});
     map.addObject(marker);
     const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
   }

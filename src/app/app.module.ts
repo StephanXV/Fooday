@@ -17,6 +17,9 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { Camera } from '@ionic-native/Camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import {FiltriPageModule} from './pages/filtri/filtri.module';
+import {MappaRistorantiPageModule} from './pages/mappa-ristoranti/mappa-ristoranti.module';
+import {DettagliRistorantePageModule} from "./pages/dettagli-ristorante/dettagli-ristorante.module";
+import {HereMapComponent} from "./here-map/here-map.component";
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -26,7 +29,7 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   entryComponents: [],
   imports: [BrowserModule,
@@ -42,6 +45,7 @@ export function createTranslateLoader(http: HttpClient) {
     IonicModule.forRoot(),
     AppRoutingModule,
     FiltriPageModule,
+    MappaRistorantiPageModule,
     HttpClientModule,
     IonicStorageModule.forRoot(),
     TranslateModule.forRoot({
