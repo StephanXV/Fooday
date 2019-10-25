@@ -82,6 +82,10 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
+  navigateHome() {
+    this.navController.navigateBack('');
+  }
+
   initTranslate() {
     this.translateService.get('LOGIN_ERROR_TITLE').subscribe((data: string) => {
       this.loginErrorTitle = data;
