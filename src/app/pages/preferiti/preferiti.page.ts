@@ -26,11 +26,10 @@ export class PreferitiPage implements OnInit {
 
   constructor(private ristoranteService: RistoranteService,
               private alertController: AlertController,
-              private translateService: TranslateService,
+              private translate: TranslateService,
               private utenteService: UtenteService) {}
 
   ngOnInit() {
-    this.initTranslate();
     this.utenteService.getUtente().subscribe( (utente) => {
       this.utente = utente;
       this.listPreferiti();
@@ -72,21 +71,6 @@ export class PreferitiPage implements OnInit {
     this.ristoranteService.getRistorantiPreferiti(this.utente.id).subscribe( (preferiti) => {
       this.preferiti = preferiti;
       this.loaded = true;
-    });
-  }
-
-  initTranslate() {
-    this.translateService.get('WARNING_TITLE').subscribe((data: string) => {
-      this.deleteTitle = data;
-    });
-    this.translateService.get('PREFERITI_DELETE_MESSAGE').subscribe((data: string) => {
-      this.messageTitle = data;
-    });
-    this.translateService.get('DELETE_BUTTON').subscribe((data: string) => {
-      this.deleteButton = data;
-    });
-    this.translateService.get('CANCEL_BUTTON').subscribe((data: string) => {
-      this.cancelButton = data;
     });
   }
 

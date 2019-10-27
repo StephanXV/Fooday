@@ -10,6 +10,8 @@ import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {Platform} from '@ionic/angular';
 import {Recensione} from '../../model/recensione.model';
 import {Storage} from '@ionic/storage';
+import { Diagnostic } from '@ionic-native/diagnostic/ngx';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +26,7 @@ export class HomePage implements OnInit {
   private cities = ['Roma', 'Milano', 'Torino', 'Napoli', 'L\'Aquila'];
   private latitude: any = '';
   private longitude: any = '';
+  private locationValue: boolean;
 
   constructor(private router: Router,
               private ristoranteService: RistoranteService,
@@ -31,16 +34,22 @@ export class HomePage implements OnInit {
               private navController: NavController,
               private geolocation: Geolocation,
               private platform: Platform,
-              private storage: Storage) {
+              private storage: Storage,
+              private translate: TranslateService,
+              private diagnostic: Diagnostic) {
       this.platform.ready().then(() => {
-      this.getCurrentLocation();
-      this.categorie$ = this.categoriaService.list();
-      this.navController.navigateRoot('tabs');
+        if (this.platform.is('cordova')) {
+        this.checkNetworkConnection();
+      } else {
+          this.checkLocationAvailable();
+          this.categorie$ = this.categoriaService.list();
+          this.navController.navigateRoot('tabs');
+      }
     });
   }
 
   ngOnInit() {
-      this.storage.clear().then(() => this.categorie$ = this.categoriaService.list());
+      /*this.storage.clear().then(() => */this.categorie$ = this.categoriaService.list();
   }
 
   onCategoryClick(idCategoria: number) {
@@ -53,15 +62,48 @@ export class HomePage implements OnInit {
     console.log('Home:' + nomeCitta);
     this.router.navigate(['/tabs/home/lista-ristoranti', this.requestType, nomeCitta]);
   }
-  getCurrentLocation()  {
+
+  checkLocationAvailable()  {
+    this.storage.get('location').then( val => {
+      console.log(val);
+      this.locationValue = val;
+      if (this.locationValue === true) {
+        this.checkDiagnosticStateLocation();
+      } else {
+        this.getRestaurantWithoutLocation();
+      }
+    });
+  }
+
+  private checkDiagnosticStateLocation() {
+    if (this.platform.is('cordova')) {
+      this.diagnostic.isLocationEnabled().then((isEnabled) => {
+        if (!isEnabled) {
+          // handle confirmation window code here and then call switchToLocationSettings
+          this.diagnostic.switchToLocationSettings();
+          console.log('Location is not enabled');
+        } else { // get current position
+          this.getCurrentLocation();
+        }
+      });
+    } else {
+      this.getCurrentLocation();
+    }
+  }
+
+  getCurrentLocation() {
     this.geolocation.getCurrentPosition().then((position) => {
       this.latitude = position.coords.latitude;
       this.longitude = position.coords.longitude;
       console.log(this.longitude + ' long');
-      this.ristoranteService.getRistorantiAroundUser(this.latitude, this.longitude).subscribe( (ristoranti) => {
+      this.ristoranteService.getRistorantiAroundUser(this.latitude, this.longitude).subscribe((ristoranti) => {
         this.ristoranti = ristoranti;
       });
     });
+  }
+
+  private getRestaurantWithoutLocation() {
+    console.log('Loading restaurant without location...');
   }
 
   calcolaMedie(recensioni: Recensione[]): number {
@@ -86,4 +128,19 @@ export class HomePage implements OnInit {
     this.requestType = 4;
     this.router.navigate(['/tabs/home/lista-ristoranti', this.requestType, this.latitude + ',' + this.longitude]);
   }
+
+  private checkNetworkConnection() { // verify if network is available
+    this.diagnostic.isWifiEnabled().then((isEnabled) => {
+      if (!isEnabled) {
+        // handle confirmation window code here and then call switchToLocationSettings
+        this.diagnostic.switchToWifiSettings();
+        console.log('Network is not enabled');
+      } else { // get current position
+        this.checkLocationAvailable();
+        this.categorie$ = this.categoriaService.list();
+        this.navController.navigateRoot('tabs');
+      }
+    });
+  }
+
 }

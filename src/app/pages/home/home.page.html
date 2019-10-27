@@ -49,8 +49,8 @@
       <ion-spinner name="crescent"></ion-spinner>
     </ion-label>
 
-    <div *ngIf="ristoranti != null">
-      <ion-card *ngFor="let ristorante of ristoranti"
+    <div *ngIf="ristoranti != null && locationValue">
+      <ion-card *ngFor="let ristorante of ristoranti | slice:0:10"
                 [routerLink]="['dettagli-ristorante', ristorante.id]" routerDirection="forward">
 
         <ion-row>
