@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content>
+
     <ion-item>
       <ion-icon class="ion-padding" name="search"></ion-icon>
       <ion-input placeholder="{{'PLACEHOLDER_RICERCA_NOME' | translate}}" [(ngModel)]="nomeRisto"></ion-input>
@@ -24,6 +25,11 @@
       </ion-button>
     </ion-item>
 
+  <div *ngIf="utente == null" class="ion-padding ion-text-center ion-margin">
+    <ion-label color="medium">
+      Registrandoti qui potrai vedere le tue ultime ricerche
+    </ion-label>
+  </div>
 
   <ion-list *ngIf="utente != null">
     <ion-item *ngFor="let ricerca of ricerche$ | async"  routerDirection="forward">
