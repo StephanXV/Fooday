@@ -40,7 +40,6 @@ export class AppComponent {
   }
 
   private initStorage() {
-    this.storage.clear().then( () => {
     this.storage.keys().then(ris => {
       if (ris.includes('location')) {
         this.storage.get(STORAGE_LOCATION_KEY).then((val) => {
@@ -59,7 +58,6 @@ export class AppComponent {
         console.log('non contiene language');
         this.storage.set(STORAGE_LANGUAGE_KEY, 'it');
       }
-    });
     });
   }
 }

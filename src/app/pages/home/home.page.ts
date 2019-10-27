@@ -12,6 +12,7 @@ import {Recensione} from '../../model/recensione.model';
 import {Storage} from '@ionic/storage';
 import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { TranslateService } from '@ngx-translate/core';
+import {AlertController} from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -36,7 +37,8 @@ export class HomePage implements OnInit {
               private platform: Platform,
               private storage: Storage,
               private translate: TranslateService,
-              private diagnostic: Diagnostic) {
+              private diagnostic: Diagnostic,
+              private alertController: AlertController) {
       this.platform.ready().then(() => {
         if (this.platform.is('cordova')) {
         this.checkNetworkConnection();
@@ -102,8 +104,29 @@ export class HomePage implements OnInit {
     });
   }
 
-  private getRestaurantWithoutLocation() {
-    console.log('Loading restaurant without location...');
+  async getRestaurantWithoutLocation() {
+    console.log('Loading without location...');
+    const alert = await this.alertController.create({
+      header: 'ATTENZIONE',
+      message: 'Posizione non consentita, abilitarla dalle preferenze',
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            console.log('ok clicked');
+          }
+        },
+        {
+          text: 'PREFERENZE',
+          handler: () => {
+            console.log('Preferenze clicked');
+            this.router.navigate(['/tabs/home/preferenze']);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   calcolaMedie(recensioni: Recensione[]): number {

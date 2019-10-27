@@ -44,6 +44,15 @@ import {TranslateModule} from '@ngx-translate/core';
             loadChildren: '../dettagli-ristorante/dettagli-ristorante.module#DettagliRistorantePageModule'
           }
         ]
+      },
+      {
+        path: 'preferenze',
+        children: [
+          {
+            path: '',
+            loadChildren: '../preferenze/preferenze.module#PreferenzePageModule'
+          }
+        ]
       }
     ])
   ],
