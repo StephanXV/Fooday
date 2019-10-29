@@ -82,5 +82,13 @@
   "PRENOTAZIONE_SUCCESSO_TITLE": "Prenotazione confermata",
   "PRENOTAZIONE_SUCCESSO_MESSAGE": "Puoi visualizzare le tue prenotazioni nella sezione 'prenotazioni'",
   "PREFERITI_VUOTO": "Aggiungi i tuoi ristoranti preferiti dalla vista dettagliata, tappando sul cuore",
-  "PRENOTAZIONI_VUOTO": "Che stai aspettando? Corri a effettuare la tua prima prenotazione!"
+  "PRENOTAZIONI_VUOTO": "Che stai aspettando? Corri a effettuare la tua prima prenotazione!",
+  "SCONTO": "di sconto",
+  "ALTRO": "ALTRO",
+  "MESSAGGIO_LISTA": "La ricerca non ha prodotto risultati",
+  "SPESA": "Spesa media:",
+  "RECENSITO": "è stato recensito",
+  "VOLTE": "volte",
+  "PREZZO": "Prezzo",
+  "CUCINA": "Cucina"
 }

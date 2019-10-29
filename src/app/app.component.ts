@@ -4,6 +4,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {TranslateService} from '@ngx-translate/core';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import { Storage } from '@ionic/storage';
+import { LinguaService } from './services/lingua.service';
+import {AUTH_TOKEN, UTENTE_STORAGE, X_AUTH} from './constants';
 
 const STORAGE_LOCATION_KEY = 'location';
 const STORAGE_LANGUAGE_KEY = 'language';
@@ -19,7 +21,8 @@ export class AppComponent {
     private platform: Platform,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
-    private storage: Storage
+    private storage: Storage,
+    private lingua: LinguaService
   ) {
     this.initializeApp();
   }
@@ -28,15 +31,20 @@ export class AppComponent {
     this.splashScreen.show()
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
-      this.initTranslate();
-      this.initStorage();
-    });
+      // to fix the server restart problems, remove only the user from storage
+      this.storage.remove(AUTH_TOKEN).then( () => {
+        this.storage.remove(X_AUTH).then(() => {
+          this.storage.remove(UTENTE_STORAGE).then(() => {
+            this.initStorage();
+          });
+        });
+      });
 
+    });
   }
 
-  initTranslate() {
-    this.translate.setDefaultLang('it');
-    this.translate.use('it');
+  initTranslate(val) {
+    this.translate.use(val);
   }
 
   private initStorage() {
@@ -53,10 +61,12 @@ export class AppComponent {
       if (ris.includes('language')) {
         this.storage.get(STORAGE_LANGUAGE_KEY).then((val) => {
           console.log('Language is: ', val);
+          this.initTranslate(val);
         });
       } else {
-        console.log('non contiene language');
-        this.storage.set(STORAGE_LANGUAGE_KEY, 'it');
+        console.log('non contiene language', 'default:', this.lingua.getDefaultLanguage());
+        this.storage.set(STORAGE_LANGUAGE_KEY, this.lingua.getDefaultLanguage());
+        this.initTranslate(this.lingua.getDefaultLanguage());
       }
     });
   }

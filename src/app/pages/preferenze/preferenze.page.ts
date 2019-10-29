@@ -2,6 +2,7 @@ import {Component, Injectable, OnInit} from '@angular/core';
 import { Storage } from '@ionic/storage';
 import {TranslateService} from '@ngx-translate/core';
 import {Platform} from '@ionic/angular';
+import { LinguaService } from '../../services/lingua.service';
 
 const STORAGE_LOCATION_KEY = 'location';
 const STORAGE_LANGUAGE_KEY = 'language';
@@ -22,9 +23,8 @@ export class PreferenzePage implements OnInit {
 
   constructor(private storage: Storage,
               private translateService: TranslateService,
-              private platform: Platform) {
-    this.platform.ready().then(() => {
-    });
+              private platform: Platform,
+              private translate: LinguaService) {
   }
 
   ngOnInit() {
@@ -42,7 +42,7 @@ export class PreferenzePage implements OnInit {
   setLanguage($event) {
     console.log($event.target.value);
     this.storage.remove(STORAGE_LANGUAGE_KEY).then(() => {
-      this.storage.set(STORAGE_LANGUAGE_KEY, $event.target.value);
+      this.storage.set(STORAGE_LANGUAGE_KEY, $event.target.value).then( () => this.translate.setLanguage($event.target.value));
       this.selectValue = $event.target.value;
     });
   }

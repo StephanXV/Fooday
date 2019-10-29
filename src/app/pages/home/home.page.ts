@@ -51,7 +51,7 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-      /*this.storage.clear().then(() => */this.categorie$ = this.categoriaService.list();
+      this.categorie$ = this.categoriaService.list();
   }
 
   onCategoryClick(idCategoria: number) {

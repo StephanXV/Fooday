@@ -79,5 +79,15 @@
   "PRENOTAZIONE_SUCCESSO_TITLE": "Reservation confirmed",
   "PRENOTAZIONE_SUCCESSO_MESSAGE": "Your reservations are shown in section 'reservations'",
   "PREFERITI_VUOTO": "Add your favourite restaurants from them detailed view, tapping the heart",
-  "PRENOTAZIONI_VUOTO": "What are you waiting for? Go to make your first reservation!"
+  "PRENOTAZIONI_VUOTO": "What are you waiting for? Go to make your first reservation!",
+  "SCONTO": "discount",
+  "ALTRO": "OTHERS",
+  "MESSAGGIO_LISTA": "The search did not return any results",
+  "SPESA": "Medium price:",
+  "RECENSITO": "has been reviewed",
+  "VOLTE": "times",
+  "PREZZO": "Price",
+  "CUCINA": "Category",
+  "PROFILO_SUCCESSO_TITLE": "Data updated",
+  "PROFILO_SUCCESSO_MESSAGE": "The fields have been updated"
 }
