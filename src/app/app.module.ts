@@ -20,6 +20,9 @@ import {MappaRistorantiPageModule} from './pages/mappa-ristoranti/mappa-ristoran
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 
+
+
+
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
 export function createTranslateLoader(http: HttpClient) {

@@ -3,6 +3,7 @@ import {AlertController, NavController} from '@ionic/angular';
 import {Utente} from '../../model/utente.model';
 import {UtenteService} from '../../services/utente.service';
 import {TranslateService} from '@ngx-translate/core';
+import {PrenotazioneService} from '../../services/prenotazione.service';
 
 @Component({
   selector: 'app-profilo',
@@ -16,11 +17,14 @@ export class ProfiloPage implements OnInit {
   private logoutMessage: string;
   private yesButton: string;
   private noButton: string;
+  private numberPrenotazione: number;
 
   constructor(private navController: NavController,
               private utenteService: UtenteService,
               private translateService: TranslateService,
-              private alertController: AlertController) { }
+              private alertController: AlertController,
+              private prenotazioneService: PrenotazioneService) {
+  }
 
   ngOnInit() {
     this.initTranslate();
@@ -32,6 +36,9 @@ export class ProfiloPage implements OnInit {
   ionViewWillEnter() {
     this.utenteService.getUtente().subscribe((utente) => {
       this.utente = utente;
+      this.prenotazioneService.getPrenotazioni(utente.id).subscribe( (prenotazioni) => {
+        this.numberPrenotazione = prenotazioni.length;
+      });
     });
   }
 
@@ -73,4 +80,5 @@ export class ProfiloPage implements OnInit {
       this.noButton = data;
     });
   }
+
 }

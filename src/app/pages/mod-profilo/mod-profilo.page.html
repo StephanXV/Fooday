@@ -11,15 +11,14 @@
 
 <ion-content>
   <div class="ion-margin-top">
-    <ion-item margin lines="none" class="add-photo">
-      <ion-img *ngIf="utente.immagine==null && immagine==null" src="assets/images/user-icon.jpg" (click)="selectImage()">
+    <ion-item lines="none" class="add-photo">
+      <ion-img *ngIf="immagine==null" src="assets/images/add-photo.png" style="width: 120px; height: 120px" (click)="selectImage()">
       </ion-img>
-      <ion-img *ngIf="immagine==null && utente.immagine!=null" src="data:image/jpeg;base64, {{utente.immagine}}" (click)="selectImage()">
 
-      </ion-img>
-      <ion-img *ngIf="immagine!=null" src="data:image/jpeg;base64, {{immagine}}" (click)="selectImage()">
+      <ion-avatar *ngIf="immagine!=null" style="width: 120px; height: 120px; border: 5px solid #037dff">
+        <img  src="data:image/jpeg;base64,{{immagine}}" (click)="selectImage()"/>
+      </ion-avatar>
 
-      </ion-img>
     </ion-item>
   </div>
   <div>
@@ -46,7 +45,9 @@
         <ion-input placeholder="Città" formControlName="citta"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-datetime placeholder="Data di nascita" formControlName="data"></ion-datetime>
+        <ion-datetime
+                monthShortNames="gen, feb, mar, apr, mag, giu, lug, ago, set, ott, nov, dic"
+                placeholder="Data di nascita" formControlName="data"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-select placeholder="Sesso" formControlName="sesso">

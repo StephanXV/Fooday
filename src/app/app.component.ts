@@ -6,6 +6,9 @@ import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import { Storage } from '@ionic/storage';
 import { LinguaService } from './services/lingua.service';
 import {AUTH_TOKEN, UTENTE_STORAGE, X_AUTH} from './constants';
+import {registerLocaleData} from '@angular/common';
+import localeIT from '@angular/common/locales/it';
+import localeEN from '@angular/common/locales/en';
 
 const STORAGE_LOCATION_KEY = 'location';
 const STORAGE_LANGUAGE_KEY = 'language';
@@ -45,6 +48,11 @@ export class AppComponent {
 
   initTranslate(val) {
     this.translate.use(val);
+    if (val == 'it') {
+      registerLocaleData(localeIT, val);
+    } else {
+      registerLocaleData(localeEN, val);
+    }
   }
 
   private initStorage() {

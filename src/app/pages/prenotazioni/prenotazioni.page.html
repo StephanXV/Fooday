@@ -59,14 +59,14 @@
       </ion-card-title>
       <ion-card-content>
         <ion-label>
-          <strong>Giorno:</strong> {{prenotazione.giorno | date: 'EE d MMM, y': '+120'}}
+          <strong>Giorno:</strong> {{prenotazione.giorno | date: 'EE d MMM, y': '+120' : lng}}
         </ion-label> <br>
         <ion-label>
           <strong>Orario:</strong> {{prenotazione.orario}}
         </ion-label> <br>
         <ion-card-subtitle class="ion-margin-top">
         <ion-label style="font-style: italic">
-          <strong>Effettuata il:</strong> {{prenotazione.prenotazioneId.timestamp | date: 'EE d MMM, y - hh:mm'}}
+          <strong>Effettuata il:</strong> {{prenotazione.prenotazioneId.timestamp | date: 'EE d MMM, y - H:mm': '' : lng}}
         </ion-label>
         </ion-card-subtitle>
 

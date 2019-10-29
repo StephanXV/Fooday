@@ -13,12 +13,14 @@
   <form class="ion-align-items-center" margin="medium" [formGroup]="registerFormModule">
 
     <ion-item lines="none" class="add-photo">
-      <ion-img *ngIf="immagine==null" src="assets/images/add-photo.png" (click)="selectImage()">
+      <ion-img *ngIf="immagine==null" src="assets/images/add-photo.png" style="width: 120px; height: 120px" (click)="selectImage()">
 
       </ion-img>
-      <ion-img *ngIf="immagine!=null" src="data:image/jpeg;base64, {{immagine}}" (click)="selectImage()">
+      <ion-avatar *ngIf="immagine!=null" style="width: 120px; height: 120px; border: 5px solid #037dff">
+        <img src="data:image/jpeg;base64, {{immagine}}" (click)="selectImage()"/>
+      </ion-avatar>
 
-      </ion-img>
+
     </ion-item>
 
     <ion-item class="animated fadeInUp">

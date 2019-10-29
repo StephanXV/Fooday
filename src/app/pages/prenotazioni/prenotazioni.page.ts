@@ -6,13 +6,16 @@ import {Utente} from '../../model/utente.model';
 import {UtenteService} from '../../services/utente.service';
 import {AlertController, IonItemSliding, ModalController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
+import {Storage} from '@ionic/storage';
+
+const STORAGE_LANGUAGE_KEY = 'language';
 
 @Component({
   selector: 'app-prenotazioni',
   templateUrl: './prenotazioni.page.html',
   styleUrls: ['./prenotazioni.page.scss'],
 })
-export class PrenotazioniPage implements OnInit{
+export class PrenotazioniPage implements OnInit {
   private utente: Utente;
   private prenotazioni$: Observable<Prenotazione[]>;
   private prenotazioni: Prenotazione[];
@@ -22,11 +25,13 @@ export class PrenotazioniPage implements OnInit{
   private cancelButton: string;
   private currentDate: Date = new Date();
   private loaded = false;
+  private lng: any;
 
   constructor(private prenotazioneService: PrenotazioneService,
               private alertController: AlertController,
               private translateService: TranslateService,
-              private utenteservice: UtenteService) { }
+              private utenteservice: UtenteService,
+              private storage: Storage) { }
 
   ngOnInit() {
     this.initTranslate();
@@ -44,8 +49,11 @@ export class PrenotazioniPage implements OnInit{
   listPrenotazioni() {
     this.prenotazioni$ = this.prenotazioneService.getPrenotazioni(this.utente.id);
     this.prenotazioneService.getPrenotazioni(this.utente.id).subscribe( (prenotazioni) => {
-      this.prenotazioni = prenotazioni;
-      this.loaded = true;
+      this.storage.get(STORAGE_LANGUAGE_KEY).then( val => {
+        this.lng = val;
+        this.prenotazioni = prenotazioni;
+        this.loaded = true;
+      });
     });
   }
 
