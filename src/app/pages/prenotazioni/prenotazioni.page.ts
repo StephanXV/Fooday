@@ -17,7 +17,6 @@ const STORAGE_LANGUAGE_KEY = 'language';
 })
 export class PrenotazioniPage implements OnInit {
   private utente: Utente;
-  private prenotazioni$: Observable<Prenotazione[]>;
   private prenotazioni: Prenotazione[];
   private deleteTitle: string;
   private messageTitle: string;
@@ -47,11 +46,11 @@ export class PrenotazioniPage implements OnInit {
   }
 
   listPrenotazioni() {
-    this.prenotazioni$ = this.prenotazioneService.getPrenotazioni(this.utente.id);
     this.prenotazioneService.getPrenotazioni(this.utente.id).subscribe( (prenotazioni) => {
       this.storage.get(STORAGE_LANGUAGE_KEY).then( val => {
         this.lng = val;
         this.prenotazioni = prenotazioni;
+        prenotazioni.sort((a, b) => (a.prenotazioneId.timestamp < b.prenotazioneId.timestamp) ? 1 : -1);
         this.loaded = true;
       });
     });

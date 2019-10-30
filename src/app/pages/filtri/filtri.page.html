@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Filti Ricerca
+      {{'FILTRI_RICERCA' | translate}}
     </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="closeModal()">
@@ -17,7 +17,7 @@
 
   <ion-list margin-bottom="10px">
     <ion-item margin>
-      <ion-label>Ordina per:</ion-label>
+      <ion-label>{{'LABEL_ORDINA' | translate}}</ion-label>
       <ion-select (ionChange)="checkValueOrdina($event)" >
         <ion-select-option value="prezzo">Prezzo (Crescente)</ion-select-option>
         <ion-select-option value="popolarita">Popolarità</ion-select-option>
@@ -54,7 +54,7 @@
   </ion-card> -->
   <ion-list-header>
     <ion-label margin>
-        VOTI
+        {{'LABEL_VOTI' | translate}}
     </ion-label>
     <ion-label margin float-end>
         <ion-badge *ngIf="votiVal != null" color="medium">Più di: {{votiVal}}</ion-badge>
@@ -73,7 +73,7 @@
 <ion-list >
   <ion-list-header>
     <ion-label margin>
-        PREZZO
+      {{'LABEL_PREZZO_UC' | translate}}
     </ion-label>
     <ion-label float-end margin>
         <ion-badge color="medium">{{this.prezzoVal.lower}} - {{this.prezzoVal.upper}}</ion-badge>
@@ -91,7 +91,7 @@
 <ion-list margin-bottom>
   <ion-list-header margin-bottom>
       <ion-label margin>
-        Solo con promozioni
+        {{'LABEL_PROMOZIONI' | translate}}
       </ion-label>
       <ion-label margin float-end>
         <ion-toggle [(ngModel)]="isToggledPromo" (ionChange)="notifyPromoToggle()">
@@ -104,7 +104,7 @@
   </div>
 
   <ion-button (click)="applicaFiltri()" margin-top class="fixedButton" shape="round" color="primary" tappable>
-    <ion-label>APPLICA</ion-label>
+    <ion-label>{{'LABEL_APPLICA' | translate}}</ion-label>
   </ion-button>
 
 </ion-content>

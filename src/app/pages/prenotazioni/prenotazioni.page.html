@@ -42,7 +42,7 @@
   </ion-label>
 
   <ion-list>
-    <ion-card *ngFor="let prenotazione of prenotazioni$ | async">
+    <ion-card *ngFor="let prenotazione of prenotazioni">
       <ion-card-title class="ion-margin-top">
         <ion-row>
           <ion-col>
@@ -59,26 +59,26 @@
       </ion-card-title>
       <ion-card-content>
         <ion-label>
-          <strong>Giorno:</strong> {{prenotazione.giorno | date: 'EE d MMM, y': '+120' : lng}}
+          <strong>{{'LABEL_GIORNO' | translate}}:</strong> {{prenotazione.giorno | date: 'EE d MMM, y': '+120' : lng}}
         </ion-label> <br>
         <ion-label>
-          <strong>Orario:</strong> {{prenotazione.orario}}
+          <strong>{{'LABEL_ORARIO' | translate}}:</strong> {{prenotazione.orario}}
         </ion-label> <br>
         <ion-card-subtitle class="ion-margin-top">
         <ion-label style="font-style: italic">
-          <strong>Effettuata il:</strong> {{prenotazione.prenotazioneId.timestamp | date: 'EE d MMM, y - H:mm': '' : lng}}
+          <strong>{{'LABEL_EFFETTUATA' | translate}}:</strong> {{prenotazione.prenotazioneId.timestamp | date: 'EE d MMM, y - H:mm': '' : lng}}
         </ion-label>
         </ion-card-subtitle>
 
         <ion-card-subtitle class="ion-margin-top">
         <ion-label> <ion-icon style="font-size: larger" name="people"></ion-icon>
-          {{prenotazione.posti}} persone
+          {{prenotazione.posti}} {{'LABEL_PERSONE' | translate}}
         </ion-label>
         </ion-card-subtitle>
 
         <ion-row>
           <ion-col *ngIf="currentDate > prenotazione.giorno">
-            <ion-label>Completata!</ion-label>
+            <ion-label>{{'LABEL_COMPLETATA' | translate}}!</ion-label>
           </ion-col>
 
           <ion-col *ngIf="currentDate > prenotazione.giorno && !prenotazione.valutata">

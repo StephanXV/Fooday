@@ -37,11 +37,11 @@
       <ion-row style="margin-top: 15px">
         <ion-col text-center>
           <ion-label style="font-size: 22px; margin-bottom: 5px" color="primary"><b>{{utente.punti}}</b></ion-label>
-          <ion-label color="medium">Punti</ion-label>
+          <ion-label color="medium">{{'LABEL_PUNTI' | translate}}</ion-label>
         </ion-col>
         <ion-col text-center>
           <ion-label style="font-size: 22px; margin-bottom: 5px" color="primary"><b>{{numberPrenotazione}}</b></ion-label>
-          <ion-label color="medium">Prenotazioni</ion-label>
+          <ion-label color="medium">{{'LABEL_PRENOTAZIONI' | translate}}</ion-label>
         </ion-col>
       </ion-row>
         <ion-item-divider style="border-bottom-color: #9e133a; margin-top: -15px;"></ion-item-divider>
@@ -117,7 +117,7 @@
   <div class="ion-margin" style="margin-top: 30px">
     <ion-button shape="round" expand="full" size="medium" [routerLink]="['mod-profilo']" routerDirection="forward">
       <ion-label>
-        MODIFICA
+        {{'BOTTONE_MODIFICA' | translate}}
       </ion-label>
     </ion-button>
   </div>

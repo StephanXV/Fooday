@@ -5,7 +5,7 @@
         <ion-icon slot="icon-only" name="close"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Login</ion-title>
+    <ion-title>{{'TITLE_LOGIN' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -21,19 +21,19 @@
     <form [formGroup]="loginFormModel" >
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
-          <ion-icon name="contact"></ion-icon>username</ion-label>
+          <ion-icon name="contact"></ion-icon>{{'PLACEHOLDER_USERNAME' | translate}}</ion-label>
         <ion-input color="secondary" type="email" formControlName="username"></ion-input>
       </ion-item>
       <p *ngIf="loginFormModel.get('username').touched && loginFormModel.get('username').invalid">
-        <ion-text color="danger">username richiesto</ion-text>
+        <ion-text color="danger">{{'USERNAME_RICHIESTO' | translate}}</ion-text>
       </p>
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
-          <ion-icon name="lock"></ion-icon>password</ion-label>
+          <ion-icon name="lock"></ion-icon>{{'PLACEHOLDER_PASSWORD' | translate}}</ion-label>
         <ion-input color="secondary" type="password" formControlName="password"></ion-input>
       </ion-item>
       <p *ngIf="loginFormModel.get('password').touched && loginFormModel.get('password').invalid">
-        <ion-text color="danger">password richiesta</ion-text>
+        <ion-text color="danger">{{'PASSWORD_RICHIESTA' | translate}}</ion-text>
       </p>
       <div margin-top="20px">
         <ion-button size="medium" expand="full" shape="round" color="primary"

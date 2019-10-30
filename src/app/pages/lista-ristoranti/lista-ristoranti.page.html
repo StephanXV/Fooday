@@ -5,9 +5,9 @@
       </ion-back-button>
     </ion-buttons>
     <ion-title>{{'TITOLO_LISTA_RISTORANTI' | translate}}
-      <ion-label *ngIf="nomeRisto != null">il nome <strong>{{nomeRisto}}</strong></ion-label>
-      <ion-label *ngIf="nomeCitta != null">la città <strong>{{nomeCitta}}</strong></ion-label>
-      <ion-label *ngIf="categoria.nome != null">la categoria <strong>{{categoria.nome}}</strong></ion-label>
+      <ion-label *ngIf="nomeRisto != null">{{'LABEL_RIC1' | translate}} <strong>{{nomeRisto}}</strong></ion-label>
+      <ion-label *ngIf="nomeCitta != null">{{'LABEL_RIC2' | translate}} <strong>{{nomeCitta}}</strong></ion-label>
+      <ion-label *ngIf="categoria.nome != null">{{'LABEL_RIC3' | translate}} <strong>{{categoria.nome}}</strong></ion-label>
     </ion-title>
   </ion-toolbar>
 </ion-header>
