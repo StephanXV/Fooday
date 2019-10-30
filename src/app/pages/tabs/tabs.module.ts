@@ -38,8 +38,9 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: '../prenotazioni/prenotazioni.module#PrenotazioniPageModule',
-            canActivate: [AuthGuard]
-          }
+            canActivate: [AuthGuard],
+            data: {pag: ['prenotazioni']}
+}
         ]
       },
       {
@@ -48,7 +49,8 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: '../preferiti/preferiti.module#PreferitiPageModule',
-            canActivate: [AuthGuard]
+            canActivate: [AuthGuard],
+            data: {pag: ['preferiti']}
           }
         ]
       },
@@ -58,7 +60,8 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: '../profilo/profilo.module#ProfiloPageModule',
-            canActivate: [AuthGuard]
+            canActivate: [AuthGuard],
+            data: {pag: ['profilo']}
           }
         ]
       },
@@ -66,7 +69,7 @@ const routes: Routes = [
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'
-      }
+      },
     ]
   },
   {

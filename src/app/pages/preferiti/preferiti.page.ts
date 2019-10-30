@@ -30,6 +30,7 @@ export class PreferitiPage implements OnInit {
               private utenteService: UtenteService) {}
 
   ngOnInit() {
+    this.initTranslate();
     this.utenteService.getUtente().subscribe( (utente) => {
       this.utente = utente;
       this.listPreferiti();
@@ -90,6 +91,21 @@ export class PreferitiPage implements OnInit {
     mediaServizio = Math.floor(mediaServizio * 10) / 10;
     mediaPrezzo = Math.floor(mediaPrezzo * 10) / 10;
     return Math.floor(((mediaCucina + mediaServizio + mediaPrezzo) / 3) * 10) / 10;
+  }
+
+  initTranslate() {
+    this.translate.get('DELETE_BUTTON').subscribe((data: string) => {
+      this.deleteButton = data;
+    });
+    this.translate.get('CANCEL_BUTTON').subscribe((data: string) => {
+      this.cancelButton = data;
+    });
+    this.translate.get('WARNING_TITLE').subscribe((data: string) => {
+      this.deleteTitle = data;
+    });
+    this.translate.get('PREFERITI_DELETE_MESSAGE').subscribe((data: string) => {
+      this.messageTitle = data;
+    });
   }
 
 }

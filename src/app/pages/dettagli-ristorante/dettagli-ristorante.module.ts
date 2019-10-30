@@ -22,7 +22,8 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: '../prenota/prenota.module#PrenotaPageModule',
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        data: {pag: ['prenota']}
       }
     ]
   },

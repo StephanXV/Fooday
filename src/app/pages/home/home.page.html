@@ -54,6 +54,11 @@
       <ion-label class="ion-margin-top" color="medium">In questa zona non sono presenti ristoranti</ion-label>
     </div>
 
+    <div *ngIf="noLocation == true" class="ion-padding ion-text-center ion-margin">
+      <ion-label class="ion-margin-top" style="font-size: 25px" color="medium">OPSS..</ion-label><br>
+      <ion-label class="ion-margin-top" color="medium">{{'NO_LOCATION' | translate}}</ion-label>
+    </div>
+
     <div *ngIf="ristoranti != null && locationValue">
       <ion-card *ngFor="let ristorante of ristoranti | slice:0:10"
                 [routerLink]="['dettagli-ristorante', ristorante.id]" routerDirection="forward">

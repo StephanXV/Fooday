@@ -114,5 +114,6 @@
   "TITLE_MAPPA": "Mappa",
   "BOTTONE_MODIFICA": "Modifica",
   "INFO_RICERCA": "Registrandoti potrai vedere qui le tue ultime ricerche",
-  "LABEL_PERSONE": "Persone"
+  "LABEL_PERSONE": "Persone",
+  "NO_LOCATION": "Abilitare la posizione per visualizzare i ristoranti nella tua zona"
 }
