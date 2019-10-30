@@ -58,11 +58,10 @@
   "PLACEHOLDER_ORARIO": "At what time?",
   "PLACEHOLDER_NOME_PRENOTAZIONE": "Enter reservation name",
   "PLACEHOLDER_USA_PUNTI": "Use promotional points?",
-  "PLACEHOLDER_CITTA": "Your citys",
+  "PLACEHOLDER_CITTA": "Your city",
   "WARNING_TITLE": "WARNING",
   "PREFERITI_DELETE_MESSAGE": "Do you want to remove the restaurant from your favourites?",
   "PRENOTAZIONI_DELETE_MESSAGE": "Do you really want to cancel the reservation?",
-  "PREFERITI_DELETE_TITLE": "WARNING",
   "REGISTRAZIONE_SUCCESSO_TITLE": "Registration complete",
   "REGISTRAZIONE_SUCCESSO_MESSAGE": "Now insert username and password to login",
   "CONFIRM_BUTTON": "Ok",
@@ -89,5 +88,6 @@
   "PREZZO": "Price",
   "CUCINA": "Category",
   "PROFILO_SUCCESSO_TITLE": "Data updated",
-  "PROFILO_SUCCESSO_MESSAGE": "The fields have been updated"
+  "PROFILO_SUCCESSO_MESSAGE": "The fields have been updated",
+  "NO_LOCATION": "Enable location to show the restaurants around you"
 }

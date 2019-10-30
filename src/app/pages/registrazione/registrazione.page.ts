@@ -185,4 +185,8 @@ export class RegistrazionePage implements OnInit {
 
     await alert.present();
   }
+
+  navigateHome() {
+    this.navController.back();
+  }
 }

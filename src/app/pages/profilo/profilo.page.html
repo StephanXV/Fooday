@@ -31,7 +31,12 @@
     </ion-row>
 
   </div>
-  <div>
+
+  <ion-label *ngIf="numberPrenotazione == null">
+    <ion-spinner name="crescent"></ion-spinner>
+  </ion-label>
+
+  <div *ngIf="numberPrenotazione != null">
     <ion-item lines="none">
       <ion-grid>
       <ion-row style="margin-top: 15px">
@@ -114,7 +119,7 @@
     </ion-item>
 
   </div>
-  <div class="ion-margin" style="margin-top: 30px">
+  <div *ngIf="numberPrenotazione != null" class="ion-margin" style="margin-top: 30px">
     <ion-button shape="round" expand="full" size="medium" [routerLink]="['mod-profilo']" routerDirection="forward">
       <ion-label>
         MODIFICA

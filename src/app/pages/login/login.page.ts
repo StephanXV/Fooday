@@ -5,6 +5,7 @@ import {Utente} from '../../model/utente.model';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Account, UtenteService} from '../../services/utente.service';
 import {TranslateService} from '@ngx-translate/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 
 
@@ -21,14 +22,19 @@ export class LoginPage implements OnInit {
   private loginErrorSubTitle: string;
   private loginSuccessTitle: string;
   private loginSuccessSubtitle: string;
+  private pageBack: string;
 
   constructor(private formBuilder: FormBuilder,
               private alertController: AlertController,
               private navController: NavController,
               private utenteService: UtenteService,
-              private translateService: TranslateService) {
+              private translateService: TranslateService,
+              private route: ActivatedRoute,
+              private router: Router) {
+    this.route.queryParams.subscribe(params => {
+      this.pageBack = params.parametro;
+    });
   }
-
   ngOnInit() {
     this.initTranslate();
     this.loginFormModel = this.formBuilder.group({
@@ -73,7 +79,7 @@ export class LoginPage implements OnInit {
         {
           text: 'OK',
           handler: () => {
-            this.navController.navigateBack('');
+            this.navController.back();
           }
         }
       ]
@@ -83,7 +89,7 @@ export class LoginPage implements OnInit {
   }
 
   navigateHome() {
-    this.navController.navigateBack('');
+    this.navController.back();
   }
 
   initTranslate() {

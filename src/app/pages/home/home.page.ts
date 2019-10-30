@@ -28,6 +28,7 @@ export class HomePage implements OnInit {
   private latitude: any = '';
   private longitude: any = '';
   private locationValue: boolean;
+  private noLocation: boolean;
 
   constructor(private router: Router,
               private ristoranteService: RistoranteService,
@@ -106,6 +107,7 @@ export class HomePage implements OnInit {
 
   async getRestaurantWithoutLocation() {
     console.log('Loading without location...');
+    this.noLocation = true;
     const alert = await this.alertController.create({
       header: 'ATTENZIONE',
       message: 'Posizione non consentita, abilitarla dalle preferenze',

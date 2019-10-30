@@ -1,10 +1,10 @@
  <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button >
-
-      </ion-back-button>
-    </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button (click)="navigateHome()">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     <ion-title>{{'TITOLO_REGISTRATI' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -23,39 +23,48 @@
 
     </ion-item>
 
-    <ion-item class="animated fadeInUp">
+    <ion-item class="ion-margin-bottom animated fadeInUp">
+      <ion-icon color="primary" class="ion-margin-end" name="contact"></ion-icon>
       <ion-input color="secondary" placeholder="{{'PLACEHOLDER_NOME' | translate}}" formControlName="nome"></ion-input>
     </ion-item>
 
-    <ion-item class="animated fadeInUp">
+    <ion-item class="ion-margin-bottom animated fadeInUp">
+      <ion-icon color="primary" class="ion-margin-end" name="person"></ion-icon>
       <ion-input color="secondary" placeholder="{{'PLACEHOLDER_COGNOME' | translate}}" formControlName="cognome"></ion-input>
     </ion-item>
 
-    <ion-item class="animated fadeInUp">
+    <ion-item class="ion-margin-bottom animated fadeInUp">
+      <ion-icon color="primary" class="ion-margin-end" name="man"></ion-icon>
       <ion-input color="secondary" placeholder="{{'PLACEHOLDER_USERNAME' | translate}}" formControlName="username"></ion-input>
     </ion-item>
 
-    <ion-item class="animated fadeInUp">
+    <ion-item class="ion-margin-bottom animated fadeInUp">
+      <ion-icon color="primary" class="ion-margin-end" name="mail"></ion-icon>
       <ion-input color="secondary" type="email" placeholder="{{'PLACEHOLDER_EMAIL' | translate}}" formControlName="email"></ion-input>
     </ion-item>
 
-    <ion-item class="animated fadeInUp">
+    <ion-item class="ion-margin-bottom animated fadeInUp">
+      <ion-icon color="primary" class="ion-margin-end" name="lock"></ion-icon>
       <ion-input color="secondary" type="password" placeholder="{{'PLACEHOLDER_PASSWORD' | translate}}" formControlName="password"></ion-input>
     </ion-item>
 
-    <ion-item class="animated fadeInUp">
+    <ion-item class="ion-margin-bottom animated fadeInUp">
+      <ion-icon color="primary" class="ion-margin-end" name="call"></ion-icon>
       <ion-input color="secondary" type="number" placeholder="{{'PLACEHOLDER_TELEFONO' | translate}}" formControlName="telefono"></ion-input>
     </ion-item>
 
-    <ion-item class="animated fadeInUp">
+    <ion-item class="ion-margin-bottom animated fadeInUp">
+      <ion-icon color="primary" class="ion-margin-end" name="home"></ion-icon>
       <ion-input color="secondary" type="email" placeholder="{{'PLACEHOLDER_CITTA' | translate}}" formControlName="citta"></ion-input>
     </ion-item>
 
-    <ion-item class="animated fadeInUp">
+    <ion-item class="ion-margin-bottom animated fadeInUp">
+      <ion-icon color="primary" class="ion-margin-end" name="calendar"></ion-icon>
       <ion-datetime placeholder="{{'PLACEHOLDER_DATA_NASCITA' | translate}}" formControlName="data"></ion-datetime>
     </ion-item>
 
-    <ion-item class="animated fadeInUp">
+    <ion-item class="ion-margin-bottom animated fadeInUp">
+      <ion-icon color="primary" class="ion-margin-end" name="male"></ion-icon>
       <ion-select placeholder="{{'PLACEHOLDER_SESSO' | translate}}" formControlName="sesso">
         <ion-select-option>
           M
@@ -66,13 +75,16 @@
       </ion-select>
     </ion-item>
 
-    <ion-button class="button3 ion-tappable" expand="full" shape="round" color="primary"
-                (click)="onRegister()" [disabled]="!registerFormModule.valid">
-      <ion-icon name="person-add"></ion-icon>
-      <ion-label>{{'BOTTONE_REGISTRATI' | translate}}</ion-label>
-    </ion-button>
-
   </form>
+
+  <div class="ion-margin" style="margin-top: 30px">
+    <ion-button shape="round" expand="full" size="medium" (click)="onRegister()" [disabled]="!registerFormModule.valid">
+      <ion-icon name="person-add"></ion-icon>
+      <ion-label>
+        {{'BOTTONE_REGISTRATI' | translate}}
+      </ion-label>
+    </ion-button>
+  </div>
 
 
 </ion-content>
