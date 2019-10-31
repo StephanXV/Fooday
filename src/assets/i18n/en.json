@@ -113,5 +113,6 @@
   "BOTTONE_MODIFICA": "Modify",
   "INFO_RICERCA": "If you register you can see here your recent researches",
   "LABEL_PERSONE": "Seats",
-  "NO_LOCATION": "Enable location to show the restaurants around you"
+  "NO_LOCATION": "Enable location to show the restaurants around you",
+  "PLACEHOLDER_NUOVA_PW": "New Password"
 }
