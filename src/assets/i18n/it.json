@@ -121,5 +121,9 @@
   "PREN_COMPLETATE": "COMPLETATE",
   "PREN_BOOK": "Prenota",
   "PREN_COMPLETE": "Completa",
-  "PREN_REVIEW": "Valuta"
+  "PREN_REVIEW": "Valuta",
+  "FILTRI_PREZZO": "Prezzo (Crescente)",
+  "FILTRI_POPOLARE": "Popolarità",
+  "FILTRI_APERTO": "Aperto Ora",
+  "INFO_PRENOTA_MESSAGE": "Accettando di usare i propri punti per la prenotazione verranno sottratti 1000 punti al saldo e verrà applicato uno sconto di 10 € direttamente in cassa."
 }

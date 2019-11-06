@@ -120,5 +120,11 @@
   "PREN_BOOK": "Booking",
   "PREN_COMPLETE": "Complete",
   "PREN_REVIEW": "Review",
-  "FILTRI_RICERCA": "Filters"
+  "FILTRI_RICERCA": "Filters",
+  "FILTRI_PREZZO": "Price (Crescente)",
+  "FILTRI_POPOLARE": "Popularity",
+  "FILTRI_APERTO": "Now Open",
+  "INFO_PRENOTA_MESSAGE": "Using your points for the reseravtions we will take 1000 points you'll get a 10€ discount directly at the cash desk."
+}
+
 }
