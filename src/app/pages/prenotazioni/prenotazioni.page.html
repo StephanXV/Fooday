@@ -42,7 +42,9 @@
   </ion-label>
 
   <ion-list>
+
     <ion-card *ngFor="let prenotazione of prenotazioni">
+
       <ion-card-title class="ion-margin-top">
         <ion-row>
           <ion-col>
@@ -58,31 +60,53 @@
         </ion-row>
       </ion-card-title>
       <ion-card-content>
-        <ion-label>
-          <strong>{{'LABEL_GIORNO' | translate}}:</strong> {{prenotazione.giorno | date: 'EE d MMM, y': '+120' : lng}}
+        <ion-row>
+          <ion-col size="8">
+        <ion-chip style="margin-left: -5px; margin-top: 6px" outline color="primary">
+          <ion-icon name="people"></ion-icon>
+          <ion-label>{{prenotazione.posti}} {{'LABEL_PERSONE' | translate}}</ion-label>
+        </ion-chip>
+        <br>
+        <ion-label class="ion-margin-top" style="display: flex">
+          <ion-icon name="calendar" style="font-size: 18px; margin-right: 6px"></ion-icon> {{prenotazione.giorno | date: 'EE d MMM, y': '+120' : lng | uppercase}}
         </ion-label> <br>
-        <ion-label>
-          <strong>{{'LABEL_ORARIO' | translate}}:</strong> {{prenotazione.orario}}
+        <ion-label style="display: flex; margin-top: -12px">
+          <ion-icon name="time" style="font-size: 18px; margin-right: 6px"></ion-icon> {{prenotazione.orario}}
         </ion-label> <br>
-        <ion-card-subtitle class="ion-margin-top">
+        <ion-card-subtitle>
         <ion-label style="font-style: italic">
-          <strong>{{'LABEL_EFFETTUATA' | translate}}:</strong> {{prenotazione.prenotazioneId.timestamp | date: 'EE d MMM, y - H:mm': '' : lng}}
+          <strong>{{'LABEL_EFFETTUATA' | translate}}:</strong> {{prenotazione.prenotazioneId.timestamp | date: 'EE d MMM, y': '' : lng}}
         </ion-label>
         </ion-card-subtitle>
+        </ion-col>
+          <ion-col size="4" style="padding-top: 15px">
+            <div class="wrapper">
+              <ul class="StepProgress">
+                <li class="StepProgress-item is-done"><strong>Booking</strong></li>
 
-        <ion-card-subtitle class="ion-margin-top">
+                <li *ngIf="currentDate < prenotazione.giorno" class="StepProgress-item current"><strong>Complete</strong></li>
+                <li *ngIf="currentDate > prenotazione.giorno" class="StepProgress-item is-done"><strong>Complete</strong></li>
+
+                <li *ngIf="currentDate > prenotazione.giorno && !prenotazione.valutata" class="StepProgress-item current"><strong>Review</strong></li>
+                <li *ngIf="currentDate > prenotazione.giorno && prenotazione.valutata" class="StepProgress-item is-done"><strong>Review</strong></li>
+                <li *ngIf="currentDate < prenotazione.giorno" class="StepProgress-item"><strong>Review</strong></li>
+              </ul>
+            </div>
+          </ion-col>
+        </ion-row>
+
+
+
+        <!-- <ion-card-subtitle class="ion-margin-top">
         <ion-label> <ion-icon style="font-size: larger" name="people"></ion-icon>
           {{prenotazione.posti}} {{'LABEL_PERSONE' | translate}}
         </ion-label>
-        </ion-card-subtitle>
+        </ion-card-subtitle> -->
 
         <ion-row>
-          <ion-col *ngIf="currentDate > prenotazione.giorno">
-            <ion-label>{{'LABEL_COMPLETATA' | translate}}!</ion-label>
-          </ion-col>
 
-          <ion-col *ngIf="currentDate > prenotazione.giorno && !prenotazione.valutata">
-            <ion-button class="ion-margin-end ion-float-end button1"
+          <ion-col text-center *ngIf="currentDate > prenotazione.giorno && !prenotazione.valutata">
+            <ion-button class="button1" style="margin-top: 12px"
                         [routerLink]="['recensione', prenotazione.ristorante.id, prenotazione.prenotazioneId.timestamp]"
                         routerDirection="forward">
               <ion-label>
@@ -90,8 +114,8 @@
               </ion-label>
             </ion-button>
           </ion-col>
-          <ion-col *ngIf="currentDate < prenotazione.giorno">
-            <ion-button class="ion-margin ion-float-end button1"
+          <ion-col text-center *ngIf="currentDate < prenotazione.giorno">
+            <ion-button class="button1" style="margin-top: 12px"
                         (click)="deleteAlert(prenotazione.ristorante.id, prenotazione.prenotazioneId.timestamp)">
               <ion-label>
                 {{'BOTTONE_ANNULLA_PRENOTAZIONE' | translate}}

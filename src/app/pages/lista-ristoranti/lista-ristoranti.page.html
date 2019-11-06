@@ -1,9 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button>
-      </ion-back-button>
-    </ion-buttons>
+      <ion-buttons slot="end">
+          <ion-button (click)="navigateBack()">
+              <ion-icon slot="icon-only" name="close"></ion-icon>
+          </ion-button>
+      </ion-buttons>
     <ion-title>{{'TITOLO_LISTA_RISTORANTI' | translate}}
       <ion-label *ngIf="nomeRisto != null">{{'LABEL_RIC1' | translate}} <strong>{{nomeRisto}}</strong></ion-label>
       <ion-label *ngIf="nomeCitta != null">{{'LABEL_RIC2' | translate}} <strong>{{nomeCitta}}</strong></ion-label>

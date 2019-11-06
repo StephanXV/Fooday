@@ -6,7 +6,6 @@ import {Utente} from '../../model/utente.model';
 import {Citta} from '../../model/citta.model';
 import {TranslateService} from '@ngx-translate/core';
 import { Camera, CameraOptions } from '@ionic-native/Camera/ngx';
-import { File } from '@ionic-native/file/ngx';
 
 @Component({
   selector: 'app-registrazione',

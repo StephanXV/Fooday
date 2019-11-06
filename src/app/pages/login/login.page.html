@@ -1,11 +1,10 @@
-<ion-header>
+<ion-header no-border no-shadow>
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button (click)="navigateHome()">
+      <ion-button color="secondary" (click)="navigateHome()">
         <ion-icon slot="icon-only" name="close"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>{{'TITLE_LOGIN' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -21,7 +20,7 @@
     <form [formGroup]="loginFormModel" >
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
-          <ion-icon name="contact"></ion-icon>{{'PLACEHOLDER_USERNAME' | translate}}</ion-label>
+          <ion-icon style="margin-right: 6px" name="contact"></ion-icon>{{'PLACEHOLDER_USERNAME' | translate}}</ion-label>
         <ion-input color="secondary" type="email" formControlName="username"></ion-input>
       </ion-item>
       <p *ngIf="loginFormModel.get('username').touched && loginFormModel.get('username').invalid">
@@ -29,23 +28,23 @@
       </p>
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
-          <ion-icon name="lock"></ion-icon>{{'PLACEHOLDER_PASSWORD' | translate}}</ion-label>
+          <ion-icon style="margin-right: 6px" name="lock"></ion-icon>{{'PLACEHOLDER_PASSWORD' | translate}}</ion-label>
         <ion-input color="secondary" type="password" formControlName="password"></ion-input>
       </ion-item>
       <p *ngIf="loginFormModel.get('password').touched && loginFormModel.get('password').invalid">
         <ion-text color="danger">{{'PASSWORD_RICHIESTA' | translate}}</ion-text>
       </p>
-      <div margin-top="20px">
+      <div style="margin-top: 64px">
         <ion-button size="medium" expand="full" shape="round" color="primary"
                     (click)="onLogin()" [disabled]="!loginFormModel.valid" class="ion-tappable">
-          <ion-icon name="log-in"></ion-icon>
+          <ion-icon style="margin-right: 6px" name="log-in"></ion-icon>
           {{'BOTTONE_LOGIN' | translate}}
         </ion-button>
       </div>
       <div margin-top="20px">
         <ion-button size="medium" expand="full" shape="round" color="primary"
                     [routerLink]="['registrazione']" routerDirection="forward">
-          <ion-icon name="person-add"></ion-icon>
+          <ion-icon style="margin-right: 6px" name="person-add"></ion-icon>
           {{'BOTTONE_REGISTRATI' | translate}}
         </ion-button>
       </div>

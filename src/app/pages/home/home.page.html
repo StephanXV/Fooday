@@ -8,7 +8,7 @@
 
 <ion-content>
 
-  <!-- Categorie -->
+  <!-- Categorie
   <ion-title class="ion-margin-top">{{'TITOLO_CATEGORIE' | translate}}</ion-title>
       <ion-grid fixed>
         <ion-row>
@@ -21,9 +21,26 @@
             </ion-segment>
           </ion-col>
         </ion-row>
-      </ion-grid>
+      </ion-grid> -->
 
-  <!-- Top Città -->
+  <ion-title class="ion-margin-top">{{'TITOLO_CATEGORIE' | translate}}</ion-title>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <div class="containerScroll">
+          <div class="scroll" scrollX="true">
+              <span *ngFor="let categoria of categorie$ | async" (click)="onCategoryClick(categoria.id)">
+                <ion-chip color="primary">
+                  <ion-label>{{categoria.nome}}</ion-label>
+                </ion-chip>
+              </span>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Top Città
   <ion-title>{{'TITOLO_TOP_CITTA' | translate}}</ion-title>
     <ion-grid fixed>
       <ion-row>
@@ -36,11 +53,29 @@
           </ion-segment>
         </ion-col>
       </ion-row>
-    </ion-grid>
+    </ion-grid> -->
+
+  <ion-title>{{'TITOLO_TOP_CITTA' | translate}}</ion-title>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <div class="containerScroll">
+           <div class="scroll" scrollX="true">
+              <span *ngFor="let city of cities" (click)="onCityClick(city)">
+                <ion-chip color="primary">
+                  <ion-label>{{city}}</ion-label>
+                </ion-chip>
+              </span>
+           </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <!-- Nei Dintorni -->
   <ion-title><ion-label>{{'TITOLO_NEI_DINTORNI' | translate}}</ion-label>
-  <ion-label class="ion-text-center ion-float-end" style="font-size: medium" (click)="showMore()" color="tertiary">{{'ALTRO' | translate}}</ion-label>
+  <ion-label *ngIf="ristoranti != null" class="ion-text-center ion-float-end" style="font-size: medium" (click)="showMore()" color="tertiary">{{'ALTRO' | translate}}</ion-label>
+    <ion-label *ngIf="ristoranti == null" class="ion-text-center ion-float-end" style="font-size: medium" color="tertiary">{{'ALTRO' | translate}}</ion-label>
   </ion-title>
 
   <ion-list>

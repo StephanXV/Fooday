@@ -6,6 +6,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {Account, UtenteService} from '../../services/utente.service';
 import {TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 
 
@@ -30,7 +31,8 @@ export class LoginPage implements OnInit {
               private utenteService: UtenteService,
               private translateService: TranslateService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private toastController: ToastController) {
     this.route.queryParams.subscribe(params => {
       this.pageBack = params.parametro;
     });
@@ -79,13 +81,32 @@ export class LoginPage implements OnInit {
         {
           text: 'OK',
           handler: () => {
-            this.navController.back();
+
+            if (this.pageBack == 'prenota') {
+              this.navController.back();
+            } else {
+              this.router.navigateByUrl('/tabs/' + this.pageBack);
+            }
           }
         }
       ]
     });
 
     await alert.present();
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: this.loginSuccessSubtitle + this.loginFormModel.value.username,
+      duration: 2000
+    });
+    toast.present();
+
+    if (this.pageBack == 'prenota') {
+      this.navController.back();
+    } else {
+      this.router.navigateByUrl('/tabs/' + this.pageBack);
+    }
   }
 
   navigateHome() {

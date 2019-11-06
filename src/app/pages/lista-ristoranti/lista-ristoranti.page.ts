@@ -4,7 +4,7 @@ import {Ristorante} from '../../model/ristorante.model';
 import {RistoranteService} from '../../services/ristorante.service';
 import {CategoriaService} from '../../services/categoria.service';
 import {Categoria} from '../../model/categoria.model';
-import {ModalController} from '@ionic/angular';
+import {ModalController, NavController} from '@ionic/angular';
 import {FiltriPage} from '../filtri/filtri.page';
 import {Recensione} from 'src/app/model/recensione.model';
 import {MappaRistorantiPage} from '../mappa-ristoranti/mappa-ristoranti.page';
@@ -19,6 +19,7 @@ export class ListaRistorantiPage implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private ristoranteService: RistoranteService,
+              private navController: NavController,
               private categoriaService: CategoriaService,
               private modalController: ModalController) {
   }
@@ -149,5 +150,9 @@ export class ListaRistorantiPage implements OnInit {
         this.passaRistorantiModale = dataReturned.data;
       });
       return await modal.present();
+    }
+
+    navigateBack() {
+        this.navController.back();
     }
 }
