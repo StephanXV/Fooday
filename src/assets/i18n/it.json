@@ -121,5 +121,8 @@
   "PREN_COMPLETATE": "COMPLETATE",
   "PREN_BOOK": "Prenota",
   "PREN_COMPLETE": "Completa",
-  "PREN_REVIEW": "Valuta"
+  "PREN_REVIEW": "Valuta",
+  "PLUS_FILTRI": "Più di:",
+  "ALL_FILTRI": "Tutti",
+  "LABEL_RIC4": "Posizione"
 }

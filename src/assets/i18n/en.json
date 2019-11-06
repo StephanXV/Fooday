@@ -98,6 +98,7 @@
   "LABEL_RIC1": "the name",
   "LABEL_RIC2": "the city",
   "LABEL_RIC3": "the category",
+  "LABEL_RIC4": "Location",
   "LABEL_GIORNO": "Day",
   "LABEL_ORARIO": "Hour",
   "LABEL_EFFETTUATA": "Made on",
@@ -120,5 +121,7 @@
   "PREN_BOOK": "Booking",
   "PREN_COMPLETE": "Complete",
   "PREN_REVIEW": "Review",
-  "FILTRI_RICERCA": "Filters"
+  "FILTRI_RICERCA": "Filters",
+  "PLUS_FILTRI": "More than:",
+  "ALL_FILTRI": "All"
 }
