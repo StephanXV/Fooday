@@ -196,6 +196,21 @@ ion-spinner {
       }
     }
 
+    &.is-done-last {
+      &::before {
+        border-left: 2px solid green;
+        height: 0;
+      }
+      &::after {
+        content: "✔";
+        font-size: 10px;
+        color: #FFF;
+        text-align: center;
+        border: 2px solid green;
+        background-color: green;
+      }
+    }
+
     &.current {
       &::before {
       }

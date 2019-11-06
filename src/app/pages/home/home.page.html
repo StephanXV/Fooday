@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary" style="opacity: 90%">
     <ion-title>
       {{'TITOLO_HOME' | translate}}
     </ion-title>
@@ -30,7 +30,7 @@
         <div class="containerScroll">
           <div class="scroll" scrollX="true">
               <span *ngFor="let categoria of categorie$ | async" (click)="onCategoryClick(categoria.id)">
-                <ion-chip color="primary">
+                <ion-chip color="primary" style="padding-left: 15px; padding-right: 15px; margin-right: 10px;">
                   <ion-label>{{categoria.nome}}</ion-label>
                 </ion-chip>
               </span>
@@ -55,14 +55,14 @@
       </ion-row>
     </ion-grid> -->
 
-  <ion-title>{{'TITOLO_TOP_CITTA' | translate}}</ion-title>
+  <ion-title class="ion-margin-top">{{'TITOLO_TOP_CITTA' | translate}}</ion-title>
   <ion-grid fixed>
     <ion-row>
       <ion-col size="12">
         <div class="containerScroll">
            <div class="scroll" scrollX="true">
               <span *ngFor="let city of cities" (click)="onCityClick(city)">
-                <ion-chip color="primary">
+                <ion-chip color="primary" style="padding-left: 15px; padding-right: 15px; margin-right: 10px;">
                   <ion-label>{{city}}</ion-label>
                 </ion-chip>
               </span>
@@ -73,7 +73,7 @@
   </ion-grid>
 
   <!-- Nei Dintorni -->
-  <ion-title><ion-label>{{'TITOLO_NEI_DINTORNI' | translate}}</ion-label>
+  <ion-title class="ion-margin-top"><ion-label>{{'TITOLO_NEI_DINTORNI' | translate}}</ion-label>
   <ion-label *ngIf="ristoranti != null" class="ion-text-center ion-float-end" style="font-size: medium" (click)="showMore()" color="tertiary">{{'ALTRO' | translate}}</ion-label>
     <ion-label *ngIf="ristoranti == null" class="ion-text-center ion-float-end" style="font-size: medium" color="tertiary">{{'ALTRO' | translate}}</ion-label>
   </ion-title>
@@ -95,7 +95,7 @@
     </div>
 
     <div *ngIf="ristoranti != null && locationValue">
-      <ion-card *ngFor="let ristorante of ristoranti | slice:0:10"
+      <ion-card style="box-shadow: 0 3px 10px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);" *ngFor="let ristorante of ristoranti | slice:0:10"
                 [routerLink]="['dettagli-ristorante', ristorante.id]" routerDirection="forward">
 
         <ion-row>
@@ -124,11 +124,11 @@
         <ion-card-content>
 
           <ion-row>
-            <ion-col>
+            <ion-col size="8">
               <strong>{{ristorante.citta.nome}}</strong>, {{ristorante.indirizzo}}
             </ion-col>
 
-            <ion-col>
+            <ion-col size="4">
               <ion-label *ngIf="ristorante.sconto > 0" class="ion-float-end" color="secondary">{{ristorante.sconto}}% {{'SCONTO' | translate}}!</ion-label>
             </ion-col>
           </ion-row>

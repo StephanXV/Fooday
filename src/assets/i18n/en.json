@@ -96,7 +96,7 @@
   "LABEL_PROMOZIONI": "Only with promotions",
   "LABEL_APPLICA": "APPLY",
   "LABEL_RIC1": "the name",
-  "LABEL_RIC2": "lthe city",
+  "LABEL_RIC2": "the city",
   "LABEL_RIC3": "the category",
   "LABEL_GIORNO": "Day",
   "LABEL_ORARIO": "Hour",
@@ -114,5 +114,11 @@
   "INFO_RICERCA": "If you register you can see here your recent researches",
   "LABEL_PERSONE": "Seats",
   "NO_LOCATION": "Enable location to show the restaurants around you",
-  "PLACEHOLDER_NUOVA_PW": "New Password"
+  "PLACEHOLDER_NUOVA_PW": "New Password",
+  "PREN_IN_CORSO": "IN PROGRESS",
+  "PREN_COMPLETATE": "COMPLETED",
+  "PREN_BOOK": "Booking",
+  "PREN_COMPLETE": "Complete",
+  "PREN_REVIEW": "Review",
+  "FILTRI_RICERCA": "Filters"
 }
