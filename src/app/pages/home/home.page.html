@@ -96,7 +96,7 @@
 
     <div *ngIf="ristoranti != null && locationValue">
       <ion-card class="ion-card" *ngFor="let ristorante of ristoranti | slice:0:10"
-                [routerLink]="['dettagli-ristorante', ristorante.id]" routerDirection="forward">
+                [routerLink]="['dettagli-ristorante', ristorante.id]" routerDirection="forward"  >
 
         <ion-row>
           <ion-col>
