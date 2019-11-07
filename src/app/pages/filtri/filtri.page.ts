@@ -12,7 +12,7 @@ import {CategoriaService} from '../../services/categoria.service';
   styleUrls: ['./filtri.page.scss'],
 })
 export class FiltriPage implements OnInit {
-  private votiVal: any;
+  private votiVal: number = 0;
   private prezzoVal: { upper: any, lower: any};
   private categorie$: Observable<Categoria[]>;
   private categoriaScelta: Categoria;
@@ -30,12 +30,13 @@ export class FiltriPage implements OnInit {
         };
         this.isToggledPromo = false;
         this.categoriaScelta = null;
-        this.votiVal = null;
+        this.votiVal = 0;
     });
   }
   @Input() passaRistorantiModale: Ristorante[];
 
   ngOnInit() {
+    this.votiVal = 0;
   }
 
   async closeModal() {

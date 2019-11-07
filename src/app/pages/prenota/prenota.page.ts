@@ -31,6 +31,7 @@ export class PrenotaPage implements OnInit {
   private giorni = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
   private numbers: number[] = [];
   private orari: string[] = [];
+  private infoMessage: string;
 
   constructor(private formBuilder: FormBuilder,
               private navController: NavController,
@@ -39,7 +40,8 @@ export class PrenotaPage implements OnInit {
               private ristoranteService: RistoranteService,
               private prenotazioneService: PrenotazioneService,
               private alertController: AlertController,
-              private translateService: TranslateService) { }
+              private translateService: TranslateService) {
+  }
 
   ngOnInit() {
     this.initTranslate();
@@ -49,7 +51,7 @@ export class PrenotaPage implements OnInit {
       this.dettagliRistorante();
 
     });
-    this.utenteService.getUtente().subscribe( (utente) => {
+    this.utenteService.getUtente().subscribe((utente) => {
       this.utente = utente;
     });
     this.bookFormModule = this.formBuilder.group({
@@ -63,7 +65,7 @@ export class PrenotaPage implements OnInit {
   }
 
   dettagliRistorante() {
-    this.ristoranteService.getRistoranteById(this.idRistorante).subscribe( (ristorante) => {
+    this.ristoranteService.getRistoranteById(this.idRistorante).subscribe((ristorante) => {
       this.ristorante = ristorante;
       this.generatePosti();
     });
@@ -140,7 +142,7 @@ export class PrenotaPage implements OnInit {
     this.prenotazione.utente.nome = this.utente.nome;
     this.prenotazione.utente.id = this.utente.id;
     this.prenotazioneService.createPrenotazione(this.prenotazione).subscribe((recensione: Prenotazione) =>
-        this.prenotazioneCompletata(),
+            this.prenotazioneCompletata(),
         error => (console.log('Username già presa')));
     // set user param to update punti
     this.prenotazioneService.updatePunti(this.utente, this.prenotazione.usaPunti).subscribe((utente: Utente) =>
@@ -167,6 +169,9 @@ export class PrenotaPage implements OnInit {
   }
 
   initTranslate() {
+    this.translateService.get('INFO_PRENOTA_MESSAGE').subscribe((data: string) => {
+      this.infoMessage = data;
+    });
     this.translateService.get('PRENOTAZIONE_SUCCESSO_TITLE').subscribe((data: string) => {
       this.prenotazioneTitle = data;
     });
@@ -181,8 +186,7 @@ export class PrenotaPage implements OnInit {
   async infoUsaPunti() {
     const alert = await this.alertController.create({
       header: 'Info',
-      message: 'Accettando di usare i propri punti per la prenotazione verranno sottratti 1000 punti al saldo ' +
-                'e verrà applicato uno sconto di 10 € direttamente in cassa.',
+      message: this.infoMessage,
       buttons: [
         {
           text: this.confirmButton,
@@ -192,3 +196,4 @@ export class PrenotaPage implements OnInit {
     await alert.present();
   }
 }
+

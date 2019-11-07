@@ -96,8 +96,9 @@
   "LABEL_PROMOZIONI": "Only with promotions",
   "LABEL_APPLICA": "APPLY",
   "LABEL_RIC1": "the name",
-  "LABEL_RIC2": "lthe city",
+  "LABEL_RIC2": "the city",
   "LABEL_RIC3": "the category",
+  "LABEL_RIC4": "Location",
   "LABEL_GIORNO": "Day",
   "LABEL_ORARIO": "Hour",
   "LABEL_EFFETTUATA": "Made on",
@@ -114,5 +115,17 @@
   "INFO_RICERCA": "If you register you can see here your recent researches",
   "LABEL_PERSONE": "Seats",
   "NO_LOCATION": "Enable location to show the restaurants around you",
-  "PLACEHOLDER_NUOVA_PW": "New Password"
+  "PLACEHOLDER_NUOVA_PW": "New Password",
+  "PREN_IN_CORSO": "IN PROGRESS",
+  "PREN_COMPLETATE": "COMPLETED",
+  "PREN_BOOK": "Booking",
+  "PREN_COMPLETE": "Complete",
+  "PREN_REVIEW": "Review",
+  "FILTRI_RICERCA": "Filters",
+  "PLUS_FILTRI": "More than:",
+  "ALL_FILTRI": "All"
+  "FILTRI_PREZZO": "Price (Crescente)",
+  "FILTRI_POPOLARE": "Popularity",
+  "FILTRI_APERTO": "Now Open",
+  "INFO_PRENOTA_MESSAGE": "Using your points for the reseravtions we will take 1000 points you'll get a 10€ discount directly at the cash desk."
 }

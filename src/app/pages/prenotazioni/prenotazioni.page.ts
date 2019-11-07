@@ -16,6 +16,7 @@ const STORAGE_LANGUAGE_KEY = 'language';
   styleUrls: ['./prenotazioni.page.scss'],
 })
 export class PrenotazioniPage implements OnInit {
+  tabPren: string;
   private utente: Utente;
   private prenotazioni: Prenotazione[];
   private deleteTitle: string;
@@ -34,6 +35,7 @@ export class PrenotazioniPage implements OnInit {
 
   ngOnInit() {
     this.initTranslate();
+    this.tabPren = 'inCorso';
     this.utenteservice.getUtente().subscribe( (utente) => {
       this.utente = utente;
       this.listPrenotazioni();

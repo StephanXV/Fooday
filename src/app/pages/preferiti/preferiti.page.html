@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary" style="opacity: 90%">
     <ion-title>{{'TITOLO_PREFERITI' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,7 +11,7 @@
   </ion-label>
 
   <ion-list>
-      <ion-card *ngFor="let preferito of preferiti$ | async">
+      <ion-card class="ion-card" *ngFor="let preferito of preferiti$ | async">
         <ion-row>
           <ion-col>
             <ion-img [routerLink]="['dettagli-ristorante', preferito.id]" routerDirection="forward" src="data:image/jpeg;base64, {{preferito.immagini[0].file}}"></ion-img>
@@ -44,13 +44,13 @@
         <ion-row>
           <ion-col>
             <ion-button class="ion-float-start" fill="clear" (click)="deleteRistoranteByPreferiti(preferito.id, utente.id)">
-              <ion-icon name="trash"></ion-icon>
+              <ion-icon name="trash" style="margin-right: 4px"></ion-icon>
               <div>{{'RIMOZIONE_PREFERITI' | translate}}</div>
             </ion-button>
           </ion-col>
           <ion-col>
             <ion-button class="ion-float-end" fill="clear" [routerLink]="['prenota', preferito.id]" routerDirection="forward">
-              <ion-icon name="pricetag"></ion-icon>
+              <ion-icon name="pricetag" style="margin-right: 4px"></ion-icon>
               <div>{{'BOTTONE_PRENOTA' | translate}}</div>
             </ion-button>
           </ion-col>

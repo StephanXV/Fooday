@@ -1,10 +1,10 @@
-<ion-header>
+<ion-header no-border no-shadow>
   <ion-toolbar>
-    <ion-title>
+    <ion-title color="secondary">
       {{'FILTRI_RICERCA' | translate}}
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="closeModal()">
+      <ion-button color="secondary" (click)="closeModal()">
       <ion-icon slot="icon-only" name="close"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -15,19 +15,19 @@
 
   <div>
 
-  <ion-list margin-bottom="10px">
+  <ion-list margin-bottom="3px">
     <ion-item margin>
       <ion-label>{{'LABEL_ORDINA' | translate}}</ion-label>
       <ion-select (ionChange)="checkValueOrdina($event)" >
-        <ion-select-option value="prezzo">Prezzo (Crescente)</ion-select-option>
-        <ion-select-option value="popolarita">Popolarità</ion-select-option>
-        <ion-select-option value="aperto">Aperto Ora</ion-select-option>
+        <ion-select-option value="prezzo">{{"FILTRI_PREZZO" | translate}}</ion-select-option>
+        <ion-select-option value="popolarita">{{"FILTRI_POPOLARE" | translate}}</ion-select-option>
+        <ion-select-option value="aperto">{{"FILTRI_APERTO" | translate}}</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>
 
 
-  <ion-list margin-bottom="20px">
+  <ion-list margin-bottom="16px">
     <ion-list-header>
       <ion-label margin>{{'TITOLO_CATEGORIE' | translate | uppercase}}</ion-label>
       <ion-label *ngIf="this.categoriaScelta != null" margin float-end>
@@ -35,15 +35,19 @@
       </ion-label>
     </ion-list-header>
         <ion-item>
-        <ion-segment scrollable>
-          <ion-segment-button class="horizontalScroll"  *ngFor="let categoria of categorie$ | async" (click)="changeCategoria(categoria)">
-            <ion-label>{{categoria.nome}}</ion-label>
-          </ion-segment-button>
-        </ion-segment>
+          <div class="containerScroll">
+            <div class="scroll" scrollX="true">
+              <span *ngFor="let categoria of categorie$ | async" (click)="changeCategoria(categoria)">
+                <ion-chip color="primary" style="padding-left: 15px; padding-right: 15px; margin-right: 10px;">
+                  <ion-label>{{categoria.nome}}</ion-label>
+                </ion-chip>
+              </span>
+            </div>
+          </div>
         </ion-item>
   </ion-list>
 
-<ion-list margin-bottom="20px">
+<ion-list margin-bottom="16px">
   <!-- <ion-label>ciao sono piero: </ion-label>
   <ion-card *ngFor="let ristorante of passaRistorantiModale | async">
     <ion-row>
@@ -57,8 +61,8 @@
         {{'LABEL_VOTI' | translate}}
     </ion-label>
     <ion-label margin float-end>
-        <ion-badge *ngIf="votiVal != null" color="medium">Più di: {{votiVal}}</ion-badge>
-        <ion-badge *ngIf="votiVal == null" color="medium">Tutti</ion-badge>
+        <ion-badge *ngIf="votiVal != 0" color="medium">{{'PLUS_FILTRI' | translate}} {{votiVal}}</ion-badge>
+        <ion-badge *ngIf="votiVal == 0" color="medium">{{'ALL_FILTRI' | translate}}</ion-badge>
     </ion-label>
   </ion-list-header>
 
