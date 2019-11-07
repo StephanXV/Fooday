@@ -13,15 +13,6 @@ const routes: Routes = [
   {
     path: '',
     component: PrenotazioniPage
-  },
-  {
-    path: 'recensione/:id/:timestamp',
-    children: [
-      {
-        path: '',
-        loadChildren: '../recensione/recensione.module#RecensionePageModule'
-      }
-    ]
   }
 ];
 

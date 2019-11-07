@@ -12,15 +12,6 @@ const routes: Routes = [
   {
     path: '',
     component: ListaRistorantiPage
-  },
-  {
-    path: 'dettagli-ristorante/:id',
-    children: [
-      {
-        path: '',
-        loadChildren: '../dettagli-ristorante/dettagli-ristorante.module#DettagliRistorantePageModule'
-      }
-    ]
   }
 ];
 
