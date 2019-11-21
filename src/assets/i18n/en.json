@@ -132,5 +132,7 @@
   "INFO_PUNTI": "This reservation allows you to gain 100 points",
   "PUNTEGGIO_TITLE": "Score",
   "POSIZIONE_WARNING": "Position not allowed, enable it by preferences",
-  "PREFERENZE_TITLE" : "PREFERENCES"
+  "PREFERENZE_TITLE" : "PREFERENCES",
+  "INFO_PRENOTA_MESSAGE": "Using your points for the reseravtions we will take 1000 points you'll get a 10€ discount directly at the cash desk.",
+  "NO_RISTO_ZONA": "There aren't restaurants in this area"
 }

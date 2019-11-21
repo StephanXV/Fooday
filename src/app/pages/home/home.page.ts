@@ -56,7 +56,6 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
       this.initTranslate();
-      this.categorie$ = this.categoriaService.list();
   }
 
   ionViewWillEnter() {
@@ -171,7 +170,7 @@ export class HomePage implements OnInit {
       } else { // get current position
         this.checkLocationAvailable();
         this.categorie$ = this.categoriaService.list();
-        this.navController.navigateRoot('tabs');
+        this.navController.navigateRoot('tabs/home');
       }
     });
   }
