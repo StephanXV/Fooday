@@ -43,16 +43,9 @@ export class HomePage implements OnInit {
               private translate: TranslateService,
               private diagnostic: Diagnostic,
               private alertController: AlertController) {
-      this.platform.ready().then(() => {
-        if (this.platform.is('cordova')) {
-        this.checkNetworkConnection();
-      } else {
-          this.checkLocationAvailable();
-          this.categorie$ = this.categoriaService.list();
-          this.navController.navigateRoot('tabs/home');
-      }
-    });
+
   }
+
 
   ngOnInit() {
       this.initTranslate();
@@ -60,6 +53,15 @@ export class HomePage implements OnInit {
 
   ionViewWillEnter() {
     this.initTranslate();
+    this.platform.ready().then(() => {
+      if (this.platform.is('cordova')) {
+        this.checkNetworkConnection();
+      } else {
+        this.checkLocationAvailable();
+        this.categorie$ = this.categoriaService.list();
+        this.navController.navigateRoot('tabs/home');
+      }
+    });
   }
 
   onCategoryClick(idCategoria: number) {
