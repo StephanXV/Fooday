@@ -2,6 +2,7 @@ import {Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import {Ristorante} from '../../model/ristorante.model';
 import leaflet from 'leaflet';
+import {TranslateService} from '@ngx-translate/core';
 
 
 @Component({
@@ -12,12 +13,19 @@ import leaflet from 'leaflet';
 export class MappaRistorantiPage implements OnInit {
   @ViewChild('map') mapContainer: ElementRef;
   map: any;
+  private punteggio: string;
 
-  constructor(private modalController: ModalController) { }
+  constructor(private modalController: ModalController,
+              private translateService: TranslateService) { }
   @Input() passaRistorantiModale: Ristorante[];
   @Input() zoomMap: number;
 
   ngOnInit() {
+      this.initTranslate();
+  }
+
+  ionViewWillEnter() {
+    this.initTranslate();
   }
 
   ionViewDidEnter() {
@@ -40,12 +48,18 @@ export class MappaRistorantiPage implements OnInit {
     this.passaRistorantiModale.forEach((restaurant) => {
       leaflet.marker([restaurant.latitudine, restaurant.longitudine], {icon: customMarkerIcon})
           .bindPopup(`<b>${restaurant.nome}
-                            <br> Punteggio: ${restaurant.punteggio}</b>`, { autoClose: false })
+                            <br> ${this.punteggio} ${restaurant.punteggio}</b>`, { autoClose: false })
           .addTo(this.map).openPopup();
     });
   }
 
   async closeModal() {
     await this.modalController.dismiss(this.passaRistorantiModale);
+  }
+
+  initTranslate() {
+    this.translateService.get('PUNTEGGIO_TITLE').subscribe((data: string) => {
+      this.punteggio = data;
+    });
   }
 }

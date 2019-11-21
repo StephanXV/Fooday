@@ -39,6 +39,7 @@ export class PreferitiPage implements OnInit {
 
   ionViewWillEnter() {
     this.listPreferiti();
+    this.initTranslate();
     this.loaded = false;
   }
 

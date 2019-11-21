@@ -29,6 +29,9 @@ export class HomePage implements OnInit {
   private longitude: any = '';
   private locationValue: boolean;
   private noLocation: boolean;
+  private title: string;
+  private warningPosition: string;
+  private preferences: string;
 
   constructor(private router: Router,
               private ristoranteService: RistoranteService,
@@ -52,7 +55,12 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
+      this.initTranslate();
       this.categorie$ = this.categoriaService.list();
+  }
+
+  ionViewWillEnter() {
+    this.initTranslate();
   }
 
   onCategoryClick(idCategoria: number) {
@@ -109,8 +117,8 @@ export class HomePage implements OnInit {
     console.log('Loading without location...');
     this.noLocation = true;
     const alert = await this.alertController.create({
-      header: 'ATTENZIONE',
-      message: 'Posizione non consentita, abilitarla dalle preferenze',
+      header: this.title,
+      message: this.warningPosition,
       buttons: [
         {
           text: 'OK',
@@ -119,7 +127,7 @@ export class HomePage implements OnInit {
           }
         },
         {
-          text: 'PREFERENZE',
+          text: this.preferences,
           handler: () => {
             console.log('Preferenze clicked');
             this.router.navigate(['/tabs/home/preferenze']);
@@ -165,6 +173,18 @@ export class HomePage implements OnInit {
         this.categorie$ = this.categoriaService.list();
         this.navController.navigateRoot('tabs');
       }
+    });
+  }
+
+  initTranslate() {
+    this.translate.get('WARNING_TITLE').subscribe((data: string) => {
+      this.title = data;
+    });
+    this.translate.get('POSIZIONE_WARNING').subscribe((data: string) => {
+      this.warningPosition = data;
+    });
+    this.translate.get('PREFERENZE_TITLE').subscribe((data: string) => {
+      this.preferences = data;
     });
   }
 

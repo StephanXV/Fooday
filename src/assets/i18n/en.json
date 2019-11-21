@@ -124,8 +124,13 @@
   "FILTRI_RICERCA": "Filters",
   "PLUS_FILTRI": "More than:",
   "ALL_FILTRI": "All",
-  "FILTRI_PREZZO": "Price (Crescente)",
+  "FILTRI_PREZZO": "Price (Ascendent)",
   "FILTRI_POPOLARE": "Popularity",
   "FILTRI_APERTO": "Now Open",
-  "INFO_PRENOTA_MESSAGE": "Using your points for the reseravtions we will take 1000 points you'll get a 10€ discount directly at the cash desk."
+  "PRENOTAZIONI_DELETE_MESSAGE": "Do you really want to remove your reservation?",
+  "INFO_PRENOTA_MESSAGE": "Using your points for the reseravtions we will take 1000 points you'll get a 10€ discount directly at the cash desk.",
+  "INFO_PUNTI": "This reservation allows you to gain 100 points",
+  "PUNTEGGIO_TITLE": "Score",
+  "POSIZIONE_WARNING": "Position not allowed, enable it by preferences",
+  "PREFERENZE_TITLE" : "PREFERENCES"
 }
