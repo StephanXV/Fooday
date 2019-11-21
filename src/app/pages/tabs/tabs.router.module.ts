@@ -175,20 +175,20 @@ const routes: Routes = [
                         data: {pag: ['preferiti']}
                     },
                     {
-                        path: 'prenota/:id',
-                        children: [
-                            {
-                                path: '',
-                                loadChildren: '../prenota/prenota.module#PrenotaPageModule'
-                            }
-                        ]
-                    },
-                    {
                         path: 'dettagli-ristorante/:id',
                         children: [
                             {
                                 path: '',
                                 loadChildren: '../dettagli-ristorante/dettagli-ristorante.module#DettagliRistorantePageModule'
+                            },
+                            {
+                                path: 'prenota/:id',
+                                children: [
+                                    {
+                                        path: '',
+                                        loadChildren: '../prenota/prenota.module#PrenotaPageModule'
+                                    }
+                                ]
                             }
                         ]
                     }

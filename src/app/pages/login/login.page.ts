@@ -31,8 +31,7 @@ export class LoginPage implements OnInit {
               private utenteService: UtenteService,
               private translateService: TranslateService,
               private route: ActivatedRoute,
-              private router: Router,
-              private toastController: ToastController) {
+              private router: Router) {
     this.route.queryParams.subscribe(params => {
       this.pageBack = params.parametro;
     });
@@ -93,20 +92,6 @@ export class LoginPage implements OnInit {
     });
 
     await alert.present();
-  }
-
-  async presentToast() {
-    const toast = await this.toastController.create({
-      message: this.loginSuccessSubtitle + this.loginFormModel.value.username,
-      duration: 2000
-    });
-    toast.present();
-
-    if (this.pageBack == 'prenota') {
-      this.navController.back();
-    } else {
-      this.router.navigateByUrl('/tabs/' + this.pageBack);
-    }
   }
 
   navigateHome() {

@@ -22,37 +22,6 @@
 
 <ion-content>
 
-  <!--
-  <ion-list>
-    <ion-item-sliding *ngFor="let prenotazione of prenotazioni$ | async" #sliding>
-      <ion-item>
-        <ion-label>
-          <h2><strong>{{prenotazione.ristorante.nome}}</strong></h2> <p>-{{prenotazione.scontoApplicato}}%&nbsp;</p>
-          <ion-badge margin-end margin-top margin-bottom color="primary" *ngFor="let cate of prenotazione.ristorante.categorie">{{cate.nome}}</ion-badge>
-          <p><strong>Giorno:</strong> {{prenotazione.giorno | date: 'EE d MMM, y': '+120'}}</p>
-          <p><strong>Orario:</strong> {{prenotazione.orario}}</p>
-          <p><strong>Effettuata il:</strong> {{prenotazione.prenotazioneId.timestamp | date: 'EE d MMM, y, hh:mm'}}</p>
-
-          <br>
-          <ion-row>
-
-            <ion-icon size="normal" name="people"></ion-icon>
-            <div>&nbsp;&nbsp;{{prenotazione.posti}}</div>
-          </ion-row> <br>
-        </ion-label>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option color="tertiary" (click)="deletePrenotazioni(sliding)">
-          <ion-icon slot="icon-only" name="create"></ion-icon>
-        </ion-item-option>
-        <ion-item-option color="secondary" (click)="deletePrenotazioni(sliding)">
-          <ion-icon slot="icon-only" name="trash"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
-  -->
-
   <ion-label *ngIf="!loaded">
     <ion-spinner name="crescent"></ion-spinner>
   </ion-label>
@@ -254,10 +223,6 @@
       </ion-card>
     </ion-list>
 
-    <div *ngIf="prenotazioni != null && prenotazioni.length < 1" class="ion-padding ion-text-center ion-margin">
-      <ion-label color="medium">
-        {{'PRENOTAZIONI_VUOTO' | translate}}
-      </ion-label>
-    </div>
+
   </div>
 </ion-content>
