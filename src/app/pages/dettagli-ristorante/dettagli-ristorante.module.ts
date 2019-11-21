@@ -15,26 +15,6 @@ const routes: Routes = [
   {
     path: '',
     component: DettagliRistorantePage
-  },
-  {
-    path: 'prenota/:id',
-    children: [
-      {
-        path: '',
-        loadChildren: '../prenota/prenota.module#PrenotaPageModule',
-        canActivate: [AuthGuard],
-        data: {pag: ['prenota']}
-      }
-    ]
-  },
-  {
-    path: 'galleria',
-    children: [
-      {
-        path: '',
-        loadChildren: '../galleria/galleria.module#GalleriaPageModule'
-      }
-    ]
   }
 ];
 

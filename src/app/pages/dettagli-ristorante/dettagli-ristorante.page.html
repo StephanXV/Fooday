@@ -63,22 +63,22 @@
         </ion-item>
 
         <ion-item *ngIf="punteggio > 0">
-          <ion-icon class="ion-margin-end" name="trophy"></ion-icon>
+          <ion-icon class="ion-margin-end" name="trophy" style="color: #d72c38"></ion-icon>
           <ion-label>{{punteggio}}</ion-label>
         </ion-item>
 
         <ion-item>
-          <ion-icon class="ion-margin-end" name="pin"></ion-icon>
+          <ion-icon class="ion-margin-end" name="pin" style="color: #d72c38"></ion-icon>
           <ion-label> {{ristorante.citta.nome}} - {{ristorante.indirizzo}}</ion-label>
         </ion-item>
 
         <ion-item>
-          <ion-icon class="ion-margin-end" name="restaurant"></ion-icon>
+          <ion-icon class="ion-margin-end" name="restaurant" style="color: #d72c38"></ion-icon>
           <ion-badge class="ion-margin-end" color="tertiary" *ngFor="let cate of ristorante.categorie"> {{cate.nome}}</ion-badge>
         </ion-item>
 
         <ion-item>
-          <ion-icon class="ion-margin-end" name="logo-euro"></ion-icon>
+          <ion-icon class="ion-margin-end" name="logo-euro" style="color: #d72c38"></ion-icon>
           <ion-label>{{'SPESA' | translate}} {{ristorante.prezzoMedio}} €</ion-label>
           <ion-text class="ion-float-end" color="tertiary" *ngIf="ristorante.sconto > 0">-{{ristorante.sconto}}%</ion-text>
         </ion-item>
@@ -107,9 +107,10 @@
     </div>
 
     <div *ngSwitchCase="'menu'">
+      <ion-card>
       <ion-list>
-        <ion-list-header>
-          <ion-title class="ion-text-center">{{'LABEL_ANTIPASTI' | translate}}</ion-title>
+        <ion-list-header style="background-color: #037dff">
+          <ion-title class="ion-text-center" style="color: white">{{'LABEL_ANTIPASTI' | translate}}</ion-title>
         </ion-list-header>
         <div *ngFor="let antipasto of ristorante.pietanze">
           <ion-item *ngIf="antipasto.tipologia == 'antipasto'">
@@ -119,50 +120,59 @@
         </div>
 
       </ion-list>
-      <ion-list>
-        <ion-list-header>
-          <ion-title class="ion-text-center">{{'LABEL_PRIMI' | translate}}</ion-title>
-        </ion-list-header>
-        <div *ngFor="let primo of ristorante.pietanze">
-          <ion-item *ngIf="primo.tipologia == 'primo'">
-            <ion-label>{{primo.nome}}</ion-label>
-            <ion-label class="ion-text-end">{{primo.prezzo}} €</ion-label>
-          </ion-item>
-        </div>
-      </ion-list>
-      <ion-list>
-        <ion-list-header>
-          <ion-title class="ion-text-center">{{'LABEL_SECONDI' | translate}}</ion-title>
-        </ion-list-header>
-        <div *ngFor="let secondo of ristorante.pietanze">
-          <ion-item *ngIf="secondo.tipologia == 'secondo'">
-            <ion-label>{{secondo.nome}}</ion-label>
-            <ion-label class="ion-text-end">{{secondo.prezzo}} €</ion-label>
-          </ion-item>
-        </div>
-      </ion-list>
-      <ion-list>
-        <ion-list-header>
-          <ion-title class="ion-text-center">{{'LABEL_DESSERT' | translate}}</ion-title>
-        </ion-list-header>
-        <div *ngFor="let dessert of ristorante.pietanze">
-          <ion-item *ngIf="dessert.tipologia == 'dessert'">
-            <ion-label>{{dessert.nome}}</ion-label>
-            <ion-label class="ion-text-end">{{dessert.prezzo}} €</ion-label>
-          </ion-item>
-        </div>
-      </ion-list>
-      <ion-list class="detailsList">
-        <ion-list-header>
-          <ion-title class="ion-text-center">{{'LABEL_BEVANDE' | translate}}</ion-title>
-        </ion-list-header>
-        <div *ngFor="let bevanda of ristorante.pietanze">
-          <ion-item *ngIf="bevanda.tipologia == 'bevanda'">
-            <ion-label>{{bevanda.nome}}</ion-label>
-            <ion-label class="ion-text-end">{{bevanda.prezzo}} €</ion-label>
-          </ion-item>
-        </div>
-      </ion-list>
+      </ion-card>
+      <ion-card>
+        <ion-list>
+          <ion-list-header style="background-color: #008bff">
+            <ion-title style="color: white" class="ion-text-center">{{'LABEL_PRIMI' | translate}}</ion-title>
+          </ion-list-header>
+          <div *ngFor="let primo of ristorante.pietanze">
+            <ion-item *ngIf="primo.tipologia == 'primo'">
+              <ion-label>{{primo.nome}}</ion-label>
+              <ion-label class="ion-text-end">{{primo.prezzo}} €</ion-label>
+            </ion-item>
+          </div>
+        </ion-list>
+      </ion-card>
+      <ion-card>
+        <ion-list>
+          <ion-list-header style="background-color: #269dff">
+            <ion-title style="color: white" class="ion-text-center">{{'LABEL_SECONDI' | translate}}</ion-title>
+          </ion-list-header>
+          <div *ngFor="let secondo of ristorante.pietanze">
+            <ion-item *ngIf="secondo.tipologia == 'secondo'">
+              <ion-label>{{secondo.nome}}</ion-label>
+              <ion-label class="ion-text-end">{{secondo.prezzo}} €</ion-label>
+            </ion-item>
+          </div>
+        </ion-list>
+      </ion-card>
+      <ion-card>
+        <ion-list>
+          <ion-list-header style="background-color: #55aeff">
+            <ion-title style="color: white" class="ion-text-center">{{'LABEL_DESSERT' | translate}}</ion-title>
+          </ion-list-header>
+          <div *ngFor="let dessert of ristorante.pietanze">
+            <ion-item *ngIf="dessert.tipologia == 'dessert'">
+              <ion-label>{{dessert.nome}}</ion-label>
+              <ion-label class="ion-text-end">{{dessert.prezzo}} €</ion-label>
+            </ion-item>
+          </div>
+        </ion-list>
+      </ion-card>
+      <ion-card>
+        <ion-list class="detailsList">
+          <ion-list-header style="background-color: #8ac5ff">
+            <ion-title style="color: white" class="ion-text-center">{{'LABEL_BEVANDE' | translate}}</ion-title>
+          </ion-list-header>
+          <div *ngFor="let bevanda of ristorante.pietanze">
+            <ion-item *ngIf="bevanda.tipologia == 'bevanda'">
+              <ion-label>{{bevanda.nome}}</ion-label>
+              <ion-label class="ion-text-end">{{bevanda.prezzo}} €</ion-label>
+            </ion-item>
+          </div>
+        </ion-list>
+      </ion-card>
     </div>
 
     <div *ngSwitchCase="'reviews'">
@@ -250,7 +260,7 @@
 
   </div>
 
-  <ion-button class="fixedButton ion-tappable" shape="round" color="primary"
+  <ion-button class="fixedButton ion-tappable" shape="round" color="secondary"
               [routerLink]="['prenota', ristorante.id]" routerDirection="forward">
     <ion-label>{{'BOTTONE_PRENOTA' | translate}}</ion-label>
   </ion-button>

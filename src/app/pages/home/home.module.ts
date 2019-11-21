@@ -17,42 +17,6 @@ import {TranslateModule} from '@ngx-translate/core';
       {
         path: '',
         component: HomePage
-      },
-      {
-        path: 'lista-ristoranti',
-        children: [
-          {
-            path: '',
-            loadChildren: '../lista-ristoranti/lista-ristoranti.module#ListaRistorantiPageModule'
-          }
-        ]
-      },
-      {
-        path: 'lista-ristoranti/:requestType/:id',
-        children: [
-          {
-            path: '',
-            loadChildren: '../lista-ristoranti/lista-ristoranti.module#ListaRistorantiPageModule'
-          }
-        ]
-      },
-      {
-        path: 'dettagli-ristorante/:id',
-        children: [
-          {
-            path: '',
-            loadChildren: '../dettagli-ristorante/dettagli-ristorante.module#DettagliRistorantePageModule'
-          }
-        ]
-      },
-      {
-        path: 'preferenze',
-        children: [
-          {
-            path: '',
-            loadChildren: '../preferenze/preferenze.module#PreferenzePageModule'
-          }
-        ]
       }
     ])
   ],

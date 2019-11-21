@@ -46,7 +46,7 @@ export class HomePage implements OnInit {
       } else {
           this.checkLocationAvailable();
           this.categorie$ = this.categoriaService.list();
-          this.navController.navigateRoot('tabs');
+          this.navController.navigateRoot('tabs/home');
       }
     });
   }
