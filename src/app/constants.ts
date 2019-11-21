@@ -35,3 +35,6 @@ export const X_AUTH = 'X-Auth';
 export const AUTH_TOKEN = 'auth-token';
 
 export const UTENTE_STORAGE = 'utente';
+
+export const STORAGE_LOCATION_KEY = 'location';
+export const STORAGE_LANGUAGE_KEY = 'language';

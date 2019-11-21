@@ -43,7 +43,7 @@ export class PrenotazioniPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    //this.loaded = false;
+    this.loaded = false;
     this.listPrenotazioni();
   }
 

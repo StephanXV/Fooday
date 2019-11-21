@@ -13,6 +13,7 @@ import {Storage} from '@ionic/storage';
 import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { TranslateService } from '@ngx-translate/core';
 import {AlertController} from '@ionic/angular';
+import { STORAGE_LOCATION_KEY } from '../../constants';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,6 @@ import {AlertController} from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  private splash = true;
   private requestType: number;
   private ristoranti: Ristorante[];
   private categorie$: Observable<Categoria[]>;
@@ -67,7 +67,7 @@ export class HomePage implements OnInit {
   }
 
   checkLocationAvailable()  {
-    this.storage.get('location').then( val => {
+    this.storage.get(STORAGE_LOCATION_KEY).then( val => {
       console.log(val);
       this.locationValue = val;
       if (this.locationValue === true) {

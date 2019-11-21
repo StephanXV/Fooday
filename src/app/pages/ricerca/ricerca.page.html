@@ -32,7 +32,7 @@
   </div>
 
   <ion-list *ngIf="utente != null">
-    <ion-item *ngFor="let ricerca of ricerche$ | async"  routerDirection="forward">
+    <ion-item *ngFor="let ricerca of ricerche$ | async">
       <ion-icon slot="start" name="sync"></ion-icon>
       <ion-label (click)="onRicercaClick(ricerca.tipoRichiesta, ricerca.input)">{{ricerca.input}}</ion-label>
       <ion-button fill="clear" (click)="deleteRicerca(ricerca.id)">

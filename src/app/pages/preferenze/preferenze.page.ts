@@ -3,9 +3,7 @@ import { Storage } from '@ionic/storage';
 import {TranslateService} from '@ngx-translate/core';
 import {Platform} from '@ionic/angular';
 import { LinguaService } from '../../services/lingua.service';
-
-const STORAGE_LOCATION_KEY = 'location';
-const STORAGE_LANGUAGE_KEY = 'language';
+import { STORAGE_LOCATION_KEY, STORAGE_LANGUAGE_KEY } from '../../constants';
 
 @Component({
   selector: 'app-preferenze',

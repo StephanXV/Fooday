@@ -11,7 +11,7 @@
   </ion-label>
 
   <ion-list>
-      <ion-card class="ion-card" *ngFor="let preferito of preferiti$ | async">
+      <ion-card class="ion-card" *ngFor="let preferito of preferiti">
         <ion-row>
           <ion-col>
             <ion-img [routerLink]="['dettagli-ristorante', preferito.id]" routerDirection="forward" src="data:image/jpeg;base64, {{preferito.immagini[0].file}}"></ion-img>
