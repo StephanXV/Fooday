@@ -128,5 +128,10 @@
   "FILTRI_PREZZO": "Prezzo (Crescente)",
   "FILTRI_POPOLARE": "Popolarità",
   "FILTRI_APERTO": "Aperto Ora",
-  "INFO_PRENOTA_MESSAGE": "Accettando di usare i propri punti per la prenotazione verranno sottratti 1000 punti al saldo e verrà applicato uno sconto di 10 € direttamente in cassa."
+  "INFO_PRENOTA_MESSAGE": "Accettando di usare i propri punti per la prenotazione verranno sottratti 1000 punti al saldo e verrà applicato uno sconto di 10 € direttamente in cassa.",
+  "INFO_PUNTI": "Questa prenotazione ti farà acquisire 100 punti",
+  "PUNTEGGIO_TITLE": "Punteggio",
+  "POSIZIONE_WARNING": "Posizione non consentita, abilitarla dalle preferenze",
+  "PREFERENZE_TITLE" : "PREFERENZE",
+  "NO_RISTO_ZONA": "In questa zona non sono presenti ristoranti"
 }

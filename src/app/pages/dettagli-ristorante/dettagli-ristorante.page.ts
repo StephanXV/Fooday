@@ -86,7 +86,7 @@ export class DettagliRistorantePage implements OnInit {
     this.punteggio = Math.floor(((this.mediaCucina + this.mediaServizio + this.mediaPrezzo) / 3) * 10) / 10;
   }
 
-  callF() {
+  callF() { //collapse orari
     f();
   }
 

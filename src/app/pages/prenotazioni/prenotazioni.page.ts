@@ -44,6 +44,8 @@ export class PrenotazioniPage implements OnInit {
 
   ionViewWillEnter() {
     this.loaded = false;
+    this.initTranslate();
+
     this.listPrenotazioni();
   }
 
@@ -56,10 +58,6 @@ export class PrenotazioniPage implements OnInit {
         this.loaded = true;
       });
     });
-  }
-
-  async deletePrenotazioni(sliding: IonItemSliding) {
-    sliding.close();
   }
 
   async deleteAlert(idRistorante, timestamp) {
