@@ -52,7 +52,6 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-      this.categorie$ = this.categoriaService.list();
   }
 
   onCategoryClick(idCategoria: number) {
@@ -163,7 +162,7 @@ export class HomePage implements OnInit {
       } else { // get current position
         this.checkLocationAvailable();
         this.categorie$ = this.categoriaService.list();
-        this.navController.navigateRoot('tabs');
+        this.navController.navigateRoot('tabs/home');
       }
     });
   }
