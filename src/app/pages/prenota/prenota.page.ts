@@ -9,6 +9,7 @@ import {RistoranteService} from '../../services/ristorante.service';
 import {Prenotazione} from '../../model/prenotazione.model';
 import {PrenotazioneService} from '../../services/prenotazione.service';
 import {TranslateService} from '@ngx-translate/core';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-prenota',
@@ -28,10 +29,11 @@ export class PrenotaPage implements OnInit {
   private prenotazioneMessage: string;
   private confirmButton: string;
   private isChiuso = true;
-  private giorni = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
+  private giorni = ['domenica', 'lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato'];
   private numbers: number[] = [];
   private orari: string[] = [];
   private infoMessage: string;
+  private userJson: any;
 
   constructor(private formBuilder: FormBuilder,
               private navController: NavController,
@@ -40,7 +42,8 @@ export class PrenotaPage implements OnInit {
               private ristoranteService: RistoranteService,
               private prenotazioneService: PrenotazioneService,
               private alertController: AlertController,
-              private translateService: TranslateService) {
+              private translateService: TranslateService,
+              private storage: Storage) {
   }
 
   ngOnInit() {
@@ -82,7 +85,7 @@ export class PrenotaPage implements OnInit {
     this.selectedDate = new Date(this.bookFormModule.value.data);
     const selectedGiorno = this.selectedDate.getDay();
     for (let i = 0; i < 7; i++) {
-      if (i + 1 === selectedGiorno) {
+      if (i  === selectedGiorno) {
         giorno = this.giorni[i];
       }
     }
@@ -146,7 +149,19 @@ export class PrenotaPage implements OnInit {
         error => (console.log('Username già presa')));
     // set user param to update punti
     this.prenotazioneService.updatePunti(this.utente, this.prenotazione.usaPunti).subscribe((utente: Utente) =>
-        error => (console.log('Username già presa')));
+      this.storage.get('utente').then((user) => {
+        this.userJson = user;
+        console.log('punti', this.userJson.punti);
+        if (this.prenotazione.usaPunti) {
+          this.userJson.punti -= 900;
+        } else {
+          this.userJson.punti += 100;
+        }
+        console.log(this.userJson.punti);
+        this.storage.set('utente', this.userJson);
+      }),
+        error => (console.log('Impossibile aggiornare i punti'))
+    );
   }
 
 

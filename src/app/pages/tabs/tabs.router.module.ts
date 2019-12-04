@@ -57,6 +57,17 @@ const routes: Routes = [
                                     {
                                         path: '',
                                         loadChildren: '../dettagli-ristorante/dettagli-ristorante.module#DettagliRistorantePageModule'
+                                    },
+                                    {
+                                        path: 'prenota/:id',
+                                        children: [
+                                            {
+                                                path: '',
+                                                loadChildren: '../prenota/prenota.module#PrenotaPageModule',
+                                                canActivate: [AuthGuard],
+                                                data: {pag: ['prenota']}
+                                            }
+                                        ]
                                     }
                                 ]
                             }
@@ -75,6 +86,17 @@ const routes: Routes = [
                                     {
                                         path: '',
                                         loadChildren: '../dettagli-ristorante/dettagli-ristorante.module#DettagliRistorantePageModule'
+                                    },
+                                    {
+                                        path: 'prenota/:id',
+                                        children: [
+                                            {
+                                                path: '',
+                                                loadChildren: '../prenota/prenota.module#PrenotaPageModule',
+                                                canActivate: [AuthGuard],
+                                                data: {pag: ['prenota']}
+                                            }
+                                        ]
                                     }
                                 ]
                             }

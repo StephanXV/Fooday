@@ -4,6 +4,7 @@ import {Utente} from '../../model/utente.model';
 import {UtenteService} from '../../services/utente.service';
 import {TranslateService} from '@ngx-translate/core';
 import {PrenotazioneService} from '../../services/prenotazione.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-profilo',
@@ -23,7 +24,8 @@ export class ProfiloPage implements OnInit {
               private utenteService: UtenteService,
               private translateService: TranslateService,
               private alertController: AlertController,
-              private prenotazioneService: PrenotazioneService) {
+              private prenotazioneService: PrenotazioneService,
+              private storage: Storage) {
   }
 
   ngOnInit() {
@@ -34,12 +36,19 @@ export class ProfiloPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.utenteService.getUtente().subscribe((utente) => {
+    this.storage.get('utente').then( (utente) => {
       this.utente = utente;
       this.prenotazioneService.getPrenotazioni(utente.id).subscribe( (prenotazioni) => {
         this.numberPrenotazione = prenotazioni.length;
       });
     });
+
+    /*this.utenteService.getUtente().subscribe((utente) => {
+      this.utente = utente;
+      this.prenotazioneService.getPrenotazioni(utente.id).subscribe( (prenotazioni) => {
+        this.numberPrenotazione = prenotazioni.length;
+      });
+    });*/
   }
 
   async onLogoutButtonClick() {
