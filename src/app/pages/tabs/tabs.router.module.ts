@@ -200,6 +200,17 @@ const routes: Routes = [
                                 ]
                             }
                         ]
+                    },
+                    {
+                        path: 'prenota/:id',
+                        children: [
+                            {
+                                path: '',
+                                loadChildren: '../prenota/prenota.module#PrenotaPageModule',
+                                canActivate: [AuthGuard],
+                                data: {pag: ['prenota']}
+                            }
+                        ]
                     }
                 ]
             },

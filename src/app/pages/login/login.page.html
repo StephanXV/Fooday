@@ -21,7 +21,7 @@
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
           <ion-icon style="margin-right: 6px" name="contact"></ion-icon>{{'PLACEHOLDER_USERNAME' | translate}}</ion-label>
-        <ion-input color="secondary" type="email" formControlName="username"></ion-input>
+        <ion-input color="secondary" placeholder="{{'PLACEHOLDER_USERNAME' | translate}}" type="email" formControlName="username"></ion-input>
       </ion-item>
       <p *ngIf="loginFormModel.get('username').touched && loginFormModel.get('username').invalid">
         <ion-text color="danger">{{'USERNAME_RICHIESTO' | translate}}</ion-text>
@@ -29,7 +29,7 @@
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
           <ion-icon style="margin-right: 6px" name="lock"></ion-icon>{{'PLACEHOLDER_PASSWORD' | translate}}</ion-label>
-        <ion-input color="secondary" type="password" formControlName="password"></ion-input>
+        <ion-input color="secondary" placeholder="{{'PLACEHOLDER_PASSWORD' | translate}}" type="password" formControlName="password"></ion-input>
       </ion-item>
       <p *ngIf="loginFormModel.get('password').touched && loginFormModel.get('password').invalid">
         <ion-text color="danger">{{'PASSWORD_RICHIESTA' | translate}}</ion-text>
