@@ -37,6 +37,18 @@ export class PreferenzePage implements OnInit {
     });
   }
 
+  ionViewWillEnter() {
+    this.storage.get(STORAGE_LANGUAGE_KEY).then( val => {
+      console.log(val);
+      this.languageValue = val;
+      this.selectValue = val;
+    });
+    this.storage.get(STORAGE_LOCATION_KEY).then( val => {
+      console.log(val);
+      this.locationValue = val;
+    });
+  }
+
   setLanguage($event) {
     console.log($event.target.value);
     this.storage.remove(STORAGE_LANGUAGE_KEY).then(() => {
